@@ -3,11 +3,12 @@
 set -e
 
 basedir=/home/sdh/builds
-kf5=$(cat ${basedir}/scripts/packages.txt)
-echo ${kf5[@]}
-
 sed_file=${basedir}/scripts/4-sed-pkgnames-generated.sh
 pkg_dir=${basedir}/pkgbuilds/working-packages
+archpkgdir=${basedir}/pkgbuilds/arch-packages
+
+kf5=$(cat ${basedir}/scripts/packages.txt)
+echo ${kf5[@]}
 
 mkdir -p ${pkg_dir}
 find ${pkg_dir} -mindepth 1 -delete
@@ -18,7 +19,7 @@ for i in ${kf5[@]};do
     echo $i;
     newdir=${pkg_dir}/$i-opt-git
     mkdir "$newdir"
-    cp $i/trunk/* "$newdir"
+    cp ${archpkgdir}/$i/trunk/* "$newdir"
 done
 
 for i in ${kf5[@]} oxygen-icons-svg phonon-qt4 plasma-wayland-session oxygen-kde4 knetattach breeze-kde4 phonon-qt4-gstreamer;do

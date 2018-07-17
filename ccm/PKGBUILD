@@ -1,0 +1,31 @@
+# Maintainer: graysky <graysky AT archlinux DOT us>
+
+pkgname=clean-chroot-manager-sdh
+pkgver=r136.c963a24
+pkgrel=1
+pkgdesc='Wrapper scripts for managing clean chroots.'
+arch=('any')
+url='https://github.com/siddharthasahu/clean-chroot-manager'
+license=('MIT')
+depends=('devtools>=20180528-1' 'rsync')
+conflicts=('clean_chroot_manager')
+replaces=('clean_chroot_manager')
+source=("${pkgname}::git+https://github.com/siddharthasahu/clean-chroot-manager.git#branch=changes")
+sha256sums=('SKIP')
+install=ccm.install
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$pkgname"
+  make
+}
+
+package() {
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

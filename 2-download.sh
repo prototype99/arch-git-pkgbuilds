@@ -5,9 +5,11 @@ set -e
 kf5=$(cat /home/sdh/builds/scripts/packages.txt)
 echo ${kf5[@]}
 
-cd /home/sdh/builds/pkgbuilds/arch-packages
+rm -rf /home/sdh/builds/pkgbuilds/arch-packages || true
+mkdir -p /home/sdh/builds/pkgbuilds/arch-packages || true
 
-ls | xargs -L1 rm -rf
+cd /home/sdh/builds/pkgbuilds/arch-packages
+svn checkout --depth=empty svn://svn.archlinux.org/packages
 
 for i in ${kf5[@]};do
     svn update $i;

@@ -1,0 +1,4 @@
+ccm/*.pkg.tar.xz
+ccm/clean-chroot-manager-sdh/
+ccm/pkg/
+ccm/src/

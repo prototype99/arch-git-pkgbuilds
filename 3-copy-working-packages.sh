@@ -16,11 +16,15 @@ echo -n "sed -i -r" > ${sed_file}
 
 for i in ${kf5[@]};do
 	echo $i;
-	mkdir /home/sdh/builds/pkgbuilds/working-packages/$i-git/
-	cp $i/trunk/* /home/sdh/builds/pkgbuilds/working-packages/$i-git/
+    newdir=/home/sdh/builds/pkgbuilds/working-packages/$i-opt-git
+    mkdir "$newdir"
+	cp $i/trunk/* "$newdir"
+done
 
+for i in ${kf5[@]} oxygen-icons-svg phonon-qt4 plasma-wayland-session oxygen-kde4 knetattach breeze-kde4 phonon-qt4-gstreamer;do
+    [[ "$i" == "phonon-gstreamer" ]] && i=phonon-qt5-gstreamer
     [[ "$i" == "phonon" ]] && i=phonon-qt5
-    echo -n " -e 's/"'([ (^])'"$i"'([ )$])'"/"'\1'"$i-git"'\2'"/'" >> ${sed_file}
+    echo -n " -e 's/"'([^a-zA-Z0-9\-])'"$i"'([^a-zA-Z0-9\-])'"/"'\1'"$i-opt-git"'\2'"/'" >> ${sed_file}
 done
 
 echo -n " /home/sdh/builds/pkgbuilds/working-packages/*/PKGBUILD" >> ${sed_file}

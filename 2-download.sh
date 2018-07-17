@@ -2,16 +2,17 @@
 
 set -e
 
-kf5=$(cat /home/sdh/builds/scripts/packages.txt)
-echo ${kf5[@]}
+basedir=/home/sdh/builds
+archpkgdir=${basedir}/pkgbuilds/arch-packages
 
-rm -rf /home/sdh/builds/pkgbuilds/arch-packages || true
-mkdir -p /home/sdh/builds/pkgbuilds/arch-packages || true
 
-cd /home/sdh/builds/pkgbuilds/arch-packages
-svn checkout --depth=empty svn://svn.archlinux.org/packages
+mkdir -p ${archpkgdir}
+find ${archpkgdir} -mindepth 1 -delete
 
-for i in ${kf5[@]};do
+cd ${archpkgdir}
+svn checkout --depth=empty svn://svn.archlinux.org/packages .
+
+for i in $(cat ${basedir}/scripts/packages.txt);do
     svn update $i;
     [[ -d "$i" ]] || { echo "$i missing" && break; };
 done

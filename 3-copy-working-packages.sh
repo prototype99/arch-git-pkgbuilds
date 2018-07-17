@@ -2,21 +2,21 @@
 
 set -e
 
-kf5=$(cat /home/sdh/builds/scripts/packages.txt)
+basedir=/home/sdh/builds
+kf5=$(cat ${basedir}/scripts/packages.txt)
 echo ${kf5[@]}
 
-sed_file=/home/sdh/builds/scripts/4-sed-pkgnames-generated.sh
+sed_file=${basedir}/scripts/4-sed-pkgnames-generated.sh
+pkg_dir=${basedir}/pkgbuilds/working-packages
 
-cd /home/sdh/builds/pkgbuilds/arch-packages
-
-rm -rf /home/sdh/builds/pkgbuilds/working-packages
-mkdir /home/sdh/builds/pkgbuilds/working-packages
+mkdir -p ${pkg_dir}
+find ${pkg_dir} -mindepth 1 -delete
 
 echo "sed -i -r \\" > ${sed_file}
 
 for i in ${kf5[@]};do
     echo $i;
-    newdir=/home/sdh/builds/pkgbuilds/working-packages/$i-opt-git
+    newdir=${pkg_dir}/$i-opt-git
     mkdir "$newdir"
     cp $i/trunk/* "$newdir"
 done
@@ -27,6 +27,6 @@ for i in ${kf5[@]} oxygen-icons-svg phonon-qt4 plasma-wayland-session oxygen-kde
     echo "    -e 's/"'([^a-zA-Z0-9\-])'"$i"'([^a-zA-Z0-9\-])'"/"'\1'"$i-opt-git"'\2'"/' \\" >> ${sed_file}
 done
 
-echo "    /home/sdh/builds/pkgbuilds/working-packages/*/PKGBUILD" >> ${sed_file}
+echo "    ${pkg_dir}/*/PKGBUILD" >> ${sed_file}
 
 echo "success"

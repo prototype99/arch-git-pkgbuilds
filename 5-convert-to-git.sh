@@ -2,8 +2,8 @@
 
 set -e
 
-pkgdir=/home/sdh/builds/pkgbuilds/working-packages
-cd $pkgdir
+basedir=/home/sdh/builds
+cd ${basedir}/pkgbuilds/working-packages
 
 for i in */PKGBUILD;do
 	echo $i;
@@ -32,9 +32,5 @@ for i in */PKGBUILD;do
     . $i && \
     sed -i -r "/sha256sums/,/pkgver/c\sha1sums=($(python -c 'print("SKIP "*'${#source[@]}')'))\noptions=(debug "'!'"strip)\n\npkgver() {" $i;
 done
-
-#for i in breeze oxygen oxygen-icons plasma-workspace phonon phonon-gstreamer plasma-desktop;do
-#	cp /home/sdh/builds/pkgbuilds/tmp/$i-git/* $pkgdir/$i-opt-git
-#done
 
 echo "success"

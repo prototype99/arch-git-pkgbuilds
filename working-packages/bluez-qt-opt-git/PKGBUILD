@@ -1,0 +1,47 @@
+# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=bluez-qt
+pkgname=${_pkgname}-opt-git
+pkgver=5.48.0
+pkgrel=1
+pkgdesc='Qt wrapper for Bluez 5 DBus API'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(GPL2)
+depends=(qt5-base bluez)
+makedepends=(extra-cmake-modules-opt-git doxygen qt5-tools qt5-declarative)
+optdepends=('qt5-declarative: QML bindings')
+groups=(kf5-opt)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  export PATH="/opt/kde/bin:${PATH}"
+  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DUDEV_RULES_INSTALL_DIR=/opt/kde/lib/udev/rules.d \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

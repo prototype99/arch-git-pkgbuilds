@@ -1,0 +1,66 @@
+# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=plasma-desktop
+pkgname=(plasma-desktop-opt-git knetattach-opt-git)
+pkgver=5.13.3
+pkgrel=1
+pkgdesc='KDE Plasma Desktop'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+depends=(polkit-kde-agent-opt-git libcanberra libxkbfile kmenuedit-opt-git appstream-qt systemsettings-opt-git ksysguard-opt-git kpeople-opt-git baloo-opt-git)
+makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git boost xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel
+             libibus scim kdesignerplugin-opt-git)
+groups=(plasma-opt)
+sha1sums=(SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  export PATH="/opt/kde/bin:${PATH}"
+  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package_plasma-desktop-opt-git() {
+  depends+=(knetattach-opt-git)
+  optdepends=('plasma-nm-opt-git: Network manager applet'
+              'powerdevil-opt-git: power management'
+              'ibus: kimpanel IBUS support'
+              'scim: kimpanel SCIM support'
+              'discover-opt-git: manage applications installation from the launcher')
+
+  cd build
+  make DESTDIR="$pkgdir" install
+
+# Split knetattach
+  rm "$pkgdir"/opt/kde/{bin/knetattach-opt-git,share/applications/org.kde.knetattach.desktop}
+}
+
+package_knetattach-opt-git() {
+  pkgdesc='Wizard which makes it easier to integrate network resources with the Plasma Desktop'
+  depends=(kdelibs4support-opt-git)
+
+  cd build/knetattach
+  make DESTDIR="$pkgdir" install
+}

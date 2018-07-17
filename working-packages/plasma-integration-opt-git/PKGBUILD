@@ -1,0 +1,45 @@
+# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+_pkgname=plasma-integration
+pkgname=${_pkgname}-opt-git
+pkgver=5.13.3
+pkgrel=1
+pkgdesc="Qt Platform Theme integration plugins for the Plasma workspaces"
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+depends=(kio-opt-git kwayland-opt-git libxcursor noto-fonts ttf-hack qqc2-desktop-style-opt-git)
+makedepends=(extra-cmake-modules-opt-git breeze-opt-git)
+groups=(plasma-opt)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  export PATH="/opt/kde/bin:${PATH}"
+  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

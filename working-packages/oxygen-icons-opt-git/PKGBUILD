@@ -1,0 +1,54 @@
+# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+
+_pkgname=oxygen-icons
+pkgname=(oxygen-icons-opt-git oxygen-icons-svg-opt-git)
+pkgver=5.48.0
+epoch=1
+pkgrel=1
+pkgdesc="The Oxygen Icon Theme"
+arch=(any)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+makedepends=(extra-cmake-modules-opt-git qt5-base)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  export PATH="/opt/kde/bin:${PATH}"
+  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  make
+}
+
+package_oxygen-icons-opt-git() {
+  groups=(kf5-opt)
+
+  cd build
+  make DESTDIR="$pkgdir" install
+}
+
+package_oxygen-icons-svg-opt-git() {
+  pkgdesc="The Oxygen Icon Theme (Scalable Vector Graphics)"
+
+  cd ${_pkgname}
+  find scalable -type f ! -name '*.sh' -exec \
+    install -D -m644 "{}" "$pkgdir"/opt/kde/share/icons/oxygen-opt-git/{} \;
+}

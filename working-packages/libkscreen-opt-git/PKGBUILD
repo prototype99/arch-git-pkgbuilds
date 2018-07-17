@@ -1,0 +1,48 @@
+# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=libkscreen
+pkgname=${_pkgname}-opt-git
+pkgver=5.13.3
+pkgrel=1
+pkgdesc='KDE screen management software'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+depends=(qt5-x11extras libxrandr kwayland-opt-git)
+makedepends=(extra-cmake-modules-opt-git doxygen qt5-tools)
+groups=(plasma-opt)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  export PATH="/opt/kde/bin:${PATH}"
+  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

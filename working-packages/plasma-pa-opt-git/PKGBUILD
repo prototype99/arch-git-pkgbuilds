@@ -1,0 +1,48 @@
+# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# Maintainer:Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=plasma-pa
+pkgname=${_pkgname}-opt-git
+pkgver=5.13.3
+pkgrel=1
+pkgdesc='Plasma applet for audio volume management using PulseAudio'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+depends=(plasma-workspace-opt-git libcanberra-pulse pulseaudio)
+makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git)
+groups=(plasma-opt)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
+        plasma-pa-no-gconf.patch)
+sha1sums=(SKIP SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+
+  cd ${_pkgname}
+  patch -p0 -i ../plasma-pa-no-gconf.patch # Remove gconf dependency
+}
+
+build() {
+  export PATH="/opt/kde/bin:${PATH}"
+  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

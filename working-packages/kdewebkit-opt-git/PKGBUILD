@@ -1,0 +1,46 @@
+# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=kdewebkit
+pkgname=${_pkgname}-opt-git
+pkgver=5.48.0
+pkgrel=1
+pkgdesc='KDE Integration for QtWebKit'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(qt5-webkit kparts-opt-git)
+makedepends=(extra-cmake-modules-opt-git)
+groups=(kf5-opt)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  export PATH="/opt/kde/bin:${PATH}"
+  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

@@ -1,0 +1,45 @@
+# Maintainer:Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=purpose
+pkgname=${_pkgname}-opt-git
+pkgver=5.48.0
+pkgrel=1
+pkgdesc="Framework for providing abstractions to get the developer's purposes fulfilled"
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kaccounts-integration accounts-qml-module hicolor-icon-theme)
+makedepends=(extra-cmake-modules-opt-git intltool)
+optdepends=('kdeconnect: sharing to smartphone via KDE Connect' 'telegram-desktop: sharing via Telegram')
+groups=(kf5-opt)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  export PATH="/opt/kde/bin:${PATH}"
+  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

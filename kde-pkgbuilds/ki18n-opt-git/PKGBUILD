@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 328657 2018-07-14 10:24:33Z arojas $
+# $Id: PKGBUILD 328825 2018-07-16 18:07:14Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=ki18n
 pkgname=${_pkgname}-opt-git
-pkgver=r280.543b8ae
-pkgrel=1
+pkgver=5.48.1
+pkgrel=2
 pkgdesc='Advanced internationalization framework'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -34,8 +34,8 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON

@@ -34,8 +34,8 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DQML_INSTALL_DIR=lib/qt/qml \
     -DBUILD_TESTING=OFF \

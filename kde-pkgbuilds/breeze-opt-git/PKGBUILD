@@ -30,16 +30,16 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 
   cd ../build-kde4
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DUSE_KDE4=ON \
     -DBUILD_TESTING=OFF
   make

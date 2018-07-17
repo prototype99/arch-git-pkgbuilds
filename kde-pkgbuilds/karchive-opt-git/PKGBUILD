@@ -5,7 +5,7 @@
 
 _pkgname=karchive
 pkgname=${_pkgname}-opt-git
-pkgver=r275.6c2b95f
+pkgver=5.48.0
 pkgrel=1
 pkgdesc='Qt 5 addon providing access to numerous types of archives'
 arch=(x86_64)
@@ -33,8 +33,8 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON

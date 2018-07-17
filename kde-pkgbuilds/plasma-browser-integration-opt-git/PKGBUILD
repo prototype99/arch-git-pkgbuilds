@@ -30,8 +30,8 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DINSTALL_CHROME_MANIFEST=ON
   make

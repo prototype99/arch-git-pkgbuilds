@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# $Id: PKGBUILD 328831 2018-07-16 18:11:42Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kconfig
 pkgname=${_pkgname}-opt-git
-pkgver=r499.00646c7
-pkgrel=1
+pkgver=5.48.0
+pkgrel=2
 pkgdesc='Configuration system'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -34,8 +34,8 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \

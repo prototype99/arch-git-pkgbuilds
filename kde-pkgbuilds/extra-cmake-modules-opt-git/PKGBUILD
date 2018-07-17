@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# $Id: PKGBUILD 328806 2018-07-16 17:45:29Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=extra-cmake-modules
 pkgname=${_pkgname}-opt-git
-pkgver=r2989.f19f909
-pkgrel=1
+pkgver=5.48.0
+pkgrel=2
 pkgdesc='Extra modules and scripts for CMake'
 arch=(any)
 url='https://community.kde.org/Frameworks'
@@ -43,8 +43,8 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DBUILD_HTML_DOCS=OFF \
     -DBUILD_QTHELP_DOCS=ON \
     -DBUILD_TESTING=OFF

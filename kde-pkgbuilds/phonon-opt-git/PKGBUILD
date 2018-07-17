@@ -4,7 +4,7 @@
 
 _pkgname=phonon
 pkgname=(phonon-qt4-opt-git phonon-qt5-opt-git)
-pkgver=r3583.3fbe8581
+pkgver=4.10.1
 pkgrel=1
 arch=(x86_64)
 url='http://phonon.kde.org/'
@@ -31,8 +31,8 @@ build() {
   cd build
   cmake ../${_pkgname} \
     -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
     -DQT_QMAKE_EXECUTABLE=/opt/kde/bin/qmake-qt4 \
     -DCMAKE_INSTALL_LIBDIR=lib
@@ -41,8 +41,8 @@ build() {
   cd ../build-qt5
   cmake ../${_pkgname} \
     -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
     -DPHONON_BUILD_PHONON4QT5=ON \
     -DCMAKE_INSTALL_LIBDIR=lib

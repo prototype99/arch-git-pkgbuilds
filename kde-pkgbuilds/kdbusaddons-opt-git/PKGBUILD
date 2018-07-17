@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# $Id: PKGBUILD 328829 2018-07-16 18:10:26Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kdbusaddons
 pkgname=${_pkgname}-opt-git
-pkgver=r226.4349c75
-pkgrel=1
+pkgver=5.48.0
+pkgrel=2
 pkgdesc='Addons to QtDBus'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -34,8 +34,8 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON

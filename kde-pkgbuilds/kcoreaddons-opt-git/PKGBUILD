@@ -1,21 +1,21 @@
-# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# $Id: PKGBUILD 328810 2018-07-16 17:54:45Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kcoreaddons
 pkgname=${_pkgname}-opt-git
-pkgver=r733.bb56c91
-pkgrel=1
+pkgver=5.48.0
+pkgrel=2
 pkgdesc='Addons to QtCore'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt5-base shared-mime-info)
+depends=(qt5-base)
 makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 doxygen sip)
 optdepends=('python-pyqt5: for the Python bindings')
 groups=(kf5-opt)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}#commit=bb56c91ede0f5f7fb5dd2436eb3cae24d700001b)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
 
@@ -34,8 +34,8 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -D_KDE4_DEFAULT_HOME_POSTFIX=4 \
     -DBUILD_TESTING=OFF \

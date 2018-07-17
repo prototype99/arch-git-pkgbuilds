@@ -15,10 +15,10 @@ mkdir /home/sdh/builds/pkgbuilds/working-packages
 echo -n "sed -i -r" > ${sed_file}
 
 for i in ${kf5[@]};do
-	echo $i;
+    echo $i;
     newdir=/home/sdh/builds/pkgbuilds/working-packages/$i-opt-git
     mkdir "$newdir"
-	cp $i/trunk/* "$newdir"
+    cp $i/trunk/* "$newdir"
 done
 
 for i in ${kf5[@]} oxygen-icons-svg phonon-qt4 plasma-wayland-session oxygen-kde4 knetattach breeze-kde4 phonon-qt4-gstreamer;do
@@ -32,4 +32,3 @@ echo -n " /home/sdh/builds/pkgbuilds/working-packages/*/PKGBUILD" >> ${sed_file}
 echo >> ${sed_file}
 
 echo "success"
-

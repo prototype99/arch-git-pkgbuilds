@@ -10,9 +10,8 @@ cd /home/sdh/builds/pkgbuilds/arch-packages
 ls | xargs -L1 rm -rf
 
 for i in ${kf5[@]};do
-	svn update $i;
-	[[ -d "$i" ]] || { echo "$i missing" && break; };
+    svn update $i;
+    [[ -d "$i" ]] || { echo "$i missing" && break; };
 done
 
 echo "success"
-

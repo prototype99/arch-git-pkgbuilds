@@ -8,4 +8,3 @@ packages_file=/home/sdh/builds/scripts/packages.txt
 
 kf5=$(cat ${packages_file})
 echo ${kf5[@]}
-

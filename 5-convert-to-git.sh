@@ -33,4 +33,7 @@ for i in */PKGBUILD;do
     sed -i -r "/sha256sums/,/pkgver/c\sha1sums=($(python -c 'print("SKIP "*'${#source[@]}')'))\noptions=(debug "'!'"strip)\n\npkgver() {" $i;
 done
 
+sed -i -r "/source=/s/\)/5)/" oxygen-icons-opt-git/PKGBUILD
+sed -i -r "/source=/s/\}\)/%2})/" kirigami2-opt-git/PKGBUILD
+
 echo "success"

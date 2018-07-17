@@ -12,3 +12,4 @@ packages are built from git to get the latest and greatest features.
 * To skip until some package, `skipuntil=kapidox && y=($(cat /home/sdh/builds/scripts/packages.txt | sed "s/.*${skipuntil} //")) && echo $y`
 * `cd /home/sdh/builds/pkgbuilds/working-packages`
 * `for i in "${y[@]}";do cd $i-opt-git && { ls | grep pkg.tar > /dev/null && mv *.pkg.tar* ~/builds/old_packages/ || true; } && ccm s && cd .. || break; done`
+* Alternatively, to only build packages that have not been built: `for i in "${y[@]}";do cd $i-opt-git && echo $i && { ls | grep pkg.tar > /dev/null || ccm s; } && cd .. || break; done`

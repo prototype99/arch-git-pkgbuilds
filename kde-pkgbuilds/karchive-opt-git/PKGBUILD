@@ -5,7 +5,7 @@
 
 _pkgname=karchive
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r275.6c2b95f
 pkgrel=1
 pkgdesc='Qt 5 addon providing access to numerous types of archives'
 arch=(x86_64)

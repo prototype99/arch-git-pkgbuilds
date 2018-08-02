@@ -5,7 +5,7 @@
 
 _pkgname=milou
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r580.c407477
 pkgrel=1
 pkgdesc="A dedicated search application built on top of Baloo"
 arch=(x86_64)

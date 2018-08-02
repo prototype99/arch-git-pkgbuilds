@@ -4,7 +4,7 @@
 
 _pkgname=kactivitymanagerd
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r1183.35b1c1f
 pkgrel=1
 pkgdesc="System service to manage user's activities and track the usage patterns"
 arch=(x86_64)

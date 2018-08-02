@@ -2,7 +2,7 @@
 
 _pkgname=purpose
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r506.e822dc1
 pkgrel=1
 pkgdesc="Framework for providing abstractions to get the developer's purposes fulfilled"
 arch=(x86_64)

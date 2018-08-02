@@ -5,7 +5,7 @@
 
 _pkgname=ktextwidgets
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r220.ddb210a
 pkgrel=1
 pkgdesc='Advanced text editing widgets'
 arch=(x86_64)

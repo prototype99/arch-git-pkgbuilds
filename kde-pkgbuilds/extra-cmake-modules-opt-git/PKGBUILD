@@ -5,8 +5,8 @@
 
 _pkgname=extra-cmake-modules
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
-pkgrel=2
+pkgver=r2990.1715812
+pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=(any)
 url='https://community.kde.org/Frameworks'

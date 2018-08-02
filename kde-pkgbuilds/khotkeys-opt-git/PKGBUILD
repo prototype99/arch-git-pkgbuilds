@@ -5,7 +5,7 @@
 
 _pkgname=khotkeys
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r1889.e2a2589
 pkgrel=1
 pkgdesc='KHotKeys'
 arch=(x86_64)

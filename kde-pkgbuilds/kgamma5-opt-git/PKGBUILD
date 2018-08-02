@@ -3,7 +3,7 @@
 
 _pkgname=kgamma5
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r375.c13d995
 pkgrel=1
 pkgdesc="Adjust your monitor's gamma settings"
 arch=(x86_64)

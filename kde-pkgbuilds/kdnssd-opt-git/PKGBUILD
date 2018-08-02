@@ -5,7 +5,7 @@
 
 _pkgname=kdnssd
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r183.42da9e8
 pkgrel=1
 pkgdesc='Abstraction to system DNSSD features'
 arch=(x86_64)

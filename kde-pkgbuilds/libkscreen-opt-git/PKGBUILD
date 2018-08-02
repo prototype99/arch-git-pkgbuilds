@@ -5,7 +5,7 @@
 
 _pkgname=libkscreen
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r1394.3e99021
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(x86_64)

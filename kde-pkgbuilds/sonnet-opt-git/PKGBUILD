@@ -5,7 +5,7 @@
 
 _pkgname=sonnet
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r411.0a96acf
 pkgrel=1
 pkgdesc='Spelling framework for Qt5'
 arch=(x86_64)

@@ -4,13 +4,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=breeze
-pkgname=(breeze-opt-git breeze-kde4-opt-git)
-pkgver=5.13.3
+pkgname=(breeze-opt-git)
+pkgver=r1725.f28e3333
 pkgrel=1
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-makedepends=(extra-cmake-modules-opt-git frameworkintegration-opt-git kdelibs automoc4 kdecoration-opt-git kcmutils-opt-git plasma-framework-opt-git)
+makedepends=(extra-cmake-modules-opt-git frameworkintegration-opt-git kdelibs automoc4 kdecoration-opt-git kcmutils-opt-git plasma-framework-opt-git fftw)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build{,-kde4}
+  mkdir -p build
 }
 
 build() {
@@ -33,14 +33,6 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=OFF
-  make
-
-  cd ../build-kde4
-  cmake ../${_pkgname} \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
-    -DUSE_KDE4=ON \
     -DBUILD_TESTING=OFF
   make
 }
@@ -57,14 +49,3 @@ package_breeze-opt-git() {
   make DESTDIR="$pkgdir" install
 }
 
-package_breeze-kde4-opt-git() {
-  pkgdesc='Breeze widget style for KDE4 applications'
-  depends=(kdelibs)
-
-  cd build-kde4
-  make DESTDIR="$pkgdir" install
-
-  # needed for pure Qt4 apps
-  install -d "$pkgdir"/opt/kde/lib/qt4/plugins/styles
-  ln -s /opt/kde/lib/kde4/plugins/styles/breeze-opt-git.so "$pkgdir"/opt/kde/lib/qt4/plugins/styles
-}

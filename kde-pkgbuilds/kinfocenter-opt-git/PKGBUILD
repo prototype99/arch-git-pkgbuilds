@@ -5,7 +5,7 @@
 
 _pkgname=kinfocenter
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r1348.852fb0d
 pkgrel=1
 arch=(x86_64)
 url='https://www.kde.org/applications/system/kinfocenter-opt-git/'

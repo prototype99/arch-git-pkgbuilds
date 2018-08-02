@@ -5,7 +5,7 @@
 
 _pkgname=kjsembed
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r174.372e79d
 pkgrel=1
 pkgdesc='Embedded JS'
 arch=(x86_64)

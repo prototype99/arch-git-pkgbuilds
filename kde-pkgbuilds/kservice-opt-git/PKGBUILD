@@ -5,7 +5,7 @@
 
 _pkgname=kservice
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r581.5e6102f
 pkgrel=1
 pkgdesc='Advanced plugin and service introspection'
 arch=(x86_64)

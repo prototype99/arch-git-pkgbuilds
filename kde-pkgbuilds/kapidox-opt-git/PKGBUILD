@@ -5,7 +5,7 @@
 
 _pkgname=kapidox
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r413.1fa9127
 pkgrel=1
 pkgdesc='Frameworks API Documentation Tools'
 arch=(any)

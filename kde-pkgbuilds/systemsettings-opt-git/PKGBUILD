@@ -5,7 +5,7 @@
 
 _pkgname=systemsettings
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r1944.091a6ec
 pkgrel=1
 pkgdesc='KDE system manager for hardware, software, and workspaces'
 arch=(x86_64)

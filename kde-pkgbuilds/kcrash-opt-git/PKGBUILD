@@ -5,7 +5,7 @@
 
 _pkgname=kcrash
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r213.d1094af
 pkgrel=1
 pkgdesc='Support for application crash analysis and bug report from apps'
 arch=(x86_64)

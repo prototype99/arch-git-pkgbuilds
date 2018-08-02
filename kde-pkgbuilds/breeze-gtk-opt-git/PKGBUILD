@@ -3,7 +3,7 @@
 
 _pkgname=breeze-gtk
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r163.c2ff497
 pkgrel=1
 pkgdesc="Breeze widget theme for GTK 2 and 3"
 arch=(x86_64)

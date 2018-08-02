@@ -5,7 +5,7 @@
 
 _pkgname=kwrited
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r379.bc72a72
 pkgrel=1
 pkgdesc='KDE daemon listening for wall and write messages'
 arch=(x86_64)

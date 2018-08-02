@@ -5,7 +5,7 @@
 
 _pkgname=ktexteditor
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r1731.54e34ce9
 pkgrel=1
 pkgdesc='Advanced embeddable text editor'
 arch=(x86_64)

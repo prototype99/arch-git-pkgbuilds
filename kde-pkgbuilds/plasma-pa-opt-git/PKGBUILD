@@ -3,7 +3,7 @@
 
 _pkgname=plasma-pa
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r638.e2287cc
 pkgrel=1
 pkgdesc='Plasma applet for audio volume management using PulseAudio'
 arch=(x86_64)
@@ -12,9 +12,8 @@ license=(LGPL)
 depends=(plasma-workspace-opt-git libcanberra-pulse pulseaudio)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git)
 groups=(plasma-opt)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
-        plasma-pa-no-gconf.patch)
-sha1sums=(SKIP SKIP )
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP)
 options=(debug !strip)
 
 pkgver() {
@@ -24,9 +23,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd ${_pkgname}
-  patch -p0 -i ../plasma-pa-no-gconf.patch # Remove gconf dependency
 }
 
 build() {

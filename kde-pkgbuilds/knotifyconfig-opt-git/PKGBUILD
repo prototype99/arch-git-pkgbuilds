@@ -5,7 +5,7 @@
 
 _pkgname=knotifyconfig
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r202.a246321
 pkgrel=1
 pkgdesc='Configuration system for KNotify'
 arch=(x86_64)

@@ -6,7 +6,7 @@
 
 _pkgname=kpackage
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r453.1fec80d
 pkgrel=1
 pkgdesc='Framework that lets applications manage user installable packages of non-binary assets'
 arch=(x86_64)

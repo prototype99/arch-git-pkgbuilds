@@ -13,7 +13,8 @@ ${kdesrc_dir}/kdesrc-build \
         -e 's/kirigami/kirigami2/' \
         -e 's/oxygen-icons5/oxygen-icons/' \
         -e 's/polkit-kde-agent-1/polkit-kde-agent/' \
-    | grep -v "plasma-tests" | tr '\n' ' ' > ${packages_file}
+    | grep -v "plasma-tests" | grep -v "oxygen" | tr '\n' ' ' > ${packages_file}
 
+echo >> ${packages_file}
 kf5=$(cat ${packages_file})
 echo ${kf5[@]}

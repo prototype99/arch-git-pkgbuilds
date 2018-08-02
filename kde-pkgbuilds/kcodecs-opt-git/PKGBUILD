@@ -5,14 +5,14 @@
 
 _pkgname=kcodecs
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
-pkgrel=2
+pkgver=r213.b6c89b7
+pkgrel=1
 pkgdesc='Provide a collection of methods to manipulate strings using various encodings'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base)
-makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 gperf doxygen sip)
+makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 gperf doxygen )
 optdepends=('python-pyqt5: for the Python bindings')
 groups=(kf5-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})

@@ -2,7 +2,7 @@
 
 _pkgname=plasma-browser-integration
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r488.75482a0
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=(x86_64)

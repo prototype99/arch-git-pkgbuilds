@@ -2,7 +2,7 @@
 
 _pkgname=kholidays
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r751.c3fca74
 pkgrel=1
 epoch=1
 pkgdesc="KDE library for regional holiday information"

@@ -4,7 +4,7 @@
 
 _pkgname=kxmlrpcclient
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r324.6239b73d5
 pkgrel=1
 pkgdesc="XML-RPC client library for KDE"
 arch=(x86_64)

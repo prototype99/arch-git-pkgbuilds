@@ -19,8 +19,8 @@ for i in */PKGBUILD;do
     fi
     sed -i -r \
         -e "s/\\\$\{?pkg(name|base)\}?[0-9]?\-\\\$pkgver/\$\{_pkgname\}/g" \
-        -e "/groups=/s/([^a-z0-9\-])kf5([^a-z0-9\-])/\1kf5-opt\2/" \
-        -e "/groups=/s/([^a-z0-9\-])plasma([^a-z0-9\-])/\1plasma-opt\2/" \
+		-e "/groups=/s/([^ ])( \))/\1-opt/g" \
+		-e "/groups=/s/\)/ kde-opt/" \
         -e "/conflicts|provides|replaces/d" \
         -e "/CMAKE_INSTALL_PREFIX/i\    \-DCMAKE_BUILD_TYPE\=RelWithDebInfo \\\\" \
         -e '/^prepare/i\\npkgver() {\n  cd $_pkgname\n  printf "r%s.%s" "\$\(git rev-list --count HEAD\)" "\$\(git rev-parse --short HEAD\)"\n}\n' \
@@ -33,7 +33,7 @@ for i in */PKGBUILD;do
     sed -i -r "/sha256sums/,/pkgver/c\sha1sums=($(python -c 'print("SKIP "*'${#source[@]}')'))\noptions=(debug "'!'"strip)\n\npkgver() {" $i;
 done
 
-sed -i -r "/source=/s/\)/5)/" oxygen-icons-opt-git/PKGBUILD
+#sed -i -r "/source=/s/\)/5)/" oxygen-icons-opt-git/PKGBUILD
 sed -i -r "/source=/s/\}\)/%2})/" kirigami2-opt-git/PKGBUILD
 
 echo "success"

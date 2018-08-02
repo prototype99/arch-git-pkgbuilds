@@ -5,7 +5,7 @@
 
 _pkgname=kparts
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r270.4b4bc1a
 pkgrel=1
 pkgdesc='Document centric plugin system'
 arch=(x86_64)

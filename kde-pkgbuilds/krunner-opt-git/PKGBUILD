@@ -5,7 +5,7 @@
 
 _pkgname=krunner
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r311.a384712
 pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=(x86_64)

@@ -5,7 +5,7 @@
 
 _pkgname=networkmanager-qt
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r916.e20179a
 pkgrel=1
 pkgdesc='Qt wrapper for NetworkManager API'
 arch=(x86_64)

@@ -3,7 +3,7 @@
 
 _pkgname=kwayland-integration
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r88.bf26f27
 pkgrel=1
 pkgdesc='Provides integration plugins for various KDE frameworks for the wayland windowing system'
 arch=(x86_64)

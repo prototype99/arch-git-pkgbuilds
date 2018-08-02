@@ -4,7 +4,7 @@
 
 _pkgname=syntax-highlighting
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r685.423239c
 pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=(x86_64)

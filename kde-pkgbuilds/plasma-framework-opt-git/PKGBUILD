@@ -5,7 +5,7 @@
 
 _pkgname=plasma-framework
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r14958.0351ea74b
 pkgrel=1
 pkgdesc='Plasma library and runtime components based upon KF5 and Qt5'
 arch=(x86_64)

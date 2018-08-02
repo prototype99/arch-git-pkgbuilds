@@ -6,14 +6,14 @@
 
 _pkgname=plasma-workspace
 pkgname=(plasma-workspace-opt-git plasma-wayland-session-opt-git)
-pkgver=5.13.3
+pkgver=r6747.f1419c7f
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-depends=(kjsembed-opt-git knotifyconfig-opt-git libksysguard-opt-git ktexteditor-opt-git libqalculate qt5-tools kde-cli-tools-opt-git bc
-         xorg-xrdb xorg-xsetroot kactivitymanagerd-opt-git kholidays-opt-git xorg-xmessage xorg-xprop milou-opt-git prison-opt-git kwin
+depends=(kjsembed-opt-git knotifyconfig-opt-git libksysguard-opt-git ktexteditor-opt-git libqalculate qt5-tools kdesu-opt-git bc
+         xorg-xrdb xorg-xsetroot kactivitymanagerd-opt-git kholidays-opt-git xorg-xmessage xorg-xprop milou-opt-git prison-opt-git kwin-opt-git
          plasma-integration-opt-git kdelibs4support-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git gpsd baloo-opt-git appstream-qt krunner-opt-git networkmanager-qt-opt-git kdesignerplugin-opt-git)
 groups=(plasma-opt)

@@ -5,7 +5,7 @@
 
 _pkgname=kde-gtk-config
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r603.5cca9a1
 pkgrel=1
 pkgdesc='GTK2 and GTK3 Configurator for KDE'
 arch=(x86_64)

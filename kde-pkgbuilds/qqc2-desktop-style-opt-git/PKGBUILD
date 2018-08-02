@@ -2,7 +2,7 @@
 
 _pkgname=qqc2-desktop-style
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r175.e1ccdc1
 pkgrel=1
 pkgdesc='A style for Qt Quick Controls 2 to make it follow your desktop theme'
 arch=(x86_64)

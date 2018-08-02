@@ -5,7 +5,7 @@
 
 _pkgname=knotifications
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r354.4bf77fb
 pkgrel=1
 pkgdesc='Abstraction for system notifications'
 arch=(x86_64)

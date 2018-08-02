@@ -5,7 +5,7 @@
 
 _pkgname=kemoticons
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r229.e7f4466
 pkgrel=1
 pkgdesc='Support for emoticons and emoticons themes'
 arch=(x86_64)

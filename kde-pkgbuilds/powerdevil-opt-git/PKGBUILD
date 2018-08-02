@@ -5,7 +5,7 @@
 
 _pkgname=powerdevil
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r2134.17dec0d
 pkgrel=1
 pkgdesc='Manages the power consumption settings of a Plasma Shell'
 arch=(x86_64)

@@ -3,7 +3,7 @@
 
 _pkgname=discover
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r6665.ffc818ec
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI'
 arch=(x86_64)

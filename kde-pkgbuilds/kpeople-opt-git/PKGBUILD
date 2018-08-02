@@ -4,7 +4,7 @@
 
 _pkgname=kpeople
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r1137.1599ed7
 pkgrel=1
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

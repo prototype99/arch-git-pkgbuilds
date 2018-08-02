@@ -5,7 +5,7 @@
 
 _pkgname=kplotting
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r165.4eadd9e
 pkgrel=1
 pkgdesc='Lightweight plotting framework'
 arch=(x86_64)

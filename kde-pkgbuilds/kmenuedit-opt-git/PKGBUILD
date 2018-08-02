@@ -5,7 +5,7 @@
 
 _pkgname=kmenuedit
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r843.a2fd37e
 pkgrel=1
 pkgdesc='KDE menu editor'
 arch=(x86_64)

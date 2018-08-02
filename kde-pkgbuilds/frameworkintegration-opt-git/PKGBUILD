@@ -5,7 +5,7 @@
 
 _pkgname=frameworkintegration
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r415.60919d7
 pkgrel=1
 pkgdesc='Framework providing components to allow applications to integrate with a KDE Workspace'
 arch=(x86_64)

@@ -3,7 +3,7 @@
 
 _pkgname=kwallet-pam
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r175.260d917
 pkgrel=1
 pkgdesc='KWallet PAM integration'
 arch=(x86_64)

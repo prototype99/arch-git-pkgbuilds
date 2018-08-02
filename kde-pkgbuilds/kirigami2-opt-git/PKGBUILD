@@ -3,7 +3,7 @@
 
 _pkgname=kirigami2
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r1469.4237168
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(LGPL)
 groups=(kf5-opt)
 depends=(qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects)
 makedepends=(extra-cmake-modules-opt-git qt5-tools qt5-svg kpackage-opt-git doxygen)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname%2})
 sha1sums=(SKIP )
 options=(debug !strip)
 

@@ -5,7 +5,7 @@
 
 _pkgname=kpty
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r186.d962a0d
 pkgrel=1
 pkgdesc='Pty abstraction'
 arch=(x86_64)

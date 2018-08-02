@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 295962 2017-05-13 12:58:56Z arojas $
+# $Id: PKGBUILD 329070 2018-07-19 17:35:32Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=xdg-desktop-portal-kde
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r91.8170d53
 pkgrel=1
 pkgdesc='A backend implementation for xdg-desktop-portal using Qt/KF5'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(ki18n-opt-git knotifications-opt-git pipewire libepoxy kwayland-opt-git
 makedepends=(extra-cmake-modules-opt-git)
 groups=(plasma-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP )
+sha1sums=(SKIP)
 options=(debug !strip)
 
 pkgver() {

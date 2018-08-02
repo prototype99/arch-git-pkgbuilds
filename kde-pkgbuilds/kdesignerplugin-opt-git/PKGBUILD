@@ -4,7 +4,7 @@
 
 _pkgname=kdesignerplugin
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r204.cb9bfe9
 pkgrel=1
 pkgdesc='Integration of Frameworks widgets in Qt Designer/Creator'
 arch=(x86_64)

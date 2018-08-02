@@ -5,14 +5,14 @@
 
 _pkgname=kcompletion
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
-pkgrel=2
+pkgver=r255.b15446a
+pkgrel=1
 pkgdesc='Text completion helpers and widgets'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kwidgetsaddons-opt-git kconfig-opt-git)
-makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 doxygen sip)
+makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 doxygen )
 optdepends=('python-pyqt5: for the Python bindings')
 groups=(kf5-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})

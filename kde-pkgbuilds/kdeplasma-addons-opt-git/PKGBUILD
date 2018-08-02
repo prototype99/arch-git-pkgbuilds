@@ -5,7 +5,7 @@
 
 _pkgname=kdeplasma-addons
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r7930.b5551c17f
 pkgrel=1
 pkgdesc='All kind of addons to improve your Plasma experience'
 arch=(x86_64)

@@ -5,7 +5,7 @@
 
 _pkgname=kwin
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r16165.9cff6c21f
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)

@@ -5,7 +5,7 @@
 
 _pkgname=kwindowsystem
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r378.432169e
 pkgrel=1
 pkgdesc='Access to the windowing system'
 arch=(x86_64)

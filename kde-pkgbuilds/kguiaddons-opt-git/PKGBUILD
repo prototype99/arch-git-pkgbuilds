@@ -5,14 +5,14 @@
 
 _pkgname=kguiaddons
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
-pkgrel=2
+pkgver=r189.50c20f8
+pkgrel=1
 pkgdesc='Addons to QtGui'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-x11extras)
-makedepends=(extra-cmake-modules-opt-git clang python-pyqt5 doxygen qt5-tools sip)
+makedepends=(extra-cmake-modules-opt-git clang python-pyqt5 doxygen qt5-tools )
 optdepends=('python-pyqt5: for the Python bindings')
 groups=(kf5-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})

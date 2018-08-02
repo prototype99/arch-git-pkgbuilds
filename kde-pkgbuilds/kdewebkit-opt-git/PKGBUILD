@@ -5,7 +5,7 @@
 
 _pkgname=kdewebkit
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r161.1d3d2fa
 pkgrel=1
 pkgdesc='KDE Integration for QtWebKit'
 arch=(x86_64)

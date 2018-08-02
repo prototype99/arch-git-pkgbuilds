@@ -5,7 +5,7 @@
 
 _pkgname=plasma-desktop
 pkgname=(plasma-desktop-opt-git knetattach-opt-git)
-pkgver=5.13.3
+pkgver=r5960.423e0794
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=(x86_64)

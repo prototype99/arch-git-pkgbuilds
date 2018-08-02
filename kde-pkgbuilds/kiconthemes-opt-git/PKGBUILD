@@ -5,7 +5,7 @@
 
 _pkgname=kiconthemes
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r300.f059164
 pkgrel=1
 pkgdesc='Support for icon themes'
 arch=(x86_64)

@@ -5,7 +5,7 @@
 
 _pkgname=kidletime
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r177.6ca3dfb
 pkgrel=1
 pkgdesc='Monitoring user activity'
 arch=(x86_64)

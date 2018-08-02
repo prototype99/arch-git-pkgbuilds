@@ -5,7 +5,7 @@
 
 _pkgname=kdelibs4support
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r818.3ab2e2f5
 pkgrel=1
 pkgdesc='Porting aid from KDELibs4'
 arch=(x86_64)

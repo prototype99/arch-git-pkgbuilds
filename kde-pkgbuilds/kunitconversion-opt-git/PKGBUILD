@@ -5,7 +5,7 @@
 
 _pkgname=kunitconversion
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r225.6e1110f
 pkgrel=1
 pkgdesc='Support for unit conversion'
 arch=(x86_64)

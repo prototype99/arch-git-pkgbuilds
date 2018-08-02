@@ -3,7 +3,7 @@
 
 _pkgname=kscreenlocker
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r630.875e44f
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=(x86_64)

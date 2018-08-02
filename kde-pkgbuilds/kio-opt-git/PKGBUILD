@@ -5,7 +5,7 @@
 
 _pkgname=kio
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r3019.021daba6
 pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=(x86_64)

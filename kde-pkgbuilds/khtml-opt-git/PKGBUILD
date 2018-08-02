@@ -5,7 +5,7 @@
 
 _pkgname=khtml
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r404.3288738
 pkgrel=1
 pkgdesc='KHTML APIs'
 arch=(x86_64)

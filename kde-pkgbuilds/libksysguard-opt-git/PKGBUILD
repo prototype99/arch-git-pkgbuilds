@@ -5,7 +5,7 @@
 
 _pkgname=libksysguard
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r1674.d039c8c
 pkgrel=1
 pkgdesc='Libksysguard'
 arch=(x86_64)

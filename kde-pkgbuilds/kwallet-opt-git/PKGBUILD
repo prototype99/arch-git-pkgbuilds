@@ -5,7 +5,7 @@
 
 _pkgname=kwallet
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r854.fd8f94d
 pkgrel=1
 pkgdesc='Secure and unified container for user passwords'
 arch=(x86_64)

@@ -4,7 +4,7 @@
 
 _pkgname=modemmanager-qt
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r386.0b63bd6
 pkgrel=1
 pkgdesc='Qt wrapper for ModemManager DBus API'
 arch=(x86_64)

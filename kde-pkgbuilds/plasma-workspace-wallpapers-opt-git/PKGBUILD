@@ -5,7 +5,7 @@
 
 _pkgname=plasma-workspace-wallpapers
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r91.668b467
 pkgrel=1
 pkgdesc='Additional wallpapers for the Plasma Workspace'
 arch=(any)

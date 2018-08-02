@@ -5,7 +5,7 @@
 
 _pkgname=kdoctools
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r427.6303431
 pkgrel=1
 pkgdesc='Documentation generation from docbook'
 arch=(x86_64)

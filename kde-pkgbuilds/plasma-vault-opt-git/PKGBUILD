@@ -2,7 +2,7 @@
 
 _pkgname=plasma-vault
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r158.42723bb
 pkgrel=1
 pkgdesc="Plasma applet and services for creating encrypted vaults"
 arch=(x86_64)

@@ -2,7 +2,7 @@
 
 _pkgname=drkonqi
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.3
+pkgver=r249.08e4b4df
 pkgrel=1
 pkgdesc='The KDE crash handler'
 arch=(x86_64)

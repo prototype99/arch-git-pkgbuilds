@@ -5,7 +5,7 @@
 
 _pkgname=kjs
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r199.2d4d34b
 pkgrel=1
 pkgdesc='Support for JS scripting in applications'
 arch=(x86_64)

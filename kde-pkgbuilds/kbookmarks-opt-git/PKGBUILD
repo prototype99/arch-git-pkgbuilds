@@ -5,7 +5,7 @@
 
 _pkgname=kbookmarks
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r212.54ed625
 pkgrel=1
 pkgdesc='Support for bookmarks and the XBEL format'
 arch=(x86_64)

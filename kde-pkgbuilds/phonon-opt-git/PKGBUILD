@@ -4,7 +4,7 @@
 
 _pkgname=phonon
 pkgname=(phonon-qt4-opt-git phonon-qt5-opt-git)
-pkgver=4.10.1
+pkgver=r3583.3fbe8581
 pkgrel=1
 arch=(x86_64)
 url='http://phonon.kde.org/'

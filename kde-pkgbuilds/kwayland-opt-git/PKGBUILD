@@ -5,7 +5,7 @@
 
 _pkgname=kwayland
 pkgname=${_pkgname}-opt-git
-pkgver=5.48.0
+pkgver=r826.919ee2a
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=(x86_64)

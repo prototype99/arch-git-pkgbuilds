@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330558 2018-08-04 17:12:26Z felixonmars $
 # Maintainer: Antonio Rojas <arojas@archlinux.org> 
 
 _pkgname=discover
 pkgname=${_pkgname}-opt-git
-pkgver=r6665.ffc818ec
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(knewstuff-opt-git kitemmodels-opt-git qt5-graphicaleffects appstream-qt
          hicolor-icon-theme kirigami2-opt-git)
 makedepends=(extra-cmake-modules-opt-git plasma-framework-opt-git packagekit-qt5 flatpak)
 optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories' 'flatpak: Flatpak packages support')
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

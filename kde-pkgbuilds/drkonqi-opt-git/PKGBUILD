@@ -2,7 +2,7 @@
 
 _pkgname=drkonqi
 pkgname=${_pkgname}-opt-git
-pkgver=r249.08e4b4df
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='The KDE crash handler'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(GPL2)
 depends=(kidletime-opt-git kxmlrpcclient-opt-git gdb)
 makedepends=(extra-cmake-modules-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

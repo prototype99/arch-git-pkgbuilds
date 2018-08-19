@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330592 2018-08-04 17:19:18Z felixonmars $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=sddm-kcm
 pkgname=${_pkgname}-opt-git
-pkgver=r357.097d6c6
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='KDE Config Module for SDDM'
 arch=(x86_64)
@@ -13,7 +13,7 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(GPL)
 depends=(sddm libxcursor knewstuff-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

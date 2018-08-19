@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kcmutils
 pkgname=${_pkgname}-opt-git
-pkgver=r249.3e6add8
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='Utilities for interacting with KCModules'
 arch=(x86_64)
@@ -13,7 +13,7 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kdeclarative-opt-git)
 makedepends=(extra-cmake-modules-opt-git doxygen qt5-tools)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

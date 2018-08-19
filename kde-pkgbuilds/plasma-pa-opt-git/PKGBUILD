@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330584 2018-08-04 17:17:23Z felixonmars $
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=plasma-pa
 pkgname=${_pkgname}-opt-git
-pkgver=r638.e2287cc
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='Plasma applet for audio volume management using PulseAudio'
 arch=(x86_64)
@@ -11,9 +11,9 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(plasma-workspace-opt-git libcanberra-pulse pulseaudio)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP)
+sha1sums=(SKIP )
 options=(debug !strip)
 
 pkgver() {

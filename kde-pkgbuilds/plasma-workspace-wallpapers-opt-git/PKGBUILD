@@ -1,18 +1,18 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330590 2018-08-04 17:18:32Z felixonmars $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=plasma-workspace-wallpapers
 pkgname=${_pkgname}-opt-git
-pkgver=r91.668b467
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='Additional wallpapers for the Plasma Workspace'
 arch=(any)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 makedepends=(extra-cmake-modules-opt-git qt5-base)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

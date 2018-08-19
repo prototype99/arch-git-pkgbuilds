@@ -1,17 +1,17 @@
-# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=krunner
 pkgname=${_pkgname}-opt-git
-pkgver=r311.a384712
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 depends=(plasma-framework-opt-git threadweaver-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git doxygen qt5-tools)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})

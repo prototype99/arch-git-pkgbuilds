@@ -4,7 +4,7 @@
 
 _pkgname=syntax-highlighting
 pkgname=${_pkgname}-opt-git
-pkgver=r685.423239c
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=(x86_64)
@@ -12,7 +12,7 @@ url='https://community.kde.org/Frameworks'
 license=(GPL2)
 depends=(qt5-base)
 makedepends=(extra-cmake-modules-opt-git qt5-xmlpatterns qt5-tools doxygen)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

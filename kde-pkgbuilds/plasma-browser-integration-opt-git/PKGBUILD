@@ -2,7 +2,7 @@
 
 _pkgname=plasma-browser-integration
 pkgname=${_pkgname}-opt-git
-pkgver=r488.75482a0
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://www.kde.org/plasma-desktop-opt-git'
 license=(GPL)
 depends=(krunner-opt-git)
 makedepends=(extra-cmake-modules-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

@@ -1,15 +1,15 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330515 2018-08-04 17:02:18Z felixonmars $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kscreenlocker
 pkgname=${_pkgname}-opt-git
-pkgver=r630.875e44f
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 depends=(kidletime-opt-git kwayland-opt-git kdeclarative-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git kcmutils-opt-git libxcursor)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})

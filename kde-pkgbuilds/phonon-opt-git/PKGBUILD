@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=phonon
-pkgname=(phonon-qt4-opt-git phonon-qt5-opt-git)
+pkgname=(phonon-qt5-opt-git)
 pkgver=r3583.3fbe8581
 pkgrel=1
 arch=(x86_64)
 url='http://phonon.kde.org/'
 license=(LGPL)
-makedepends=(extra-cmake-modules-opt-git libpulse qt4 qt5-base qt5-tools)
+makedepends=(extra-cmake-modules-opt-git libpulse qt5-base qt5-tools)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -21,7 +21,6 @@ pkgver() {
 
 prepare() {
   mkdir build
-  mkdir build-qt5
 }
 
 build() {
@@ -34,35 +33,9 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
-    -DQT_QMAKE_EXECUTABLE=/opt/kde/bin/qmake-qt4 \
-    -DCMAKE_INSTALL_LIBDIR=lib
-  make
-
-  cd ../build-qt5
-  cmake ../${_pkgname} \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/opt/kde \
-    -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
     -DPHONON_BUILD_PHONON4QT5=ON \
     -DCMAKE_INSTALL_LIBDIR=lib
   make
-}
-
-package_phonon-qt4-opt-git(){
-  pkgdesc="The multimedia framework for KDE4"
-  depends=(qt4 libpulse)
-  optdepends=('pulseaudio: PulseAudio support')
-
-  cd build
-  make DESTDIR="$pkgdir" install
-
-  # Install headers into the Qt4 dir
-  install -d "$pkgdir"/opt/kde/include/qt4
-  mv "$pkgdir"/opt/kde/include/{phonon,KDE} "$pkgdir"/opt/kde/include/qt4/
-
-  sed -i 's#includedir=/opt/kde/include#includedir=/opt/kde/include/qt4#' \
-    "$pkgdir/opt/kde/lib/pkgconfig/phonon.pc"
 }
 
 package_phonon-qt5-opt-git(){
@@ -70,6 +43,6 @@ package_phonon-qt5-opt-git(){
   depends=(libpulse qt5-base)
   optdepends=('pulseaudio: PulseAudio support')
 
-  cd build-qt5
+  cd build
   make DESTDIR="$pkgdir" install
 }

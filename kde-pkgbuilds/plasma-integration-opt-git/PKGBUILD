@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330532 2018-08-04 17:06:20Z felixonmars $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 _pkgname=plasma-integration
 pkgname=${_pkgname}-opt-git
-pkgver=r372.0adee03
+pkgver=5.13.4
 pkgrel=1
 pkgdesc="Qt Platform Theme integration plugins for the Plasma workspaces"
 arch=(x86_64)
@@ -12,7 +12,7 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(kio-opt-git kwayland-opt-git libxcursor noto-fonts ttf-hack qqc2-desktop-style-opt-git)
 makedepends=(extra-cmake-modules-opt-git breeze-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

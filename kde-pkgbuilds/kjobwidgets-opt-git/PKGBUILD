@@ -1,20 +1,20 @@
-# $Id: PKGBUILD 328819 2018-07-16 18:03:51Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kjobwidgets
 pkgname=${_pkgname}-opt-git
-pkgver=r206.08d6672
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='Widgets for tracking KJob instances'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kcoreaddons-opt-git kwidgetsaddons-opt-git qt5-x11extras)
-makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 doxygen )
+makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 doxygen sip)
 optdepends=('python-pyqt5: for the Python bindings')
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

@@ -2,13 +2,13 @@
 
 _pkgname=plasma-vault
 pkgname=${_pkgname}-opt-git
-pkgver=r158.42723bb
+pkgver=5.13.4
 pkgrel=1
 pkgdesc="Plasma applet and services for creating encrypted vaults"
 arch=(x86_64)
 url="https://www.kde.org/"
 license=(LGPL)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 depends=(plasma-workspace-opt-git networkmanager-qt-opt-git)
 makedepends=(extra-cmake-modules-opt-git)
 optdepends=('encfs: to use encFS for encryption' 'cryfs: to use cryFS for encryption')

@@ -1,16 +1,16 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330521 2018-08-04 17:03:29Z felixonmars $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=breeze
 pkgname=(breeze-opt-git)
-pkgver=r1725.f28e3333
+pkgver=5.13.4
 pkgrel=1
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-makedepends=(extra-cmake-modules-opt-git frameworkintegration-opt-git kdelibs automoc4 kdecoration-opt-git kcmutils-opt-git plasma-framework-opt-git fftw)
+makedepends=(extra-cmake-modules-opt-git frameworkintegration-opt-git kdecoration-opt-git kcmutils-opt-git plasma-framework-opt-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -40,10 +40,10 @@ build() {
 package_breeze-opt-git() {
   depends=(frameworkintegration-opt-git kdecoration-opt-git breeze-icons-opt-git kwayland-opt-git hicolor-icon-theme)
   pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
-  optdepends=('breeze-kde4-opt-git: Breeze widget style for KDE4 applications'
+  optdepends=('breeze-kde4: Breeze widget style for KDE4 applications'
 		'breeze-gtk-opt-git: Breeze widget style for GTK applications'
 		'kcmutils-opt-git: for breeze-settings')
-  groups=(plasma-opt)
+  groups=(plasma-opt kde-opt)
 
   cd build
   make DESTDIR="$pkgdir" install

@@ -3,13 +3,13 @@
 
 _pkgname=kirigami2
 pkgname=${_pkgname}-opt-git
-pkgver=r1469.4237168
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 depends=(qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects)
 makedepends=(extra-cmake-modules-opt-git qt5-tools qt5-svg kpackage-opt-git doxygen)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname%2})

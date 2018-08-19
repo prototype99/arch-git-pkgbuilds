@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 328806 2018-07-16 17:45:29Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=extra-cmake-modules
 pkgname=${_pkgname}-opt-git
-pkgver=r2990.1715812
+pkgver=r2996.4b59c77
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=(any)
@@ -13,10 +13,10 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(cmake)
 makedepends=(python-sphinx python-requests qt5-tools)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
-        fix-python-bindings-generation.patch ECM-no-init.py.patch ecm-python3.patch)
-sha1sums=(SKIP SKIP SKIP SKIP )
+        fix-python-bindings-generation.patch ECM-no-init.py.patch ecm-python3.patch ecm-scoped-enums.patch)
+sha1sums=(SKIP SKIP SKIP SKIP SKIP )
 options=(debug !strip)
 
 pkgver() {
@@ -35,6 +35,8 @@ prepare() {
   patch -p1 -i ../ECM-no-init.py.patch
 # Port python binding generation scripts to python3
   patch -p1 -i ../ecm-python3.patch
+# Support scoped enums https://phabricator.kde.org/D14908
+  patch -p1 -i ../ecm-scoped-enums.patch
 }
 
 build() {

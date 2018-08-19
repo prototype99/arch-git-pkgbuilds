@@ -22,7 +22,6 @@ pkgver() {
 }
 
 prepare() {
-  mkdir build-qt4
   mkdir build-qt5
 }
 

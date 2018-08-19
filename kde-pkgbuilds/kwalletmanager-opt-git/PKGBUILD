@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 328314 2018-07-12 17:15:52Z arojas $
+# $Id: PKGBUILD 331655 2018-08-17 13:57:53Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kwalletmanager
 pkgname=${_pkgname}-opt-git
-pkgver=18.04.3
+pkgver=18.08.0
 pkgrel=1
 pkgdesc='Wallet management tool'
 arch=(x86_64)
@@ -13,7 +13,7 @@ url='https://www.kde.org/applications/system/kwalletmanager-opt-git/'
 license=(LGPL)
 depends=(kio-opt-git hicolor-icon-theme)
 makedepends=(extra-cmake-modules-opt-git kcmutils-opt-git kdoctools-opt-git)
-groups=(kde-applications kdeutils)
+groups=(kde-applications-opt kdeutils-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

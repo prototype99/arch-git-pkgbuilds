@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330574 2018-08-04 17:15:22Z felixonmars $
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kwayland-integration
 pkgname=${_pkgname}-opt-git
-pkgver=r88.bf26f27
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='Provides integration plugins for various KDE frameworks for the wayland windowing system'
 arch=(x86_64)
@@ -11,7 +11,7 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(kwindowsystem-opt-git kidletime-opt-git kwayland-opt-git)
 makedepends=(extra-cmake-modules-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

@@ -5,7 +5,7 @@
 
 _pkgname=attica
 pkgname=${_pkgname}-opt-git
-pkgver=r650.dd56154
+pkgver=5.49.0
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Qt library that implements the Open Collaboration Services API'
@@ -13,7 +13,7 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base)
 makedepends=(extra-cmake-modules-opt-git doxygen qt5-tools)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

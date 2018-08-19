@@ -1,20 +1,20 @@
-# $Id: PKGBUILD 328829 2018-07-16 18:10:26Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kdbusaddons
 pkgname=${_pkgname}-opt-git
-pkgver=r226.4349c75
+pkgver=r230.3d40221
 pkgrel=1
 pkgdesc='Addons to QtDBus'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-x11extras)
-makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 doxygen )
+makedepends=(extra-cmake-modules-opt-git qt5-tools clang python-pyqt5 doxygen sip)
 optdepends=('python-pyqt5: for the Python bindings')
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

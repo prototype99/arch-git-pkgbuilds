@@ -5,7 +5,7 @@
 
 _pkgname=kactivities-stats
 pkgname=${_pkgname}-opt-git
-pkgver=r188.17beb06
+pkgver=5.49.0
 pkgrel=1
 arch=(x86_64)
 pkgdesc="A library for accessing the usage data collected by the activities system"
@@ -13,7 +13,7 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kactivities-opt-git)
 makedepends=(extra-cmake-modules-opt-git boost doxygen qt5-tools)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

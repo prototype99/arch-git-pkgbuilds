@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330544 2018-08-04 17:09:19Z felixonmars $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=systemsettings
 pkgname=${_pkgname}-opt-git
-pkgver=r1944.091a6ec
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='KDE system manager for hardware, software, and workspaces'
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=(LGPL)
 depends=(kactivities-stats-opt-git plasma-workspace-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git khtml-opt-git)
 optdepends=('khtml-opt-git: for the tree view')
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

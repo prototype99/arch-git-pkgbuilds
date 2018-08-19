@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330550 2018-08-04 17:10:29Z felixonmars $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=polkit-kde-agent
 pkgname=${_pkgname}-opt-git
-pkgver=r393.d3d8300
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='Daemon providing a polkit authentication UI for KDE'
 arch=(x86_64)
@@ -13,8 +13,8 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(kiconthemes-opt-git kdbusaddons-opt-git kcrash-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git)
-groups=(plasma-opt)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}-1)
+groups=(plasma-opt kde-opt)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
 
@@ -32,7 +32,7 @@ build() {
   export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
 
   cd build
-  cmake ../${_pkgname} \
+  cmake ../$pkgname-1-$pkgver \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \

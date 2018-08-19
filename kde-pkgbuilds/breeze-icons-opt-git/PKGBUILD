@@ -1,17 +1,17 @@
-# $Id: PKGBUILD 328574 2018-07-14 08:58:25Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=breeze-icons
 pkgname=${_pkgname}-opt-git
-pkgver=r1143.ca645a42
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='Breeze icon themes'
 arch=(any)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 makedepends=(extra-cmake-modules-opt-git qt5-base)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )

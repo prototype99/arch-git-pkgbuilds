@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 328863 2018-07-17 07:55:20Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kxmlgui
 pkgname=${_pkgname}-opt-git
-pkgver=r436.d35a882
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='User configurable main windows'
 arch=(x86_64)
@@ -13,9 +13,9 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kglobalaccel-opt-git ktextwidgets-opt-git attica-opt-git)
 makedepends=(extra-cmake-modules-opt-git doxygen qt5-tools)
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP)
+sha1sums=(SKIP )
 options=(debug !strip)
 
 pkgver() {

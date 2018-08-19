@@ -1,20 +1,20 @@
-# $Id: PKGBUILD 328837 2018-07-16 18:15:43Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kconfigwidgets
 pkgname=${_pkgname}-opt-git
-pkgver=r321.6657dec
+pkgver=r324.131ee64
 pkgrel=1
 pkgdesc='Widgets for KConfig'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kauth-opt-git kcodecs-opt-git kconfig-opt-git kguiaddons-opt-git ki18n-opt-git kwidgetsaddons-opt-git)
-makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git clang python-pyqt5 doxygen qt5-tools )
+makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git clang python-pyqt5 doxygen qt5-tools sip)
 optdepends=('python-pyqt5: for the Python bindings')
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

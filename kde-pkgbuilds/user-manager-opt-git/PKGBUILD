@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330594 2018-08-04 17:19:39Z felixonmars $
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=user-manager
 pkgname=${_pkgname}-opt-git
-pkgver=r408.7376011
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='A simple system settings module to manage the users of your system'
 arch=(x86_64)
@@ -11,7 +11,7 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(accountsservice libpwquality kio-opt-git)
 makedepends=(extra-cmake-modules-opt-git kcmutils-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

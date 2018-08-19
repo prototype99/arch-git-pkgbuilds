@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 328314 2018-07-12 17:15:52Z arojas $
+# $Id: PKGBUILD 331655 2018-08-17 13:57:53Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=baloo-widgets
 pkgname=${_pkgname}-opt-git
-pkgver=18.04.3
+pkgver=18.08.0
 pkgrel=1
 pkgdesc="Widgets for Baloo"
 arch=(x86_64)

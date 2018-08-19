@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 330580 2018-08-04 17:16:26Z felixonmars $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=plasma-desktop
 pkgname=(plasma-desktop-opt-git knetattach-opt-git)
-pkgver=r5960.423e0794
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 depends=(polkit-kde-agent-opt-git libcanberra libxkbfile kmenuedit-opt-git appstream-qt systemsettings-opt-git ksysguard-opt-git kpeople-opt-git baloo-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git boost xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel
              libibus scim kdesignerplugin-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 sha1sums=(SKIP )
 options=(debug !strip)
 
@@ -53,7 +53,7 @@ package_plasma-desktop-opt-git() {
   cd build
   make DESTDIR="$pkgdir" install
 
-# Split knetattach
+# Split knetattach-opt-git
   rm "$pkgdir"/opt/kde/{bin/knetattach-opt-git,share/applications/org.kde.knetattach.desktop}
 }
 
@@ -61,6 +61,6 @@ package_knetattach-opt-git() {
   pkgdesc='Wizard which makes it easier to integrate network resources with the Plasma Desktop'
   depends=(kdelibs4support-opt-git)
 
-  cd build/knetattach
+  cd build/knetattach-opt-git
   make DESTDIR="$pkgdir" install
 }

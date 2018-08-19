@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 329070 2018-07-19 17:35:32Z arojas $
+# $Id: PKGBUILD 330596 2018-08-04 17:20:06Z felixonmars $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=xdg-desktop-portal-kde
 pkgname=${_pkgname}-opt-git
-pkgver=r91.8170d53
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='A backend implementation for xdg-desktop-portal using Qt/KF5'
 arch=(x86_64)
@@ -11,9 +11,9 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(ki18n-opt-git knotifications-opt-git pipewire libepoxy kwayland-opt-git kwidgetsaddons-opt-git)
 makedepends=(extra-cmake-modules-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP)
+sha1sums=(SKIP )
 options=(debug !strip)
 
 pkgver() {

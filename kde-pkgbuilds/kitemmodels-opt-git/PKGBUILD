@@ -1,20 +1,20 @@
-# $Id: PKGBUILD 328823 2018-07-16 18:06:09Z arojas $
+# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kitemmodels
 pkgname=${_pkgname}-opt-git
-pkgver=r304.50526fa
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='Models for Qt Model/View system'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base)
-makedepends=(extra-cmake-modules-opt-git python-pyqt5 clang doxygen qt5-tools )
+makedepends=(extra-cmake-modules-opt-git python-pyqt5 clang doxygen qt5-tools sip)
 optdepends=('python-pyqt5: for the Python bindings')
-groups=(kf5-opt)
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

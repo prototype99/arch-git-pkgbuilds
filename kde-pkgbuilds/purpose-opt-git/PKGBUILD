@@ -2,7 +2,7 @@
 
 _pkgname=purpose
 pkgname=${_pkgname}-opt-git
-pkgver=r506.e822dc1
+pkgver=5.49.0
 pkgrel=1
 pkgdesc="Framework for providing abstractions to get the developer's purposes fulfilled"
 arch=(x86_64)
@@ -10,8 +10,9 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kaccounts-integration accounts-qml-module hicolor-icon-theme)
 makedepends=(extra-cmake-modules-opt-git intltool)
-optdepends=('kdeconnect: sharing to smartphone via KDE Connect' 'telegram-desktop: sharing via Telegram')
-groups=(kf5-opt)
+optdepends=('kdeconnect: sharing to smartphone via KDE Connect' 'telegram-desktop: sharing via Telegram'
+            'bluedevil-opt-git: sharing via Bluetooth')
+groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

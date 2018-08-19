@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 328178 2018-07-10 13:33:04Z arojas $
+# $Id: PKGBUILD 332286 2018-08-18 17:28:47Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -6,17 +6,17 @@
 
 _pkgname=plasma-workspace
 pkgname=(plasma-workspace-opt-git plasma-wayland-session-opt-git)
-pkgver=r6747.f1419c7f
-pkgrel=1
+pkgver=5.13.4
+pkgrel=2
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-depends=(kjsembed-opt-git knotifyconfig-opt-git libksysguard-opt-git ktexteditor-opt-git libqalculate qt5-tools kdesu-opt-git bc
+depends=(kjsembed-opt-git knotifyconfig-opt-git libksysguard-opt-git ktexteditor-opt-git libqalculate qt5-tools kde-cli-tools-opt-git bc
          xorg-xrdb xorg-xsetroot kactivitymanagerd-opt-git kholidays-opt-git xorg-xmessage xorg-xprop milou-opt-git prison-opt-git kwin-opt-git
          plasma-integration-opt-git kdelibs4support-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git gpsd baloo-opt-git appstream-qt krunner-opt-git networkmanager-qt-opt-git kdesignerplugin-opt-git)
-groups=(plasma-opt)
+groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} kde.pam)
 sha1sums=(SKIP SKIP )
 options=(debug !strip)
@@ -67,7 +67,7 @@ package_plasma-workspace-opt-git() {
 package_plasma-wayland-session-opt-git() {
   pkgdesc='Plasma Wayland session'
   depends=(plasma-workspace-opt-git qt5-wayland kwayland-integration-opt-git xorg-server-xwayland)
-  groups=()
+  groups=(-opt kde-opt)
 
   install -Dm644 build/plasmawayland.desktop "$pkgdir"/opt/kde/share/wayland-sessions/plasmawayland.desktop
 }

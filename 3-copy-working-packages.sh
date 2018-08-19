@@ -25,7 +25,7 @@ done
 for i in ${kf5[@]} plasma-wayland-session knetattach;do
     [[ "$i" == "phonon-gstreamer" ]] && i=phonon-qt5-gstreamer
     [[ "$i" == "phonon" ]] && i=phonon-qt5
-    echo "    -e 's/"'([^a-zA-Z0-9\-])'"$i"'([^a-zA-Z0-9\-])'"/"'\1'"$i-opt-git"'\2'"/' \\" >> ${sed_file}
+    echo "    -e 's/"'([^a-zA-Z0-9\-])'"$i"'([^a-zA-Z0-9\-]|$)'"/"'\1'"$i-opt-git"'\2'"/' \\" >> ${sed_file}
 done
 
 echo "    ${pkg_dir}/*/PKGBUILD" >> ${sed_file}

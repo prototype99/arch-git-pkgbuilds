@@ -14,7 +14,7 @@ svn checkout --depth=empty svn://svn.archlinux.org/packages .
 
 for i in $(cat ${basedir}/scripts/packages.txt);do
     svn update $i;
-    [[ -d "$i" ]] || { echo "$i missing" && break; };
+    [[ -d "$i" ]] || { echo "$i missing" && exit 1; };
 done
 
 echo "success"

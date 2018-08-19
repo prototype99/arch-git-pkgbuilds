@@ -27,7 +27,7 @@ module-set kf5-workspace-modules
     # include-dependencies true
 
     # Remove if you're somehow using Windows
-    ignore-modules kwindowsaddons
+    ignore-modules kwindowsaddons breeze-plymouth plymouth-kcm
     # This module doesn't have a buildsystem
     ignore-modules breeze-grub
 end module-set

@@ -1,6 +1,6 @@
 global
 
-    source-dir  /home/sdh/builds/sources/kdesrc-build/s 
+    source-dir  /home/sdh/builds/sources/kdesrc-build/s
     build-dir   /home/sdh/builds/sources/kdesrc-build/b
     kdedir      /opt/kde
     log-dir     /home/sdh/builds/sources/kdesrc-build/l
@@ -28,8 +28,8 @@ end global
 #     branch master
 # end module
 
-include /home/sdh/builds/sources/kdesrc-build/kf5-frameworks-build-include
-include /home/sdh/builds/sources/kdesrc-build/kf5-workspace-build-include
+include /home/sdh/builds/scripts/kf5-frameworks-build-include
+include /home/sdh/builds/scripts/kf5-workspace-build-include
 #include kf5-kdepim-build-include
 #include kf5-applications-build-include
 

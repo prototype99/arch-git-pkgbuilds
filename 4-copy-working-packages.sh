@@ -2,12 +2,14 @@
 
 set -e
 
-basedir=/home/sdh/builds
-sed_file=${basedir}/scripts/4-sed-pkgnames-generated.sh
-pkg_dir=${basedir}/pkgbuilds/working-packages
-archpkgdir=${basedir}/pkgbuilds/arch-packages
+root=/home/sdh/arch-kde-opt
+builddir=${root}/builds
 
-kf5=$(cat ${basedir}/scripts/packages.txt)
+sed_file=${root}/4-sed-pkgnames-generated.sh
+pkg_dir=${builddir}/pkgbuilds/working-packages
+archpkgdir=${builddir}/pkgbuilds/arch-packages
+
+kf5=$(cat ${root}/packages.txt)
 echo ${kf5[@]}
 
 mkdir -p ${pkg_dir}

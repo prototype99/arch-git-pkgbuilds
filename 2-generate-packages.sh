@@ -2,12 +2,14 @@
 
 set -e
 
-basedir=/home/sdh/builds
-packages_file=${basedir}/scripts/packages.txt
-kdesrc_dir=${basedir}/sources/kdesrc-build
+root=/home/sdh/arch-kde-opt
+builddir=${root}/builds
+
+packages_file=${root}/packages.txt
+kdesrc_dir=${builddir}/sources/kdesrc-build
 
 ${kdesrc_dir}/kdesrc-build \
-    --rc-file=${basedir}/scripts/kdesrc-buildrc  --src-only --pretend --debug \
+    --rc-file=${root}/kdesrc-buildrc  --src-only --pretend --debug \
     | grep "^Adding" | awk '{print $2}' \
     | sed \
         -e 's/kirigami/kirigami2/' \

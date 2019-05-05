@@ -2,8 +2,10 @@
 
 set -e
 
-basedir=/home/sdh/builds
-cd ${basedir}/pkgbuilds/working-packages
+root=/home/sdh/arch-kde-opt
+builddir=${root}/builds
+
+cd ${builddir}/pkgbuilds/working-packages
 
 for i in */PKGBUILD;do
 	echo $i;

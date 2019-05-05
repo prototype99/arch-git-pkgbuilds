@@ -1,18 +1,17 @@
-# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kdoctools
 pkgname=${_pkgname}-opt-git
-pkgver=r436.2aff690
+pkgver=0
 pkgrel=1
 pkgdesc='Documentation generation from docbook'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(karchive-opt-git docbook-xsl)
-makedepends=(extra-cmake-modules-opt-git perl-uri ki18n-opt-git)
+makedepends=(extra-cmake-modules-opt-git perl-uri ki18n-opt-git doxygen qt5-tools)
 groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
@@ -29,14 +28,15 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   make
 }
 

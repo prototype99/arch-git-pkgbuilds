@@ -1,17 +1,16 @@
-# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=khtml
 pkgname=${_pkgname}-opt-git
-pkgver=5.49.0
+pkgver=0
 pkgrel=1
 pkgdesc='KHTML APIs'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(giflib kparts-opt-git kjs-opt-git)
+depends=(giflib kparts-opt-git kjs-opt-git phonon-qt5-opt-git)
 makedepends=(extra-cmake-modules-opt-git gperf)
 groups=(kf5-aids-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
@@ -29,7 +28,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

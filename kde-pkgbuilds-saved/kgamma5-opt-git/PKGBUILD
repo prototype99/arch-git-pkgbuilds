@@ -1,9 +1,8 @@
-# $Id: PKGBUILD 330566 2018-08-04 17:14:00Z felixonmars $
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kgamma5
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.4
+pkgver=0
 pkgrel=1
 pkgdesc="Adjust your monitor's gamma settings"
 arch=(x86_64)
@@ -27,7 +26,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

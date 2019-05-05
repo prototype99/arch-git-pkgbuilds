@@ -1,10 +1,9 @@
-# $Id: PKGBUILD 278167 2016-10-10 12:21:17Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 _pkgname=syntax-highlighting
 pkgname=${_pkgname}-opt-git
-pkgver=5.49.0
+pkgver=0
 pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=(x86_64)
@@ -28,7 +27,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \
@@ -36,6 +35,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
+    -DQRC_SYNTAX=OFF \
     -DBUILD_QCH=ON
   make
 }

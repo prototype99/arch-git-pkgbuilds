@@ -1,9 +1,8 @@
-# $Id: PKGBUILD 330586 2018-08-04 17:17:45Z felixonmars $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=plasma-sdk
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.4
+pkgver=0
 pkgrel=1
 pkgdesc="Applications useful for Plasma development"
 arch=(x86_64)
@@ -28,7 +27,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

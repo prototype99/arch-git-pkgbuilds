@@ -1,17 +1,18 @@
-# $Id: PKGBUILD 316508 2018-02-09 11:15:52Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=phonon-gstreamer
 pkgname=(phonon-qt5-gstreamer-opt-git)
-pkgver=r3260.d1c45eed
+pkgver=0
 pkgrel=1
 arch=(x86_64)
+pkgdesc="Phonon GStreamer backend for Qt5"
 url='http://phonon.kde.org/'
 license=(LGPL)
+depends=(gst-plugins-base qt5-x11extras phonon-qt5-opt-git)
 optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support and good codecs' 'gst-plugins-bad: additional codecs'
-	'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
-makedepends=(gst-plugins-base extra-cmake-modules-opt-git phonon-qt5-opt-git qt5-x11extras)
+            'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
+makedepends=(extra-cmake-modules-opt-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -22,14 +23,14 @@ pkgver() {
 }
 
 prepare() {
-  mkdir build-qt5
+  mkdir -p build
 }
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
-  cd build-qt5
+  cd build
   cmake ../${_pkgname} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -42,9 +43,6 @@ build() {
 }
 
 package_phonon-qt5-gstreamer-opt-git() {
-  pkgdesc="Phonon GStreamer backend for Qt5"
-  depends=(gst-plugins-base qt5-x11extras phonon-qt5-opt-git)
-
-  cd build-qt5
+  cd build
   make DESTDIR="$pkgdir" install
 }

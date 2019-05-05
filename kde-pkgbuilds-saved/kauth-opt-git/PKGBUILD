@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kauth
 pkgname=${_pkgname}-opt-git
-pkgver=r256.c9acb1b
+pkgver=0
 pkgrel=1
 pkgdesc='Abstraction to system policy and authentication features'
 arch=(x86_64)
@@ -26,11 +25,15 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd ${_pkgname}
+# Install dbus conf in /opt/kde/share 
+  sed -e 's|${SYSCONF_INSTALL_DIR}/dbus-1/system.d|${CMAKE_INSTALL_DBUSDIR}/system.d|g' -i src/ConfigureChecks.cmake -i cmake/KF5AuthMacros.cmake
 }
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

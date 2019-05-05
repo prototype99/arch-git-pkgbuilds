@@ -1,16 +1,15 @@
-# $Id: PKGBUILD 330556 2018-08-04 17:12:01Z felixonmars $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=breeze-gtk
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.4
+pkgver=0
 pkgrel=1
 pkgdesc="Breeze widget theme for GTK 2 and 3"
 arch=(x86_64)
 url='https://quickgit.kde.org/?p=breeze-gtk-opt-git.git'
 license=(LGPL)
 depends=(qt5-base)
-makedepends=(extra-cmake-modules-opt-git)
+makedepends=(extra-cmake-modules-opt-git sassc python-cairo breeze-opt-git)
 groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
@@ -27,7 +26,7 @@ prepare(){
 
 build(){
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 330540 2018-08-04 17:08:04Z felixonmars $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kinfocenter
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.4
+pkgver=0
 pkgrel=1
 arch=(x86_64)
 url='https://www.kde.org/applications/system/kinfocenter-opt-git/'
@@ -30,7 +29,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \
@@ -48,5 +47,5 @@ package() {
 # Install Arch logo
   install -Dm644 "$srcdir"/archlinux-artwork-1.6/logos/archlinux-vert-dark.svg \
     "$pkgdir"/opt/kde/share/about-distro/archlinux-logo.svg
-  install -Dm644 "$srcdir"/kcm-about-distrorc "$pkgdir"/etc/xdg/kcm-about-distrorc
+  install -Dm644 "$srcdir"/kcm-about-distrorc "$pkgdir"/opt/kde/etc/xdg/kcm-about-distrorc
 }

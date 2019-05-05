@@ -1,16 +1,14 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_pkgname=karchive
+_pkgname=syndication
 pkgname=${_pkgname}-opt-git
 pkgver=0
 pkgrel=1
-pkgdesc='Qt 5 addon providing access to numerous types of archives'
+pkgdesc="RSS/Atom parser library"
 arch=(x86_64)
-url='https://community.kde.org/Frameworks'
+url="https://community.kde.org/Frameworks"
 license=(LGPL)
-depends=(qt5-base)
+depends=(kcodecs-opt-git)
 makedepends=(extra-cmake-modules-opt-git doxygen qt5-tools)
 groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})

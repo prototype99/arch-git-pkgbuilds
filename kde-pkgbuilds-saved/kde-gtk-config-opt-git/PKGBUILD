@@ -1,17 +1,16 @@
-# $Id: PKGBUILD 330562 2018-08-04 17:13:18Z felixonmars $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kde-gtk-config
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.4
+pkgver=0
 pkgrel=1
 pkgdesc='GTK2 and GTK3 Configurator for KDE'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-depends=(knewstuff-opt-git systemsettings-opt-git gtk3)
+depends=(systemsettings-opt-git gtk3)
 makedepends=(extra-cmake-modules-opt-git gtk2)
 optdepends=('gtk2: GTK2 apps support')
 groups=(plasma-opt kde-opt)
@@ -30,7 +29,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

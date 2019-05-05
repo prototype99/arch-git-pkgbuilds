@@ -1,15 +1,17 @@
-# $Id: PKGBUILD 323068 2018-04-27 11:05:56Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=phonon
 pkgname=(phonon-qt5-opt-git)
-pkgver=r3583.3fbe8581
+pkgdesc="The multimedia framework by KDE"
+pkgver=0
 pkgrel=1
 arch=(x86_64)
 url='http://phonon.kde.org/'
 license=(LGPL)
-makedepends=(extra-cmake-modules-opt-git libpulse qt5-base qt5-tools)
+depends=(libpulse qt5-base)
+optdepends=('pulseaudio: PulseAudio support' 'qt5-tools: Designer plugin')
+makedepends=(extra-cmake-modules-opt-git qt5-tools)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -20,16 +22,15 @@ pkgver() {
 }
 
 prepare() {
-  mkdir build
+  mkdir -p build
 }
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
@@ -39,10 +40,6 @@ build() {
 }
 
 package_phonon-qt5-opt-git(){
-  pkgdesc="The multimedia framework for KF5"
-  depends=(libpulse qt5-base)
-  optdepends=('pulseaudio: PulseAudio support')
-
   cd build
   make DESTDIR="$pkgdir" install
 }

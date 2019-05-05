@@ -2,7 +2,7 @@
 
 _pkgname=purpose
 pkgname=${_pkgname}-opt-git
-pkgver=5.49.0
+pkgver=0
 pkgrel=1
 pkgdesc="Framework for providing abstractions to get the developer's purposes fulfilled"
 arch=(x86_64)
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

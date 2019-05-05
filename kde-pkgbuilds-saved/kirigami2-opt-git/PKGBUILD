@@ -1,9 +1,8 @@
-# $Id: PKGBUILD 276984 2016-09-26 18:41:01Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kirigami2
 pkgname=${_pkgname}-opt-git
-pkgver=5.49.0
+pkgver=0
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=(x86_64)
@@ -27,14 +26,13 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_EXAMPLES=ON \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   make

@@ -1,9 +1,8 @@
-# $Id: PKGBUILD 330574 2018-08-04 17:15:22Z felixonmars $
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=kwayland-integration
 pkgname=${_pkgname}-opt-git
-pkgver=5.13.4
+pkgver=0
 pkgrel=1
 pkgdesc='Provides integration plugins for various KDE frameworks for the wayland windowing system'
 arch=(x86_64)
@@ -27,7 +26,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

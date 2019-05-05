@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 332123 2018-08-17 21:14:22Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kiconthemes
 pkgname=${_pkgname}-opt-git
-pkgver=5.49.0
+pkgver=0
 pkgrel=1
 pkgdesc='Support for icon themes'
 arch=(x86_64)
@@ -13,6 +12,7 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-svg kconfigwidgets-opt-git kitemviews-opt-git karchive-opt-git)
 makedepends=(extra-cmake-modules-opt-git doxygen qt5-tools)
+optdepends=('breeze-icons-opt-git: fallback icon theme')
 groups=(kf5-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   export PATH="/opt/kde/bin:${PATH}"
-  export XDG_DATA_DIRS="/opt/kde5/share:${XDG_DATA_DIRS}"
+  export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
   cd build
   cmake ../${_pkgname} \

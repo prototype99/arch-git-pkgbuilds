@@ -24,14 +24,16 @@ for i in */PKGBUILD;do
     fi
     sed -i -r \
         -e "s/\\\$\{?pkg(name|base)\}?[0-9]?\-\\\$pkgver/\$\{_pkgname\}/g" \
+        -e "/groups=\(\)/d" \
         -e "/groups=/s/([^ ])( |\))/\1-opt\2/g" \
         -e "/groups=/s/\)/ kde-opt)/" \
         -e "/conflicts|provides|replaces/d" \
         -e "/CMAKE_INSTALL_PREFIX/i\    \-DCMAKE_BUILD_TYPE\=RelWithDebInfo \\\\" \
         -e '/^prepare/i\\npkgver() {\n  cd $_pkgname\n  printf "r%s.%s" "\$\(git rev-list --count HEAD\)" "\$\(git rev-parse --short HEAD\)"\n}\n' \
         -e 's|source=\(.*download.kde.org[^ )]*|source=\(\$\{_pkgname\}::git\+https://anongit.kde.org/\$\{_pkgname\}|' \
-        -e '/^build/a\  export PATH="/opt/kde/bin:\$\{PATH\}"\n  export XDG_DATA_DIRS="/opt/kde5/share:\${XDG_DATA_DIRS\}"\n' \
+        -e '/^build/a\  export PATH="/opt/kde/bin:\$\{PATH\}"\n  export XDG_DATA_DIRS="/opt/kde/share:\${XDG_DATA_DIRS\}"\n' \
         -e "s|/usr|/opt/kde|g" \
+        -e "s|/etc|/opt/kde/etc|g" \
         -e "/depends=/s/ ?phonon-qt[45]-backend ?//" \
         $i && \
     . $i && \

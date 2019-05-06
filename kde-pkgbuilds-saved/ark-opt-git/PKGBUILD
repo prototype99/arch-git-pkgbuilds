@@ -1,20 +1,20 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org> 
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_pkgname=kio
+_pkgname=ark
 pkgname=${_pkgname}-opt-git
 pkgver=0
 pkgrel=1
-pkgdesc='Resource and network access abstraction'
+pkgdesc='Archiving Tool'
 arch=(x86_64)
-url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(solid-opt-git kjobwidgets-opt-git kbookmarks-opt-git libxslt kwallet-opt-git desktop-file-utils qt5-script)
-makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git doxygen qt5-tools)
-optdepends=('kio-extras-opt-git: extra protocols support (sftp, fish and more)' 'kdoctools-opt-git: for the help kioslave'
-            'knetattach-opt-git: to add new kio-remote entries')
-groups=(kf5-opt kde-opt)
+url='https://kde.org/applications/utilities/ark-opt-git/'
+license=(GPL)
+depends=(kparts-opt-git kpty-opt-git libarchive libzip kitemmodels-opt-git hicolor-icon-theme)
+makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git)
+optdepends=('p7zip: 7Z format support' 'unrar: RAR decompression support' 'unarchiver: RAR format support'
+            'lzop: LZO format support' 'lrzip: LRZ format support')
+groups=(kde-applications-opt kdeutils-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -28,7 +28,7 @@ prepare() {
   mkdir -p build
 }
 
-build() {
+build() { 
   export PATH="/opt/kde/bin:${PATH}"
   export XDG_DATA_DIRS="/opt/kde/share:${XDG_DATA_DIRS}"
 
@@ -37,9 +37,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_TESTING=OFF
   make
 }
 
@@ -47,3 +45,4 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 }
+

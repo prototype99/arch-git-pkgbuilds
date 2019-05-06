@@ -2,19 +2,18 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_pkgname=kio
+_pkgname=konsole
 pkgname=${_pkgname}-opt-git
 pkgver=0
 pkgrel=1
-pkgdesc='Resource and network access abstraction'
 arch=(x86_64)
-url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(solid-opt-git kjobwidgets-opt-git kbookmarks-opt-git libxslt kwallet-opt-git desktop-file-utils qt5-script)
-makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git doxygen qt5-tools)
-optdepends=('kio-extras-opt-git: extra protocols support (sftp, fish and more)' 'kdoctools-opt-git: for the help kioslave'
-            'knetattach-opt-git: to add new kio-remote entries')
-groups=(kf5-opt kde-opt)
+url='https://kde.org/applications/system/konsole-opt-git/'
+pkgdesc="KDE's terminal emulator"
+license=(GPL LGPL FDL)
+groups=(kde-applications-opt kdebase-opt kde-opt)
+depends=(knotifyconfig-opt-git kpty-opt-git kparts-opt-git kinit-opt-git knewstuff-opt-git)
+makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git)
+optdepends=('keditbookmarks-opt-git: to manage bookmarks')
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -37,9 +36,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_TESTING=OFF
   make
 }
 

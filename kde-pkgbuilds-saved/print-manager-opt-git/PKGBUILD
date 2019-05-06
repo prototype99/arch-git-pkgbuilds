@@ -2,19 +2,18 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_pkgname=kio
+_pkgname=print-manager
 pkgname=${_pkgname}-opt-git
 pkgver=0
 pkgrel=1
-pkgdesc='Resource and network access abstraction'
+pkgdesc="A tool for managing print jobs and printers"
 arch=(x86_64)
-url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(solid-opt-git kjobwidgets-opt-git kbookmarks-opt-git libxslt kwallet-opt-git desktop-file-utils qt5-script)
-makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git doxygen qt5-tools)
-optdepends=('kio-extras-opt-git: extra protocols support (sftp, fish and more)' 'kdoctools-opt-git: for the help kioslave'
-            'knetattach-opt-git: to add new kio-remote entries')
-groups=(kf5-opt kde-opt)
+url='https://www.kde.org/applications/utilities/'
+license=(GPL LGPL FDL)
+depends=(kcmutils-opt-git)
+makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git plasma-framework-opt-git)
+optdepends=('system-config-printer: auto-detect the printer driver')
+groups=(kde-applications-opt kdeutils-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -34,12 +33,10 @@ build() {
 
   cd build
   cmake ../${_pkgname} \
+    -DBUILD_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/opt/kde \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 

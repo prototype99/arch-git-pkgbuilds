@@ -3,12 +3,12 @@
 _pkgname=kwallet-pam
 pkgname=${_pkgname}-opt-git
 pkgver=0
-pkgrel=2
+pkgrel=1
 pkgdesc='KWallet PAM integration'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-depends=(pam libgcrypt socat)
+depends=(pam libgcrypt socat kwallet-opt-git)
 makedepends=(extra-cmake-modules-opt-git qt5-base)
 groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})

@@ -15,7 +15,7 @@ depends=(kwallet-opt-git)
 makedepends=(extra-cmake-modules-opt-git kdoctools-opt-git)
 groups=(plasma-opt kde-opt)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-install=$pkgname.install
+install=$_pkgname.install
 sha1sums=(SKIP )
 options=(debug !strip)
 

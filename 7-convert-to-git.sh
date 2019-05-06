@@ -24,6 +24,7 @@ for i in */PKGBUILD;do
     fi
     sed -i -r \
         -e "s/\\\$\{?pkg(name|base)\}?[0-9]?\-\\\$pkgver/\$\{_pkgname\}/g" \
+        -e "s/^pkgver=.*/pkgver=0/" \
         -e "/groups=\(\)/d" \
         -e "/groups=/s/([^ ])( |\))/\1-opt\2/g" \
         -e "/groups=/s/\)/ kde-opt)/" \

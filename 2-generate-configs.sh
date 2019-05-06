@@ -14,7 +14,7 @@ sed -ri \
     -e "/kf5-workspace-build-include/c\include $root/kf5-workspace-build-include" \
     $root/kdesrc-buildrc
 
-cp $root/clean-chroot-manager.conf $root/clean-chroot-manager.conf && \
+cp $root/orig.clean-chroot-manager.conf $root/clean-chroot-manager.conf && \
 sed -ri \
     -e "s|^CHROOTPATH64=.*|CHROOTPATH64=\"$builddir/ccm_chroot\"|" \
     -e "s|^DEFAULT_MAKEPKG=.*|DEFAULT_MAKEPKG=\"$root/makepkg.conf\"|" \

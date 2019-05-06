@@ -6,11 +6,13 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 builddir=${root}/builds
 
 packages_file=${root}/packages.txt
-kdesrc_dir=${builddir}/sources/kdesrc-build
+kdesrcdir=${builddir}/sources/kdesrc-build
 
-${kdesrc_dir}/kdesrc-build \
-    --rc-file=${root}/kdesrc-buildrc  --src-only --pretend --debug \
-    | grep "^Adding" | awk '{print $2}' \
+printf "${root}/kf5-frameworks-build-include\n${root}/kf5-workspace-build-include\n${root}/kf5-applications-build-include" | \
+xargs -L1 -I{} bash -c "${kdesrcdir}/kdesrc-build \
+    --src-only --pretend --branch-group=kf5-qt5 --ignore-kde-structure --stop-on-failure \
+    --source-dir=${kdesrcdir}/s --build-dir=${kdesrcdir}/b --log-dir=${kdesrcdir}/l \
+    --rc-file {} | grep '^Cloning' | awk '{print "'$2'"}'" \
     | sed \
         -e 's/kirigami/kirigami2/' \
         -e 's/oxygen-icons5/oxygen-icons/' \

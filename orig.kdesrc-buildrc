@@ -1,9 +1,9 @@
 global
 
-    source-dir  /home/sdh/arch-kde-opt/builds/sources/kdesrc-build/s
-    build-dir   /home/sdh/arch-kde-opt/builds/sources/kdesrc-build/b
+    source-dir  /arch-kde-opt/builds/sources/kdesrc-build/s
+    build-dir   /arch-kde-opt/builds/sources/kdesrc-build/b
     kdedir      /opt/kde
-    log-dir     /home/sdh/arch-kde-opt/builds/sources/kdesrc-build/l
+    log-dir     /arch-kde-opt/builds/sources/kdesrc-build/l
 
     git-repository-base kde-projects kde:
     async false
@@ -28,8 +28,8 @@ end global
 #     branch master
 # end module
 
-include /home/sdh/arch-kde-opt/kf5-frameworks-build-include
-include /home/sdh/arch-kde-opt/kf5-workspace-build-include
+include /arch-kde-opt/kf5-frameworks-build-include
+include /arch-kde-opt/kf5-workspace-build-include
 #include kf5-kdepim-build-include
 #include kf5-applications-build-include
 

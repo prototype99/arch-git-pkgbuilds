@@ -1,4 +1,7 @@
-ccm/*.pkg.tar.xz
-ccm/clean-chroot-manager-sdh/
-ccm/pkg/
-ccm/src/
+ccm-pkgbuild/*.pkg.tar.xz
+ccm-pkgbuild/clean-chroot-manager-sdh/
+ccm-pkgbuild/pkg/
+ccm-pkgbuild/src/
+builds/
+clean-chroot-manager.conf
+kdesrc-buildrc

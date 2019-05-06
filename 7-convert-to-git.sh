@@ -2,7 +2,7 @@
 
 set -e
 
-root=/home/sdh/arch-kde-opt
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 builddir=${root}/builds
 
 cd ${builddir}/pkgbuilds/working-packages

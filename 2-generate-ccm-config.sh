@@ -12,5 +12,4 @@ sed -ri \
     -e "s|^DEFAULT_MAKEPKG=.*|DEFAULT_MAKEPKG=\"$root/makepkg.conf\"|" \
     -e "s|SRCDEST=.*|SRCDEST=\"$builddir/sources\"|" \
     -e "s|LOGDEST=.*|LOGDEST=\"$builddir/logs\"|" \
-    -e "s|PKGDEST=.*|PKGDEST=\"$builddir/pkgs\"|" \
     $dest

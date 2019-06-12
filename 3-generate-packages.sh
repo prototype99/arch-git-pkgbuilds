@@ -15,6 +15,7 @@ xargs -L1 -I{} bash -c "${kdesrcdir}/kdesrc-build \
     --rc-file {} | grep '^Cloning' | awk '{print "'$2'"}'" \
     | sed \
         -e 's/kirigami/kirigami2/' \
+        -e 's/polkit-kde-agent-1/polkit-kde-agent/' \
         -e 's/oxygen-icons5/oxygen-icons/' \
     | grep -v "plasma-tests" | grep -v "oxygen" | tr '\n' ' ' > ${packages_file}
 

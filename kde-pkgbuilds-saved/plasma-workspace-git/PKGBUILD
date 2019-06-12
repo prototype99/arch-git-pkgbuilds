@@ -1,0 +1,71 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Alexey D. <lq07829icatm at rambler.ru>
+
+_pkgname=plasma-workspace
+pkgname=(plasma-workspace-git plasma-wayland-session-git)
+pkgver=0
+pkgrel=1
+pkgdesc='KDE Plasma Workspace'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+depends=(kjsembed-git knotifyconfig-git libksysguard-git ktexteditor-git libqalculate qt5-tools bc kdesu-git
+         xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage xorg-xprop milou-git prison-git kwin-git
+         kdelibs4support-git)
+makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git appstream-qt krunner-git networkmanager-qt-git kdesignerplugin-git)
+groups=(plasma-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} kde.pam)
+sha1sums=(SKIP SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package_plasma-workspace-git() {
+  optdepends=('plasma-workspace-wallpapers-git: additional wallpapers'
+              'gpsd: GPS based geolocation' 'networkmanager-qt-git: IP based geolocation'
+              'kdepim-addons: displaying PIM events in the calendar'
+              'appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
+              'qt5-virtualkeyboard: virtual keyboard support in lock screen'
+              'baloo-git: Baloo search runner'
+              'appstream-qt: package search runner')
+  backup=('etc/pam.d/kde')
+  conflicts=(plasma-workspace)
+  provides=(plasma-workspace notification-daemon)
+
+  cd build
+  make DESTDIR="$pkgdir" install
+
+  install -Dm644 "$srcdir"/kde.pam "$pkgdir"/etc/pam.d/kde
+
+  # Split plasma-wayland scripts
+  rm -r "$pkgdir"/usr/share/wayland-sessions
+}
+
+package_plasma-wayland-session-git() {
+  pkgdesc='Plasma Wayland session'
+  depends=(plasma-workspace-git qt5-wayland kwayland-integration-git xorg-server-xwayland)
+  conflicts=(plasma-wayland-session)
+  provides=(plasma-wayland-session)
+
+  install -Dm644 build/plasmawayland.desktop "$pkgdir"/usr/share/wayland-sessions/plasmawayland.desktop
+}

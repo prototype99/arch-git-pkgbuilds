@@ -1,0 +1,43 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=kscreenlocker
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc='Library and components for secure lock screen architecture'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+groups=(plasma-git kde-git)
+depends=(kidletime-git kwayland-git kdeclarative-git)
+makedepends=(extra-cmake-modules-git kdoctools-git kcmutils-git libxcursor)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(kscreenlocker)
+provides=(kscreenlocker)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

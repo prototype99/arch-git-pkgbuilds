@@ -1,0 +1,45 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=kholidays
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+epoch=1
+pkgdesc="KDE library for regional holiday information"
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(qt5-base)
+makedepends=(extra-cmake-modules-git qt5-declarative qt5-tools doxygen)
+optdepends=('qt5-declarative: QML bindings')
+groups=(kf5-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(kholidays)
+provides=(kholidays)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

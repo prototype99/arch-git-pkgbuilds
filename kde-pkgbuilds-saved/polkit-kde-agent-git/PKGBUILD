@@ -1,0 +1,45 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=polkit-kde-agent
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc='Daemon providing a polkit authentication UI for KDE'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+depends=(kiconthemes-git kdbusaddons-git kcrash-git)
+makedepends=(extra-cmake-modules-git kdoctools-git)
+groups=(plasma-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}-1)
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(polkit-kde-agent)
+provides=(polkit-kde-agent)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../$_pkgname \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

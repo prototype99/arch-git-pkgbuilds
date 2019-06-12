@@ -1,0 +1,43 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=plasma-vault
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc="Plasma applet and services for creating encrypted vaults"
+arch=(x86_64)
+url="https://www.kde.org/"
+license=(LGPL)
+groups=(plasma-git kde-git)
+depends=(plasma-workspace-git networkmanager-qt-git)
+makedepends=(extra-cmake-modules-git)
+optdepends=('encfs: to use encFS for encryption' 'cryfs: to use cryFS for encryption')
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(plasma-vault)
+provides=(plasma-vault)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

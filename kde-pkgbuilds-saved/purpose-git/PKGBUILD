@@ -1,0 +1,45 @@
+# Maintainer:Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=purpose
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc="Framework for providing abstractions to get the developer's purposes fulfilled"
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kaccounts-integration accounts-qml-module hicolor-icon-theme)
+makedepends=(extra-cmake-modules-git intltool)
+optdepends=('kdeconnect: sharing to smartphone via KDE Connect' 'telegram-desktop: sharing via Telegram'
+            'bluedevil-git: sharing via Bluetooth')
+groups=(kf5-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(purpose)
+provides=(purpose)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

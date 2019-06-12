@@ -1,0 +1,45 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=print-manager
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc="A tool for managing print jobs and printers"
+arch=(x86_64)
+url='https://www.kde.org/applications/utilities/'
+license=(GPL LGPL FDL)
+depends=(kcmutils-git)
+makedepends=(extra-cmake-modules-git kdoctools-git plasma-framework-git)
+optdepends=('system-config-printer: auto-detect the printer driver')
+groups=(kde-applications-git kdeutils-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(print-manager)
+provides=(print-manager)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

@@ -1,0 +1,43 @@
+# Maintainer: Antonio Rojas <arojas@archlinux,org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+_pkgname=kfind
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc="Find Files/Folders"
+arch=(x86_64)
+url="https://www.kde.org/applications/utilities/kfind-git/"
+license=(LGPL)
+depends=(kio-git kfilemetadata-git)
+makedepends=(extra-cmake-modules-git kdoctools-git)
+optdepends=('mlocate: search using mlocate index')
+groups=(kde-applications-git kdebase-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(kfind)
+provides=(kfind)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

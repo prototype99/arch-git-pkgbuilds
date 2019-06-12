@@ -1,0 +1,67 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=plasma-desktop
+pkgname=(plasma-desktop-git knetattach-git)
+pkgver=0
+pkgrel=1
+pkgdesc='KDE Plasma Desktop'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+depends=(polkit-kde-agent-git libxkbfile kmenuedit-git appstream-qt systemsettings-git ksysguard-git kpeople-git baloo-git)
+makedepends=(extra-cmake-modules-git kdoctools-git boost xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel
+             libibus scim kdesignerplugin-git)
+groups=(plasma-git kde-git)
+sha1sums=(SKIP )
+options=(debug !strip)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package_plasma-desktop-git() {
+  depends+=(knetattach-git)
+  optdepends=('plasma-nm-git: Network manager applet'
+              'powerdevil-git: power management'
+              'kscreen-git: screen management'
+              'ibus: kimpanel IBUS support'
+              'scim: kimpanel SCIM support'
+              'discover-git: manage applications installation from the launcher')
+  conflicts=(plasma-desktop)
+  provides=(plasma-desktop)
+
+  cd build
+  make DESTDIR="$pkgdir" install
+
+# Split knetattach-git
+  rm "$pkgdir"/usr/{bin/knetattach,share/applications/org.kde.knetattach.desktop}
+}
+
+package_knetattach-git() {
+  pkgdesc='Wizard which makes it easier to integrate network resources with the Plasma Desktop'
+  depends=(kdelibs4support-git)
+  conflicts=(knetattach)
+  provides=(knetattach)
+
+  cd build/knetattach
+  make DESTDIR="$pkgdir" install
+}

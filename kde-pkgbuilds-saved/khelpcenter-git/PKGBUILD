@@ -1,0 +1,45 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=khelpcenter
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc="Application to show KDE Applications' documentation"
+arch=(x86_64)
+url='https://userbase.kde.org/KHelpCenter'
+license=(LGPL)
+groups=(kde-applications-git kdebase-git kde-git)
+depends=(khtml-git kdoctools-git xapian-core grantlee kinit-git)
+makedepends=(extra-cmake-modules-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(khelpcenter)
+provides=(khelpcenter)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

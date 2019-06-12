@@ -1,0 +1,52 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=kio-extras
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc="Additional components to increase the functionality of KIO"
+arch=(x86_64)
+url='https://www.kde.org/applications/internet/'
+license=(LGPL)
+depends=(kio-git kdnssd-git libssh smbclient exiv2 openexr libmtp kpty-git kactivities-git syntax-highlighting-git)
+makedepends=(extra-cmake-modules-git kdoctools-git gperf taglib khtml-git libappimage)
+optdepends=('qt5-imageformats: thumbnails for additional image formats'
+            'kimageformats-git: thumbnails for additional image formats' 'taglib: audio file thumbnails'
+            'khtml-git: man kioslave' 'phonon-qt5-git: audio file previews' 'libappimage: AppImage thumbnails')
+groups=(kde-applications-git kdenetwork-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
+        kio-extras-rpc.patch)
+sha1sums=(SKIP SKIP )
+options=(debug !strip)
+conflicts=(kio-extras)
+provides=(kio-extras)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+
+  cd ${_pkgname}
+  patch -p1 -i ../kio-extras-rpc.patch # fix build of kio-nfs with glibc 2.27
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DLIBAPPIMAGE_LIBRARIES=libappimage.so \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

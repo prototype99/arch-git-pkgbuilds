@@ -1,0 +1,46 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=phonon-gstreamer
+pkgname=(phonon-qt5-gstreamer-git)
+pkgver=0
+pkgrel=1
+arch=(x86_64)
+pkgdesc="Phonon GStreamer backend for Qt5"
+url='http://phonon.kde.org/'
+license=(LGPL)
+depends=(gst-plugins-base qt5-x11extras phonon-qt5-git)
+optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support and good codecs' 'gst-plugins-bad: additional codecs'
+            'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
+makedepends=(extra-cmake-modules-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(phonon-qt5-gstreamer)
+provides=(phonon-qt5-gstreamer phonon-qt5-backend)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -D__KDE_HAVE_GCC_VISIBILITY=NO \
+    -DPHONON_BUILD_PHONON4QT5=ON
+  make
+}
+
+package_phonon-qt5-gstreamer-git() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

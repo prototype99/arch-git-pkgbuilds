@@ -1,0 +1,43 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=xdg-desktop-portal-kde
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc='A backend implementation for xdg-desktop-portal using Qt/KF5'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+depends=(pipewire libepoxy kwayland-git kio-git)
+makedepends=(extra-cmake-modules-git)
+groups=(plasma-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(xdg-desktop-portal-kde)
+provides=(xdg-desktop-portal-kde xdg-desktop-portal-impl)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

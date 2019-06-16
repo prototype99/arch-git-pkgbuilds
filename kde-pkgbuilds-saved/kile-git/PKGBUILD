@@ -1,0 +1,46 @@
+# Maintainer: fclad <fcladera at fcladera.com>
+# Contributor: Antonio Rojas
+# Contributor: prettyvanilla <prettyvanilla at posteo.at>
+# Contributor: vnoel <victor.noel at crazydwarves dot org>
+
+_pkgname=kile
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc="A TeX/LaTeX frontend for KDE"
+arch=('i686' 'x86_64')
+url="http://kile.sourceforge.net/"
+license=('GPL2')
+depends=('kinit-git' 'texlive-core' 'okular-git' 'ktexteditor-git' 'khtml-git')
+makedepends=('extra-cmake-modules-git' 'kdoctools-git' 'python')
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha256sums=('SKIP')
+groups=(kde-git)
+options=(debug !strip)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
+replaces=('kile-svn')
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

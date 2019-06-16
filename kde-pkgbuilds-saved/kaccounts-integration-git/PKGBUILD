@@ -14,8 +14,9 @@ depends=(kcmutils-git signon-kwallet-extension signon-plugin-oauth2 signon-ui)
 makedepends=(extra-cmake-modules-git kdoctools-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha256sums=('SKIP')
-conflicts=(kaccounts-integration)
-provides=(kaccounts-integration)
+options=(debug !strip)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
   cd $_pkgname

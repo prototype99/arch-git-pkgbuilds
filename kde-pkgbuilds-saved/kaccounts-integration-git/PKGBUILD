@@ -1,0 +1,43 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org> 
+
+_pkgname=kaccounts-integration
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc='Small system to administer web accounts for the sites and services across the KDE desktop, including: Google, Facebook, Owncloud, IMAP, 
+Jabber and others'
+arch=(x86_64)
+url='https://www.kde.org/applications/internet/'
+license=(GPL)
+groups=(kde-applications-git kdenetwork-git kde-git)
+depends=(kcmutils-git signon-kwallet-extension signon-plugin-oauth2 signon-ui)
+makedepends=(extra-cmake-modules-git kdoctools-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha256sums=('SKIP')
+conflicts=(kaccounts-integration)
+provides=(kaccounts-integration)
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

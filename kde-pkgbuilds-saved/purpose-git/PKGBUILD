@@ -8,7 +8,7 @@ pkgdesc="Framework for providing abstractions to get the developer's purposes fu
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kaccounts-integration accounts-qml-module hicolor-icon-theme)
+depends=(kaccounts-integration-git accounts-qml-module hicolor-icon-theme)
 makedepends=(extra-cmake-modules-git intltool)
 optdepends=('kdeconnect: sharing to smartphone via KDE Connect' 'telegram-desktop: sharing via Telegram'
             'bluedevil-git: sharing via Bluetooth')

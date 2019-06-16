@@ -43,12 +43,11 @@ package_kwrite-git() {
   cd build
   make DESTDIR="$pkgdir" install
 
-  find "$pkgdir" -type f -name '*kate-git*' -exec rm {} \;
+  find "$pkgdir" -type f -name '*kate*' -exec rm {} \;
   rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor \
         "$pkgdir"/usr/share/doc/HTML/*/{kate,katepart} \
         "$pkgdir"/usr/share/katexmltools \
         "$pkgdir"/usr/share/plasma/plasmoids
-        #"$pkgdir"/usr/share/locale/*/LC_MESSAGES/{kterustcompletion,tabswitcherplugin,ktexteditorpreviewplugin}.mo \
 }
 
 package_kate-git() {

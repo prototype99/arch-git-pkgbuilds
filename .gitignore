@@ -1,4 +1,4 @@
-ccm-pkgbuild/*.pkg.tar.xz
+ccm-pkgbuild/*.pkg.tar*
 ccm-pkgbuild/clean-chroot-manager-sdh/
 ccm-pkgbuild/pkg/
 ccm-pkgbuild/src/

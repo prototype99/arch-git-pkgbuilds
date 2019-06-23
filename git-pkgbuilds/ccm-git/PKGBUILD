@@ -1,6 +1,6 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
-pkgname=clean-chroot-manager-sdh
+pkgname=ccm-git
 pkgver=0
 pkgrel=1
 pkgdesc='Wrapper scripts for managing clean chroots.'

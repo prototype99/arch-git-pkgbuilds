@@ -12,6 +12,7 @@ depends=('clang' 'llvm-libs' 'rapidjson')
 makedepends=("cmake" "git" "llvm")
 source=('git+https://github.com/MaskRay/ccls.git')
 md5sums=('SKIP')
+options=(!debug strip)
 
 pkgver() {
   cd $_pkgname

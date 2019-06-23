@@ -12,8 +12,8 @@ depends=(xcb-util-cursor libkipi purpose-git knewstuff-git qt5-quickcontrols)
 makedepends=(extra-cmake-modules-git kdoctools-git)
 optdepends=('kipi-plugins: export to various online services')
 groups=(kde-applications-git kdegraphics-git kde-git)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP )
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} p.patch)
+sha1sums=(SKIP SKIP)
 options=(debug !strip)
 conflicts=(spectacle)
 provides=(spectacle)
@@ -25,6 +25,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+  cd $_pkgname
+  patch -p1 -i ../p.patch
 }
 
 build() {

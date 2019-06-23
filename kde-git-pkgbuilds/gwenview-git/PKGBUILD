@@ -11,7 +11,7 @@ url='https://kde.org/applications/graphics/gwenview-git/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications-git kdegraphics-git kde-git)
-depends=(kactivities-git baloo-git libkipi libkdcraw kparts-git kitemmodels-git cfitsio phonon-qt5-git)
+depends=(kactivities-git baloo-git libkipi libkdcraw kparts-git kitemmodels-git cfitsio phonon-qt5-git purpose-git)
 optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
             'kimageformats-git: support for dds, xcf, exr, psd, and more image formats'
             'kipi-plugins: export to various online services'

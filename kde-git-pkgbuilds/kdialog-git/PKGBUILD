@@ -4,7 +4,7 @@
 _pkgname=kdialog
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc="A utility for displaying dialog boxes from shell scripts"
 arch=(x86_64)
 url="https://www.kde.org/"

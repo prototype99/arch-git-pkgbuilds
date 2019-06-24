@@ -5,7 +5,7 @@
 _pkgname=kunitconversion
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc='Support for unit conversion'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

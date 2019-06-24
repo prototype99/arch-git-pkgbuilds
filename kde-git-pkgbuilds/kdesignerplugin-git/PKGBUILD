@@ -4,7 +4,7 @@
 _pkgname=kdesignerplugin
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc='Integration of Frameworks widgets in Qt Designer/Creator'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

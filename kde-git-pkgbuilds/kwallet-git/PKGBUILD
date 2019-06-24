@@ -5,7 +5,7 @@
 _pkgname=kwallet
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc='Secure and unified container for user passwords'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

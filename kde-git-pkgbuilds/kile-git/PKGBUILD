@@ -6,7 +6,7 @@
 _pkgname=kile
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc="A TeX/LaTeX frontend for KDE"
 arch=('i686' 'x86_64')
 url="http://kile.sourceforge.net/"

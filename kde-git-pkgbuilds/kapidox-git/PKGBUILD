@@ -5,7 +5,7 @@
 _pkgname=kapidox
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc='Frameworks API Documentation Tools'
 arch=(any)
 url='https://community.kde.org/Frameworks'

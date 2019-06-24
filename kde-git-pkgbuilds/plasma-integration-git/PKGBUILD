@@ -4,7 +4,7 @@
 _pkgname=plasma-integration
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc="Qt Platform Theme integration plugins for the Plasma workspaces"
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

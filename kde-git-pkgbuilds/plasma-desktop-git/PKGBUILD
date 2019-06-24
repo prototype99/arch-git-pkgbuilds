@@ -5,7 +5,7 @@
 _pkgname=plasma-desktop
 pkgname=(plasma-desktop-git knetattach-git)
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc='KDE Plasma Desktop'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

@@ -3,7 +3,7 @@
 _pkgname=breeze-gtk
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc="Breeze widget theme for GTK 2 and 3"
 arch=(x86_64)
 url='https://quickgit.kde.org/?p=breeze-gtk-git.git'

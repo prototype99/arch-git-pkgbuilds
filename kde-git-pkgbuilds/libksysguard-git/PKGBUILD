@@ -5,7 +5,7 @@
 _pkgname=libksysguard
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc='Libraries for ksysguard-git'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

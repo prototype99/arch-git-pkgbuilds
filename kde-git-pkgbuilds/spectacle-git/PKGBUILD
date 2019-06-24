@@ -3,7 +3,7 @@
 _pkgname=spectacle
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc="KDE screenshot capture utility"
 arch=(x86_64)
 url='https://www.kde.org/applications/graphics/'
@@ -12,8 +12,8 @@ depends=(xcb-util-cursor libkipi purpose-git knewstuff-git qt5-quickcontrols)
 makedepends=(extra-cmake-modules-git kdoctools-git)
 optdepends=('kipi-plugins: export to various online services')
 groups=(kde-applications-git kdegraphics-git kde-git)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} p.patch)
-sha1sums=(SKIP SKIP)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP)
 options=(debug !strip)
 conflicts=(spectacle)
 provides=(spectacle)
@@ -25,8 +25,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  cd $_pkgname
-  patch -p1 -i ../p.patch
 }
 
 build() {

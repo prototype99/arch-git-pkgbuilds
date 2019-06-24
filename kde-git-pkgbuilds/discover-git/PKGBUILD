@@ -3,7 +3,7 @@
 _pkgname=discover
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc='KDE and Plasma resources management GUI'
 arch=(x86_64)
 url='https://userbase.kde.org/Discover'

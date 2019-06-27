@@ -3,7 +3,7 @@
 _pkgname=syndication
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc="RSS/Atom parser library"
 arch=(x86_64)
 url="https://community.kde.org/Frameworks"

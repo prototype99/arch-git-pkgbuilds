@@ -5,7 +5,7 @@
 _pkgname=kjobwidgets
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='Widgets for tracking KJob instances'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

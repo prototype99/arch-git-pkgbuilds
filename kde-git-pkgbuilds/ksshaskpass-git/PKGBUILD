@@ -6,7 +6,7 @@
 _pkgname=ksshaskpass
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='ssh-add helper that uses kwallet-git and kpassworddialog'
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(GPL)

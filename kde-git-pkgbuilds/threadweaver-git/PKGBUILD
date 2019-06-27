@@ -5,7 +5,7 @@
 _pkgname=threadweaver
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='High-level multithreading framework'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

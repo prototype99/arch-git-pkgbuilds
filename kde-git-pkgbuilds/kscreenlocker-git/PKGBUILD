@@ -3,7 +3,7 @@
 _pkgname=kscreenlocker
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

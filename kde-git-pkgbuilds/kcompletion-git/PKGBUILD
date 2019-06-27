@@ -5,7 +5,7 @@
 _pkgname=kcompletion
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='Text completion helpers and widgets'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

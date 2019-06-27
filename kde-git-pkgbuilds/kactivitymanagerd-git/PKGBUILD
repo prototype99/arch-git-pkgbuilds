@@ -4,7 +4,7 @@
 _pkgname=kactivitymanagerd
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc="System service to manage user's activities and track the usage patterns"
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

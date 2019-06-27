@@ -5,7 +5,7 @@
 _pkgname=kcodecs
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='Provide a collection of methods to manipulate strings using various encodings'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

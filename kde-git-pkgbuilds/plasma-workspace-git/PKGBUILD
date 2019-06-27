@@ -6,7 +6,7 @@
 _pkgname=plasma-workspace
 pkgname=(plasma-workspace-git plasma-wayland-session-git)
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
@@ -67,5 +67,5 @@ package_plasma-wayland-session-git() {
   conflicts=(plasma-wayland-session)
   provides=(plasma-wayland-session)
 
-  install -Dm644 build/plasmawayland.desktop "$pkgdir"/usr/share/wayland-sessions/plasmawayland.desktop
+  install -Dm644 build/login-sessions/plasmawayland.desktop "$pkgdir"/usr/share/wayland-sessions/plasmawayland.desktop
 }

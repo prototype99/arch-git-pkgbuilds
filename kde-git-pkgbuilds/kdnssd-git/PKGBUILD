@@ -5,7 +5,7 @@
 _pkgname=kdnssd
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='Abstraction to system DNSSD features'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

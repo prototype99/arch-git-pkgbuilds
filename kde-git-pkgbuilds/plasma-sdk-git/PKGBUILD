@@ -3,7 +3,7 @@
 _pkgname=plasma-sdk
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc="Applications useful for Plasma development"
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

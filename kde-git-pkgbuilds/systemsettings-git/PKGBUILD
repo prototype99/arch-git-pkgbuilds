@@ -5,7 +5,7 @@
 _pkgname=systemsettings
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='KDE system manager for hardware, software, and workspaces'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

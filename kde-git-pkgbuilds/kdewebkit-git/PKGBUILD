@@ -5,7 +5,7 @@
 _pkgname=kdewebkit
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='KDE Integration for QtWebKit'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

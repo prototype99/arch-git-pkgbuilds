@@ -5,7 +5,7 @@
 _pkgname=attica
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Qt library that implements the Open Collaboration Services API'
 url='https://community.kde.org/Frameworks'

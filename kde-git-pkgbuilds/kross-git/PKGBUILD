@@ -5,7 +5,7 @@
 _pkgname=kross
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='Multi-language application scripting'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

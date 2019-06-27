@@ -3,7 +3,7 @@
 _pkgname=drkonqi
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='The KDE crash handler'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

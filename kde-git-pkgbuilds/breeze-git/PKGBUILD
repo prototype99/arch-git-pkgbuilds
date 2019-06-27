@@ -5,7 +5,7 @@
 _pkgname=breeze
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 url='https://www.kde.org/workspaces/plasmadesktop/'

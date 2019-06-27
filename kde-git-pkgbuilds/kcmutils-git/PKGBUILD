@@ -5,7 +5,7 @@
 _pkgname=kcmutils
 pkgname=${_pkgname}-git
 pkgver=0
-pkgrel=3
+pkgrel=1
 pkgdesc='Utilities for interacting with KCModules'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'

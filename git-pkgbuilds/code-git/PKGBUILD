@@ -9,7 +9,7 @@ pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
-depends=('electron' 'libsecret' 'libxkbfile' 'ripgrep')
+depends=('electron4' 'libsecret' 'libxkbfile' 'ripgrep')
 makedepends=('npm' 'gulp' 'python2' 'git' 'yarn' 'nodejs-lts-dubnium')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
@@ -21,7 +21,7 @@ source=("git+https://github.com/Microsoft/vscode"
         "code-liveshare.diff")
 sha512sums=('SKIP'
             '889ca4d4b810b4a67319cece0e1bfeae61b33905adef64f9b27152e43e112dc53a94b1875fe0a810f0d0192dec0107aed2d01c12d6a17427db4261858f96a02a'
-            '5d1cf747d365da2e12250079ba986ad5a7e70a7966900ee77a557b5989978cb24a6a8682342e87f19ffe3666d7a91bfd9004b1fc0c1da08d2ba9241e7a808ff5'
+            '18070c2f1af8afad4be11a1de62a2558063ee79d00097b2c8762994fa8c3e7336814c3d5387b94e54b73ccd912db4c0222c32cf5ef9f6cd73b2deb90d17c9a8c'
             '8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40'
             '0bd10ca06dea22854e47fc45d833756ee8d7bf714c88f63feef44e0b0b5da052fba3c27d001865e3389f391cd7b888d92dc0ba44029fa5c736225da3cf2f9a46')
 
@@ -61,7 +61,7 @@ prepare() {
     patch -p1 -i "${srcdir}/code-liveshare.diff"
 
     # Build native modules for system electron
-    local _target=$(</usr/lib/electron/version)
+    local _target=$(</usr/lib/electron4/version)
     sed -i "s/^target .*/target \"${_target//v/}\"/" .yarnrc
 
     # Patch appdata and desktop file
@@ -92,7 +92,7 @@ build() {
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Uncomment this to set it to 2GB, or
     # change it if this number still doesn't work for your system.
-    mem_limit="--max_old_space_size=4096"
+    mem_limit="--max_old_space_size=8096"
 
     if ! /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}-min
     then

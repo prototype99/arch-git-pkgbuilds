@@ -28,7 +28,26 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DBUILD_tabswitcher=FALSE \
+    -DBUILD_kate-ctags=FALSE \
+    -DBUILD_backtracebrowser=FALSE \
+    -DBUILD_xmltools=FALSE \
+    -DBUILD_xmlcheck=FALSE \
+    -DBUILD_openheader=FALSE \
+    -DBUILD_gdbplugin=FALSE \
+    -DBUILD_textfilter=FALSE \
+    -DBUILD_rustcompletion=FALSE \
+    -DBUILD_lumen=FALSE \
+    -DBUILD_lspclient=FALSE \
+    -DBUILD_katebuild-plugin=FALSE \
+    -DBUILD_project=FALSE \
+    -DBUILD_symbolviewer=FALSE \
+    -DBUILD_replicode=FALSE \
+    -DBUILD_close-except-like=FALSE \
+    -DBUILD_snippets=FALSE \
+    -DBUILD_preview=FALSE \
+    -DBUILD_katesql=FALSE
   make
 }
 
@@ -46,8 +65,8 @@ package_kwrite-git() {
   find "$pkgdir" -type f -name '*kate*' -exec rm {} \;
   rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor \
         "$pkgdir"/usr/share/doc/HTML/*/{kate,katepart} \
-        "$pkgdir"/usr/share/katexmltools \
         "$pkgdir"/usr/share/plasma/plasmoids
+        #"$pkgdir"/usr/share/katexmltools \
 }
 
 package_kate-git() {

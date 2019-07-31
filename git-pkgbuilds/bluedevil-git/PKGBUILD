@@ -6,7 +6,6 @@ _pkgname=bluedevil
 pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
-epoch=1
 pkgdesc='Integrate the Bluetooth technology within KDE workspace and applications'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

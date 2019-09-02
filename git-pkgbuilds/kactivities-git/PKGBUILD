@@ -37,7 +37,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DQML_INSTALL_DIR=lib/qt/qml \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_QCH=OFF
   make
 }
 

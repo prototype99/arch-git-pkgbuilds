@@ -35,7 +35,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DUDEV_RULES_INSTALL_DIR=/usr/lib/udev/rules.d \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_QCH=OFF
   make
 }
 

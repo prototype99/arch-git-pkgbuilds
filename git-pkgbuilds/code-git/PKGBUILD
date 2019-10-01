@@ -77,6 +77,7 @@ prepare() {
           s|@@NAME_SHORT@@|Code|g
           s|@@NAME_LONG@@|Code - OSS|g
           s|@@NAME@@|code-oss|g
+          s|@@EXEC@@|code-oss|g
           s|@@ICON@@|code-oss|g
           s|@@LICENSE@@|MIT|g
           s|inode/directory;||' resources/linux/code{.appdata.xml,.desktop,-url-handler.desktop}

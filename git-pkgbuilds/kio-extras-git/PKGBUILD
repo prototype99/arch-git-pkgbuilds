@@ -32,7 +32,7 @@ prepare() {
   mkdir -p build
 
   cd ${_pkgname}
-  patch -p1 -i ../kio-extras-rpc.patch # fix build of kio-nfs with glibc 2.27
+  #patch -p1 -i ../kio-extras-rpc.patch # fix build of kio-nfs with glibc 2.27
 }
 
 build() {

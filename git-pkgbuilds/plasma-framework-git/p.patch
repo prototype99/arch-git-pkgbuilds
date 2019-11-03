@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a57e1dd78..b412997ee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,6 +99,7 @@ if(X11_FOUND AND XCB_XCB_FOUND)
+   #add_feature_info("X Rendering Extension (libXrender)" X11_Xrender_FOUND "Support for compositing, rendering operations, and alpha-blending. STRONGLY RECOMMENDED")
+ endif()
+ 
++cmake_policy (SET CMP0072 OLD)
+ find_package(OpenGL)
+ set_package_properties(OpenGL PROPERTIES DESCRIPTION "The OpenGL libraries"
+                        URL "https://www.opengl.org/"
+diff --git a/src/declarativeimports/core/windowthumbnail.cpp b/src/declarativeimports/core/windowthumbnail.cpp
+index e8e318b10..5e7391e65 100644
+--- a/src/declarativeimports/core/windowthumbnail.cpp
++++ b/src/declarativeimports/core/windowthumbnail.cpp
+@@ -37,6 +37,7 @@ typedef void (*glXBindTexImageEXT_func)(Display *dpy, GLXDrawable drawable,
+ typedef void (*glXReleaseTexImageEXT_func)(Display *dpy, GLXDrawable drawable, int buffer);
+ #endif
+ #if HAVE_EGL
++typedef void* GLeglImageOES;
+ typedef EGLImageKHR(*eglCreateImageKHR_func)(EGLDisplay, EGLContext, EGLenum, EGLClientBuffer, const EGLint *);
+ typedef EGLBoolean(*eglDestroyImageKHR_func)(EGLDisplay, EGLImageKHR);
+ typedef GLvoid(*glEGLImageTargetTexture2DOES_func)(GLenum, GLeglImageOES);

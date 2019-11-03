@@ -13,8 +13,8 @@ license=(LGPL)
 depends=(kactivities-git kdeclarative-git kwayland-git kirigami2-git)
 makedepends=(extra-cmake-modules-git qt5-tools kdoctools-git doxygen)
 groups=(kf5-git kde-git)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP )
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} p.patch)
+sha1sums=(SKIP SKIP)
 options=(debug !strip)
 conflicts=(plasma-framework)
 provides=(plasma-framework)
@@ -26,6 +26,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+  cd ${_pkgname}
+  patch -p1 -i ../p.patch
 }
 
 build() {

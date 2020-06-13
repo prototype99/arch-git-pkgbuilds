@@ -2,22 +2,22 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_pkgname=kquickcharts
+_pkgname=kwayland-server
 pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
-pkgdesc='A QtQuick plugin providing high-performance charts'
+pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=(x86_64)
-url='https://community.kde.org/Frameworks'
+url='https://www.kde.org'
 license=(LGPL)
-depends=(qt5-quickcontrols2)
-makedepends=(extra-cmake-modules-git)
+depends=(qt5-base wayland-protocols)
+makedepends=(extra-cmake-modules-git doxygen qt5-tools)
 groups=(kf5-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
-conflicts=(kquickcharts)
-provides=(kquickcharts)
+conflicts=(kwayland-server)
+provides=(kwayland-server)
 
 pkgver() {
   cd $_pkgname
@@ -34,6 +34,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=OFF
   make

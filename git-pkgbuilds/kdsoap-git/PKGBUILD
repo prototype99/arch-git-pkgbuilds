@@ -1,0 +1,34 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Contributor : Antonio Rojas <arojas@archlinux.org>
+
+pkgname=kdsoap
+pkgver=0
+pkgrel=1
+pkgdesc='Qt-based client-side and server-side SOAP component'
+license=(GPL3 LGPL custom)
+arch=(x86_64)
+url='https://github.com/KDAB/KDSoap'
+depends=(qt5-base)
+makedepends=(cmake)
+source=("https://github.com/KDAB/KDSoap/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('e3b9626d5cb08f41a709fa35031ce17bfdd075b7387baf14ecf8a9ca10994828')
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../$pkgname-$pkgver \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+  make 
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
+

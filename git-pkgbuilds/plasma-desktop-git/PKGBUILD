@@ -53,5 +53,5 @@ package_knetattach-git() {
   conflicts=(knetattach)
   provides=(knetattach)
 
-  DESTDIR="$pkgdir" cmake --install build/knetattach-git
+  DESTDIR="$pkgdir" cmake --install build/knetattach
 }

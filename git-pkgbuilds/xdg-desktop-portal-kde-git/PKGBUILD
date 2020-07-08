@@ -10,13 +10,12 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(pipewire kirigami2-git plasma-framework-git)
 makedepends=(extra-cmake-modules-git)
-provides=(xdg-desktop-portal-impl)
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
 conflicts=(${_pkgname})
-provides=(${_pkgname})
+provides=(${_pkgname} xdg-desktop-portal-impl)
 
 pkgver() {
   cd $_pkgname

@@ -13,9 +13,8 @@ license=(LGPL)
 depends=(kactivities-git kdeclarative-git kwayland-git kirigami2-git)
 makedepends=(extra-cmake-modules-git qt5-tools kdoctools-git doxygen)
 groups=(kf5-git kde-git)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
-         https://invent.kde.org/frameworks/plasma-framework-git/-/commit/7f9e189d.patch)
-sha1sums=(SKIP SKIP )
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP)
 options=(debug !strip)
 conflicts=(${_pkgname})
 provides=(${_pkgname})
@@ -23,10 +22,6 @@ provides=(${_pkgname})
 pkgver() {
   cd $_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  patch -d ${_pkgname} -p1 -i ../7f9e189d.patch # Fix plasma-nm-git asking twice for password
 }
 
 build() {

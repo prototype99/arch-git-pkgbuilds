@@ -9,11 +9,11 @@ Jabber and others'
 arch=(x86_64)
 url='https://www.kde.org/applications/internet/'
 license=(GPL)
-groups=(kde-applications-git kdenetwork-git kde-git)
+groups=(kde-applications-git kde-network-git kde-git)
 depends=(kcmutils-git signon-kwallet-extension signon-plugin-oauth2 signon-ui)
 makedepends=(extra-cmake-modules-git kdoctools-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha256sums=('SKIP')
+sha1sums=(SKIP )
 options=(debug !strip)
 conflicts=(${_pkgname})
 provides=(${_pkgname})
@@ -23,22 +23,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${_pkgname} \
-	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+  cmake -B build -S ${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

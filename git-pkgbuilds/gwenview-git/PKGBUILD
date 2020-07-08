@@ -10,8 +10,8 @@ pkgdesc="A fast and easy to use image viewer"
 url='https://kde.org/applications/graphics/gwenview-git/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications-git kdegraphics-git kde-git)
-depends=(kactivities-git baloo-git libkipi libkdcraw kparts-git kitemmodels-git cfitsio phonon-qt5-git purpose-git)
+groups=(kde-applications-git kde-graphics-git kde-git)
+depends=(kactivities-git baloo-git libkipi libkdcraw kparts-git kitemmodels-git cfitsio phonon-qt5-git purpose-git perl)
 optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
             'kimageformats-git: support for dds, xcf, exr, psd, and more image formats'
             'kipi-plugins: export to various online services'
@@ -20,30 +20,22 @@ makedepends=(extra-cmake-modules-git kdoctools-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
-conflicts=(gwenview)
-provides=(gwenview)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
   cd $_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DGWENVIEW_SEMANTICINFO_BACKEND="Baloo" \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

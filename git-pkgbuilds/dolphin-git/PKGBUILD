@@ -11,38 +11,29 @@ pkgdesc="KDE File Manager"
 arch=(x86_64)
 url="https://kde.org/applications/system/dolphin-git/"
 license=(LGPL)
-depends=(baloo-widgets-git knewstuff-git kcmutils-git kparts-git kinit-git phonon-qt5-git)
+depends=(baloo-widgets-git knewstuff-git kio-extras-git kcmutils-git kparts-git kinit-git)
 makedepends=(extra-cmake-modules-git kdoctools-git)
-optdepends=('kde-cli-tools-git: for editing file type options' 'ffmpegthumbs: video thumbnails' 
-            'ruby: installing new service menus from KDE Store' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
+optdepends=('kde-cli-tools-git: for editing file type options' 'ffmpegthumbs: video thumbnails' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'konsole-git: terminal panel' 'purpose-git: share context menu')
-groups=(kde-applications-git kdebase-git kde-git)
+groups=(kde-applications-git kde-system-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
-conflicts=(dolphin)
-provides=(dolphin)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
   cd $_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

@@ -7,16 +7,16 @@ pkgver=0
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Phonon GStreamer backend for Qt5"
-url='http://phonon.kde.org/'
+url='https://community.kde.org/Phonon'
 license=(LGPL)
 depends=(gst-plugins-base qt5-x11extras phonon-qt5-git)
 optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support and good codecs' 'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
-makedepends=(extra-cmake-modules-git)
+makedepends=(extra-cmake-modules-git qt5-tools)
+groups=(kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
-groups=(kde-git)
 conflicts=(phonon-qt5-gstreamer)
 provides=(phonon-qt5-gstreamer phonon-qt5-backend)
 
@@ -32,12 +32,7 @@ prepare() {
 build() {
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -D__KDE_HAVE_GCC_VISIBILITY=NO \
-    -DPHONON_BUILD_PHONON4QT5=ON
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
   make
 }
 

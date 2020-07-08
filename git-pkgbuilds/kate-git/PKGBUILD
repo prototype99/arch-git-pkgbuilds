@@ -8,7 +8,7 @@ pkgver=0
 pkgrel=1
 arch=(x86_64)
 license=(GPL LGPL FDL)
-makedepends=(extra-cmake-modules-git kdoctools-git plasma-framework-git knewstuff-git ktexteditor-git threadweaver-git kitemmodels-git kactivities-git)
+makedepends=(extra-cmake-modules-git kdoctools-git plasma-framework-git knewstuff-git kitemmodels-git ktexteditor-git threadweaver-git kactivities-git kuserfeedback)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -18,16 +18,9 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_tabswitcher=FALSE \
     -DBUILD_kate-ctags=FALSE \
@@ -48,38 +41,41 @@ build() {
     -DBUILD_snippets=FALSE \
     -DBUILD_preview=FALSE \
     -DBUILD_katesql=FALSE
-  make
+  cmake --build build
 }
 
 package_kwrite-git() {
   pkgdesc="Text Editor"
-  groups=(kde-applications-git kdebase-git kde-git)
+  groups=(kde-applications-git kde-utilities-git kde-git)
   url="https://www.kde.org/applications/utilities/kwrite/"
-  depends=(ktexteditor-git kactivities-git hicolor-icon-theme)
+  depends=(ktexteditor-git hicolor-icon-theme)
   conflicts=(kwrite)
   provides=(kwrite)
 
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
-  find "$pkgdir" -type f -name '*kate*' -exec rm {} \;
-  rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor \
-        "$pkgdir"/usr/share/doc/HTML/*/{kate,katepart} \
+  find "$pkgdir" -type f -name '*kate-git*' -exec rm {} \;
+  rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor-git \
+        "$pkgdir"/usr/share/doc/HTML/*/{kate-git,katepart} \
+        "$pkgdir"/usr/share/katexmltools \
+        "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{ktexteditorpreviewplugin,lspclient,tabswitcherplugin}.mo \
         "$pkgdir"/usr/share/plasma/plasmoids
-        #"$pkgdir"/usr/share/katexmltools \
 }
 
 package_kate-git() {
   pkgdesc="Advanced Text Editor"
-  groups=(kde-applications-git kdebase-git kde-git)
+  groups=(kde-applications-git kde-utilities-git kde-git)
   url="https://www.kde.org/applications/utilities/kate-git/"
-  depends=(knewstuff-git ktexteditor-git threadweaver-git kitemmodels-git kactivities-git hicolor-icon-theme)
-  optdepends=('konsole-git: open a terminal in Kate')
+  depends=(knewstuff-git ktexteditor-git threadweaver-git kactivities-git kuserfeedback hicolor-icon-theme)
+  optdepends=('konsole-git: open a terminal in Kate'
+              'clang: C and C++ LSP support'
+              'python-language-server: Python LSP support'
+              'texlab: LaTeX LSP support'
+              'rust: Rust LSP support')
   conflicts=(kate)
   provides=(kate)
 
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
   find "$pkgdir" -type f -name '*kwrite*' -exec rm {} \;
   rm -r "$pkgdir"/usr/share/doc/HTML/*/kwrite

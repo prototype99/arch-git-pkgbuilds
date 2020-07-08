@@ -7,14 +7,14 @@ pkgdesc="The multimedia framework by KDE"
 pkgver=0
 pkgrel=1
 arch=(x86_64)
-url='http://phonon.kde.org/'
+url='https://community.kde.org/Phonon'
 license=(LGPL)
 depends=(libpulse qt5-base)
 optdepends=('pulseaudio: PulseAudio support' 'qt5-tools: Designer plugin')
 makedepends=(extra-cmake-modules-git qt5-tools)
+groups=(kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
-groups=(kde-git)
 options=(debug !strip)
 
 pkgver() {
@@ -29,11 +29,7 @@ prepare() {
 build() {
   cd build
   cmake ../${_pkgname} \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
-    -DPHONON_BUILD_PHONON4QT5=ON \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
   make
 }
 

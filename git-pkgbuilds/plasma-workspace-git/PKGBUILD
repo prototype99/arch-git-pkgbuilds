@@ -11,10 +11,10 @@ pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-depends=(kjsembed-git knotifyconfig-git libksysguard-git ktexteditor-git libqalculate qt5-tools bc kdesu-git libkscreen-git
-         xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage xorg-xprop milou-git prison-git kwin-git
-         kdelibs4support-git kpeople-git kactivities-stats-git)
-makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git appstream-qt krunner-git networkmanager-qt-git kdesignerplugin-git)
+depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt phonon-qt5-git
+         xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage milou-git prison-git kwin-git
+         plasma-integration-git kdelibs4support-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback)
+makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git)
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} kde.pam)
 sha1sums=(SKIP SKIP )
@@ -26,18 +26,15 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  sed -e 's|dbus-run-session ||' -i ${_pkgname}/login-sessions/plasmawayland.desktop.cmake # Don't start a second user dbus session
 }
 
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package_plasma-workspace-git() {
@@ -46,14 +43,12 @@ package_plasma-workspace-git() {
               'kdepim-addons: displaying PIM events in the calendar'
               'appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
               'qt5-virtualkeyboard: virtual keyboard support in lock screen'
-              'baloo-git: Baloo search runner'
-              'appstream-qt: package search runner')
+              'baloo-git: Baloo search runner' 'discover-git: manage applications installation from the launcher')
   backup=('etc/pam.d/kde')
   conflicts=(plasma-workspace)
   provides=(plasma-workspace notification-daemon)
 
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 "$srcdir"/kde.pam "$pkgdir"/etc/pam.d/kde
 

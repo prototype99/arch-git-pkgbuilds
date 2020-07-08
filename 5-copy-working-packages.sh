@@ -9,7 +9,7 @@ sed_file=${root}/6-sed-pkgnames-generated.sh
 pkg_dir=${builddir}/pkgbuilds/working-packages
 archpkgdir=${builddir}/pkgbuilds/arch-packages
 
-kf5=$(cat ${root}/packages.txt)
+kf5=$(cat ${root}/packages-kde.txt)
 echo ${kf5[@]}
 
 mkdir -p ${pkg_dir}
@@ -22,7 +22,7 @@ for i in ${kf5[@]};do
     newdir=${pkg_dir}/$i-git
     mkdir "$newdir"
     fromdir="$i"
-    cp ${archpkgdir}/$fromdir/trunk/* "$newdir"
+    cp ${archpkgdir}/$fromdir/* "$newdir"
 done
 
 for i in ${kf5[@]} plasma-wayland-session knetattach;do

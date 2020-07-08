@@ -10,36 +10,28 @@ pkgdesc='Abstraction for system notifications'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(libcanberra libdbusmenu-qt5 kwindowsystem-git kconfig-git kcodecs-git kcoreaddons-git qt5-speech)
+depends=(libcanberra libdbusmenu-qt5 kwindowsystem-git kconfig-git kcoreaddons-git qt5-speech)
 makedepends=(extra-cmake-modules-git qt5-tools doxygen)
 groups=(kf5-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
-conflicts=(knotifications)
-provides=(knotifications)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
   cd $_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

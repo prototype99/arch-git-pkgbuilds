@@ -1,4 +1,4 @@
-pacman -Syu --needed base-devel git zsh tmux htop glances svn
+pacman -Syu --needed base-devel git zsh tmux htop glances
 useradd -m -s /bin/zsh sdh
 passwd sdh
 su -c "cd;git clone https://github.com/siddharthasahu/dotfiles.git;cd dotfiles && git checkout work-env && bash setup.sh && cd" sdh

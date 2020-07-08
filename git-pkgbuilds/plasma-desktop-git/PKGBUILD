@@ -11,9 +11,9 @@ arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-depends=(polkit-kde-agent-git libxkbfile kmenuedit-git appstream-qt systemsettings-git ksysguard-git kpeople-git baloo-git)
-makedepends=(extra-cmake-modules-git kdoctools-git boost xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel
-             libibus scim kdesignerplugin-git)
+depends=(polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git libibus)
+makedepends=(extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel
+             scim kdesignerplugin-git)
 groups=(plasma-git kde-git)
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -23,34 +23,25 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package_plasma-desktop-git() {
   depends+=(knetattach-git)
   optdepends=('plasma-nm-git: Network manager applet'
-              'powerdevil-git: power management'
+              'powerdevil-git: power management, suspend and hibernate support'
               'kscreen-git: screen management'
               'ibus: kimpanel IBUS support'
-              'scim: kimpanel SCIM support'
-              'discover-git: manage applications installation from the launcher')
+              'scim: kimpanel SCIM support')
   conflicts=(plasma-desktop)
   provides=(plasma-desktop)
 
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
 # Split knetattach-git
   rm "$pkgdir"/usr/{bin/knetattach,share/applications/org.kde.knetattach.desktop}
@@ -62,6 +53,5 @@ package_knetattach-git() {
   conflicts=(knetattach)
   provides=(knetattach)
 
-  cd build/knetattach
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build/knetattach-git
 }

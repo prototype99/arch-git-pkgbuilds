@@ -1,0 +1,35 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=kcontacts
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc="Address book API for KDE"
+arch=(x86_64)
+url="https://community.kde.org/Frameworks"
+license=(LGPL)
+depends=(kcoreaddons-git kconfig-git ki18n-git kcodecs-git iso-codes)
+makedepends=(extra-cmake-modules-git doxygen qt5-tools)
+groups=(kf5-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -B build -S ${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

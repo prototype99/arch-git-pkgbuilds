@@ -22,21 +22,27 @@ for i in */PKGBUILD;do
             -e "s/^pkgname=(.*)/_pkgname=\1\npkgname=\$\{_pkgname\}-git/" \
             "$i";
     fi
+    grep "^prepare" "$i" > /dev/null && selector=prepare || selector=build
     sed -i -r \
         -e "s/\\\$\{?pkg(name|base)\}?[0-9]?\-\\\$pkgver/\$\{_pkgname\}/g" \
         -e "s/^pkgver=.*/pkgver=0/" \
-        -e "/groups=\(\)/d" \
+        -e "s/pkgrel=.*/pkgrel=1/" \
+        -e "/BUILD_QCH/s/ON/OFF/" \
+        -e "/epoch=/d" \
         -e "/groups=/s/([^ ])( |\))/\1-git\2/g" \
         -e "/groups=/s/\)/ kde-git)/" \
+        -e '/install=/s/\$pkgname/$_pkgname/' \
         -e "/conflicts|provides|replaces/d" \
-        -e "/CMAKE_INSTALL_PREFIX/i\    \-DCMAKE_BUILD_TYPE\=RelWithDebInfo \\\\" \
-        -e '/^prepare/i\\npkgver() {\n  cd $_pkgname\n  printf "r%s.%s" "\$\(git rev-list --count HEAD\)" "\$\(git rev-parse --short HEAD\)"\n}\n' \
+        -e "/cmake -B build/a\    \-DCMAKE_BUILD_TYPE\=RelWithDebInfo \\\\" \
+        -e '/^'$selector'/i\\npkgver() {\n  cd $_pkgname\n  printf "r%s.%s" "\$\(git rev-list --count HEAD\)" "\$\(git rev-parse --short HEAD\)"\n}\n' \
         -e 's|source=\(.*download.kde.org[^ )]*|source=\(\$\{_pkgname\}::git\+https://anongit.kde.org/\$\{_pkgname\}|' \
         -e "/depends=/s/ ?phonon-qt[45]-backend ?//" \
+        -e "/makedepends=/s/ qt5-doc| sip//g" \
         $i && \
     . $i && \
+    grep "groups" "$i" > /dev/null || sed -i -r "/source=/igroups=\(kde-git\)" "$i"
     sed -i -r \
-        -e "/sha256sums/,/pkgver/c\sha1sums=($(python -c 'print("SKIP "*'${#source[@]}')'))\noptions=(debug "'!'"strip)\nconflicts=(${_pkgname})\nprovides=(${_pkgname})\n\npkgver() {" \
+        -e "/sha256sums/,/pkgver/c\sha1sums=($(python -c 'print("SKIP "*'${#source[@]}')'))\noptions=(debug "'!'"strip)\nconflicts=(\${_pkgname})\nprovides=(\${_pkgname})\n\npkgver() {" \
         "$i";
 done
 

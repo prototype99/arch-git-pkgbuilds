@@ -1,53 +1,14 @@
 global
 end global
 
-# ============================ Dependencies ==========================
-
-# kdesrc-build itself, and some "kdesupport" modules needed by KF5, workspace or apps.
-module-set
+module-set frameworks
     repository kde-projects
-    use-modules extra-cmake-modules
-    cmake-options -DCMAKE_BUILD_TYPE:STRING=debug
+    use-modules frameworks
+    cmake-options -DBUILD_TESTING=TRUE
 end module-set
 
 module-set phonon
     repository kde-projects
     cmake-options -DPHONON_BUILD_PHONON4QT5=ON
-    # We avoid using just "phonon" as kdesrc-build will include all submodules
-    # that have phonon as part of their path. (i.e. it means phonon/*), but we
-    # don't want all the phonon backends.
-    use-modules phonon/phonon phonon-gstreamer
-end module-set
-
-# ============================= KDE Frameworks ========================
-
-module-set frameworks
-    repository kde-projects
-    use-modules frameworks
-    # The CodeBlocks generator allows usage in QtCreator, while still generating Makefiles
-    # if you use Make as build system add to cmake-options -G "CodeBlocks - Unix Makefiles"
-    # if you use Ninja as build system add to cmake-options -G "CodeBlocks - Ninja"
-    # see http://www.cmake.org/cmake/help/v3.0/generator/CodeBlocks.html
-    cmake-options -DBUILD_TESTING=TRUE -DCMAKE_BUILD_TYPE:STRING=debug
-    #tag v5.22.0-rc1
-end module-set
-
-# Example of how to set options for just one module from a module-set... this is
-# useful to have *after* your "include .../kf5-framework-build-include" in your
-# kdesrc-buildrc if you just want to tweak some settings without adding/removing
-# modules.
-options kactivities
-    cmake-options -DKDE4_BUILD_TESTS=TRUE -DBUILD_TESTING=TRUE \
-                  -DKACTIVITIES_ENABLE_EXCEPTIONS=TRUE -DCMAKE_BUILD_TYPE:STRING=debug
-end options
-
-options bluez-qt
-    # Default udev rules dir /lib/udev/rules.d is not writable by regular user
-    cmake-options -DINSTALL_UDEV_RULE:BOOL=OFF
-end options
-
-# kirigami is not a framework but used by workspace (e.g. plasma-discover) and apps (e.g. peruse)
-module-set kirigami
-    repository kde-projects
-    use-modules kirigami
+    use-modules phonon phonon-gstreamer
 end module-set

@@ -14,11 +14,12 @@ depends=(plasma-workspace-git modemmanager-qt-git networkmanager-qt-git qca mobi
 makedepends=(extra-cmake-modules-git openconnect)
 optdepends=('openconnect: Cisco AnyConnect VPN plugin')
 groups=(plasma-git kde-git)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP )
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
+         kdebug-423093.patch::"https://invent.kde.org/plasma/plasma-nm-git/commit/271332cf.patch")
+sha1sums=(SKIP SKIP )
 options=(debug !strip)
-conflicts=(plasma-nm)
-provides=(plasma-nm)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
   cd $_pkgname
@@ -26,20 +27,16 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-} 
+  patch -d ${_pkgname} -p1 -i ../kdebug-423093.patch # Fix plasma-nm-git asking twice for password
+}
 
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

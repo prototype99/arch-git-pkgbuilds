@@ -13,11 +13,12 @@ license=(LGPL)
 depends=(kactivities-git kdeclarative-git kwayland-git kirigami2-git)
 makedepends=(extra-cmake-modules-git qt5-tools kdoctools-git doxygen)
 groups=(kf5-git kde-git)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} p.patch)
-sha1sums=(SKIP SKIP)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
+         https://invent.kde.org/frameworks/plasma-framework-git/-/commit/7f9e189d.patch)
+sha1sums=(SKIP SKIP )
 options=(debug !strip)
-conflicts=(plasma-framework)
-provides=(plasma-framework)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
   cd $_pkgname
@@ -25,23 +26,17 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-  cd ${_pkgname}
-  patch -p1 -i ../p.patch
+  patch -d ${_pkgname} -p1 -i ../7f9e189d.patch # Fix plasma-nm-git asking twice for password
 }
 
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

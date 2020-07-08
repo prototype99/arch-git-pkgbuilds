@@ -3,7 +3,7 @@ end global
 
 module-set kf5-base-applications
     repository kde-projects
-    use-modules konsole kate dolphin keditbookmarks kfind kdialog kio-extras khelpcenter
+    use-modules konsole kate dolphin keditbookmarks kfind kdialog khelpcenter kio-extras kio-fuse
 end module-set
 
 module-set kdegraphics
@@ -13,7 +13,7 @@ end module-set
 
 module-set kdeutils
     repository kde-projects
-    use-modules kwalletmanager print-manager ark
+    use-modules print-manager ark
 end module-set
 
 # module-set kmix

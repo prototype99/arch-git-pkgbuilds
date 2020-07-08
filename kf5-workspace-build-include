@@ -1,26 +1,26 @@
 global
 end global
 
+module-set kdesupport
+   repository kde-projects
+   use-modules plasma-wayland-protocols
+end module-set
+
 module-set kf5-workspace-modules
     repository kde-projects # Required for branch-group
 
     # Compile everything under kde/workspace
-    use-modules workspace
+    use-modules workspace kaccounts-integration
 
     # kdesrc-build can build dependencies (that it knows about) even if you forget
     # to list them all, if you uncomment this line.
     # include-dependencies true
 
-    # Remove if you're somehow using Windows
-    ignore-modules kwindowsaddons breeze-plymouth plymouth-kcm
     # This module doesn't have a buildsystem
-    ignore-modules breeze-grub
+    ignore-modules breeze-grub breeze-plymouth plymouth-kcm qca
+    
+    ignore-modules plasma-nano plasma-phone-components kcontacts kcalendarcore
 end module-set
-
-# Update this module but don't install it, it requires write access to /usr
-# options breeze-plymouth
-#     manual-build true
-# end options
 
 # For some reason kwalletmanager is in kde/kdeutils, but is considered par of workspace
 module-set kf5-workspace-utils

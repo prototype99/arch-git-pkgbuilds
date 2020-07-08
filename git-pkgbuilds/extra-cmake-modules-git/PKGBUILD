@@ -17,8 +17,8 @@ source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
         ECM-no-init.py.patch)
 sha1sums=(SKIP SKIP )
 options=(debug !strip)
-conflicts=(extra-cmake-modules)
-provides=(extra-cmake-modules)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
   cd $_pkgname
@@ -26,26 +26,19 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
-  cd ${_pkgname}
-  sed -e 's|/usr/bin/env python|/usr/bin/env python2|' -i find-modules/*.py
-# Don't create __init__.py
-  patch -p1 -i ../ECM-no-init.py.patch
+  patch -d ${_pkgname} -p1 -i ../ECM-no-init.py.patch # Don't create __init__.py
 }
 
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_HTML_DOCS=OFF \
     -DBUILD_QTHELP_DOCS=ON \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

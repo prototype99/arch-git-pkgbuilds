@@ -1,0 +1,35 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=kio-fuse
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+arch=(x86_64)
+pkgdesc="FUSE interface for KIO"
+url="https://kde.org/"
+license=(GPL)
+depends=(kio-git fuse3)
+makedepends=(extra-cmake-modules-git)
+groups=(kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -B build -S ${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

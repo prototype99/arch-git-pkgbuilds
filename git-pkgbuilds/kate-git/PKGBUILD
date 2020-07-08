@@ -54,9 +54,9 @@ package_kwrite-git() {
 
   DESTDIR="$pkgdir" cmake --install build
 
-  find "$pkgdir" -type f -name '*kate-git*' -exec rm {} \;
-  rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor-git \
-        "$pkgdir"/usr/share/doc/HTML/*/{kate-git,katepart} \
+  find "$pkgdir" -type f -name '*kate*' -exec rm {} \;
+  rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor \
+        "$pkgdir"/usr/share/doc/HTML/*/{kate,katepart} \
         "$pkgdir"/usr/share/katexmltools \
         "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{ktexteditorpreviewplugin,lspclient,tabswitcherplugin}.mo \
         "$pkgdir"/usr/share/plasma/plasmoids

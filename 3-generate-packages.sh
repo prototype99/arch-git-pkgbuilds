@@ -9,6 +9,11 @@ packages_file_kde=${root}/packages-kde.txt
 packages_file_all=${root}/packages.txt
 kdesrcdir=${builddir}/sources/kdesrc-build
 
+cp -r $root/git-pkgbuilds/* ${builddir}/pkgbuilds/working-packages
+git clone https://anongit.kde.org/kdesrc-build ${builddir}/sources/kdesrc-build
+mkdir -p ${builddir}/sources/kdesrc-build/{s,b,l}
+sudo pacman -S --needed perl-libwww perl-xml-parser perl-json perl-io-socket-ssl perl-net-ssleay perl-yaml-syck asp
+
 truncate -s0 ${packages_file_kde}
 
 printf "${root}/kf5-frameworks-build-include\n${root}/kf5-workspace-build-include\n${root}/kf5-applications-build-include" | \

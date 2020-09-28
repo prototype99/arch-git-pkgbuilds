@@ -1,7 +1,6 @@
-ccm-pkgbuild/*.pkg.tar*
-ccm-pkgbuild/clean-chroot-manager-sdh/
-ccm-pkgbuild/pkg/
-ccm-pkgbuild/src/
 builds/
+*.zst
+*.tar
+*.tar.gz
 clean-chroot-manager.conf
 kdesrc-buildrc

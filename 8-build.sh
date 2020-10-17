@@ -8,10 +8,10 @@ builddir=${root}/builds
 tmpfsbuilddir=$builddir/tmpfs/build
 repodir=$builddir/repo
 
-case "$1" in
-    after) packages=$(cat $root/packages.txt | sed "s/.*$2 //")
+case "${1:-all}" in
+    after) packages=$(cat $root/packages.txt | sed -r "s/.*$2( |$)//")
     ;;
-    from) packages=$(cat $root/packages.txt | sed "s/.*$2 /$2 /")
+    from) packages=$(cat $root/packages.txt | sed -r "s/.*$2( |$)/$2\1/")
     ;;
     *) packages=$(cat $root/packages.txt)
     ;;
@@ -19,7 +19,7 @@ esac
 
 sudo mkdir -p /opt/builds/tmpfs/build
 sudo chown kde: $tmpfsbuilddir
-sudo pacman -Syu
+sudo pacman -Syu --needed --noconfirm
 
 cd $root/git-pkgbuilds
 
@@ -38,6 +38,7 @@ for i in $packages;do
 
     # Add repo if present and not already added
     if [[ -f $repodir/local-repo.db.tar.gz ]] && ! grep local-repo /etc/pacman.conf &>/dev/null;then
+        echo "Add local repo to pacman"
         sudo sed -i -e '$a[local-repo]\nSigLevel = Never\nServer = file://'"$repodir"'\n' /etc/pacman.conf && \
         sudo pacman -Syu
     fi
@@ -47,7 +48,7 @@ for i in $packages;do
         true
     else
         # Exit unless the error is "package already present"
-        [[ "$?" != "13" ]] && exit 1
+        [[ "$?" != "13" ]] && echo "makepkg error" && exit 1
     fi
     
     . PKGBUILD
@@ -58,9 +59,9 @@ for i in $packages;do
     # Add new packages to pacman repo if not already present
     for of in *.tar.zst;do
         if [[ -f $repodir/$of && "$(md5sum $of | cut -d" " -f1)" == "$(md5sum $repodir/$of | cut -d" " -f1)" ]];then
-            echo "Already present"
+            echo "Pacakge already present in repo"
         else
-            cp $of $repodir && repo-add -R -p $repodir/local-repo.db.tar.gz $repodir/$of && sudo pacman -Syu
+            sudo cp $of $repodir && sudo repo-add -R -p $repodir/local-repo.db.tar.gz $repodir/$of && sudo pacman -Syu --needed --noconfirm
         fi
     done
     cd ..

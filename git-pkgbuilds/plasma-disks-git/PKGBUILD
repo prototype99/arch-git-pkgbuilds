@@ -1,0 +1,34 @@
+# Maintainer:Antonio Rojas <arojas@archlinux.org>
+
+_pkgname=plasma-disks
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc='Monitors S.M.A.R.T. capable devices for imminent failure'
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
+license=(LGPL)
+depends=(smartmontools kdeclarative-git)
+makedepends=(extra-cmake-modules-git)
+groups=(plasma-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha1sums=(SKIP )
+options=(debug !strip)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -B build -S ${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

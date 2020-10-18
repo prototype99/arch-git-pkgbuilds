@@ -9,7 +9,7 @@ end module-set
 module-set kf5-workspace-modules
     repository kde-projects # Required for branch-group
     # Compile everything under kde/workspace
-    use-modules workspace kaccounts-integration
+    use-modules workspace kaccounts-integration  plasma-disks
     ignore-modules breeze-grub breeze-plymouth plymouth-kcm qca
     ignore-modules kwindowsaddons plasma-nano plasma-phone-components user-manager
 end module-set

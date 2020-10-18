@@ -9,9 +9,9 @@ Jabber and others'
 arch=(x86_64)
 url='https://www.kde.org/applications/internet/'
 license=(GPL)
-groups=(kde-applications-git kde-network-git kde-git)
 depends=(kcmutils-git signon-kwallet-extension signon-plugin-oauth2 signon-ui)
 makedepends=(extra-cmake-modules-git kdoctools-git)
+groups=(kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

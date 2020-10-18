@@ -16,7 +16,7 @@ optdepends=('kio-extras-git: extra protocols support (sftp, fish and more)' 'kdo
             'knetattach-git: to add new kio-remote entries' 'kio-fuse-git: to mount remote filesystems via FUSE')
 groups=(kf5-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP )
+sha1sums=(SKIP)
 options=(debug !strip)
 conflicts=(${_pkgname})
 provides=(${_pkgname})

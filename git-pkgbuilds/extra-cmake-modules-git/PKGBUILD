@@ -34,8 +34,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_HTML_DOCS=OFF \
-    -DBUILD_QTHELP_DOCS=ON \
-    -DBUILD_TESTING=OFF
+    -DBUILD_QTHELP_DOCS=ON
   cmake --build build
 }
 

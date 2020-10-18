@@ -12,6 +12,7 @@ url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(plasma-workspace-git bluez-qt-git networkmanager-qt-git)
 makedepends=(extra-cmake-modules-git kdoctools-git)
+optdepends=('kinfocenter-git: for the Energy Information KCM')
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )

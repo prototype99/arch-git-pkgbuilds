@@ -10,11 +10,12 @@ pkgdesc="Additional components to increase the functionality of KIO"
 arch=(x86_64)
 url='https://www.kde.org/applications/internet/'
 license=(LGPL)
-depends=(kio-git kdnssd-git libssh smbclient exiv2 openexr libmtp kpty-git kactivities-stats-git phonon-qt5-git syntax-highlighting-git kdsoap-ws-discovery-client libxcursor)
-makedepends=(extra-cmake-modules-git kdoctools-git gperf taglib libappimage)
+depends=(kio-git kdnssd-git libssh smbclient libmtp phonon-qt5-git syntax-highlighting-git kdsoap-ws-discovery-client libxcursor)
+makedepends=(extra-cmake-modules-git kdoctools-git gperf taglib libappimage openexr kpty-git kactivities-stats-git)
 optdepends=('qt5-imageformats: thumbnails for additional image formats' 'perl: info kioslave'
             'kimageformats-git: thumbnails for additional image formats' 'taglib: audio file thumbnails'
-            'libappimage: AppImage thumbnails' 'icoutils: Windows executable thumbnails')
+            'libappimage: AppImage thumbnails' 'icoutils: Windows executable thumbnails'
+            'openexr: EXR format thumbnails' 'kpty-git: comic book thumbnails' 'kactivities-stats-git: recently used kioslave')
 groups=(kde-applications-git kde-network-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )

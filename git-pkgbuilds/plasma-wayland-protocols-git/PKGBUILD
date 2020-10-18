@@ -22,19 +22,13 @@ pkgver() {
   printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${_pkgname} \
+  cmake -B build -S ${_pkgname}
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DBUILD_QCH=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

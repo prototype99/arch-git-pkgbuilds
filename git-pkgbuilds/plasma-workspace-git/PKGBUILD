@@ -14,7 +14,7 @@ license=(LGPL)
 depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt phonon-qt5-git
          xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage milou-git prison-git kwin-git
          plasma-integration-git kdelibs4support-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback)
-makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git)
+makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git plasma-wayland-protocols-git)
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} kde.pam)
 sha1sums=(SKIP SKIP )
@@ -23,10 +23,6 @@ options=(debug !strip)
 pkgver() {
   cd $_pkgname
   printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  sed -e 's|dbus-run-session ||' -i ${_pkgname}/login-sessions/plasmawayland.desktop.cmake # Don't start a second user dbus session
 }
 
 build() {

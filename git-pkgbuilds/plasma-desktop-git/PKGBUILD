@@ -11,9 +11,9 @@ arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-depends=(polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git libibus)
+depends=(polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git libibus accountsservice)
 makedepends=(extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel
-             scim kdesignerplugin-git)
+             scim kdesignerplugin-git kaccounts-integration-git intltool)
 groups=(plasma-git kde-git)
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -37,7 +37,8 @@ package_plasma-desktop-git() {
               'powerdevil-git: power management, suspend and hibernate support'
               'kscreen-git: screen management'
               'ibus: kimpanel IBUS support'
-              'scim: kimpanel SCIM support')
+              'scim: kimpanel SCIM support'
+              'kaccounts-integration-git: OpenDesktop integration plugin')
   conflicts=(plasma-desktop)
   provides=(plasma-desktop)
 

@@ -11,10 +11,10 @@ pkgdesc="KDE File Manager"
 arch=(x86_64)
 url="https://kde.org/applications/system/dolphin-git/"
 license=(LGPL)
-depends=(baloo-widgets-git knewstuff-git kio-extras-git kcmutils-git kparts-git kinit-git)
-makedepends=(extra-cmake-modules-git kdoctools-git)
+depends=(baloo-widgets-git knewstuff-git kio-extras-git kcmutils-git kparts-git kinit-git kactivities-git)
+makedepends=(extra-cmake-modules-git kdoctools-git packagekit-qt5)
 optdepends=('kde-cli-tools-git: for editing file type options' 'ffmpegthumbs: video thumbnails' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
-            'konsole-git: terminal panel' 'purpose-git: share context menu')
+            'konsole-git: terminal panel' 'purpose-git: share context menu' 'packagekit-qt5: service menu installer')
 groups=(kde-applications-git kde-system-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )

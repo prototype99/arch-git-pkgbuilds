@@ -31,7 +31,7 @@ build() {
     -D_KDE4_DEFAULT_HOME_POSTFIX=4 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=OFF
-    cmake --build build
+  cmake --build build
 }
 
 package() {

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail; shopt -s nullglob
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 builddir=${root}/builds

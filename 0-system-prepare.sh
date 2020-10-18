@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -euo pipefail; shopt -s nullglob
+
 pacman -Syu --needed base-devel git zsh tmux htop glances
 useradd -m -s /bin/zsh sdh
 passwd sdh

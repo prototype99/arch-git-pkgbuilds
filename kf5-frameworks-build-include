@@ -4,7 +4,6 @@ end global
 module-set frameworks
     repository kde-projects
     use-modules frameworks
-    cmake-options -DBUILD_TESTING=TRUE
 end module-set
 
 module-set phonon

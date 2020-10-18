@@ -11,7 +11,8 @@ cd ${archpkgdir}
 
 for i in $(cat ${root}/packages-kde.txt);do
     echo $i
-    asp -f export $i
+    rm -rf ./$i
+    asp export $i
     [[ -e "$i/PKGBUILD" ]] || { echo "$i missing" && exit 1; };
 done
 

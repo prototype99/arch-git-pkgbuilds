@@ -12,6 +12,8 @@ case "${1:-all}" in
     ;;
     from) packages=$(cat $root/packages.txt | sed -r "s/.*$2( |$)/$2\1/")
     ;;
+    single) packages=$2
+    ;;
     *) packages=$(cat $root/packages.txt)
     ;;
 esac

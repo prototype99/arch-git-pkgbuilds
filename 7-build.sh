@@ -28,10 +28,9 @@ cp /etc/makepkg.conf $builddir/makepkg.conf
 sed -i -r \
     -e '/^CFLAGS=/s/-O2/-O2 -w/' \
     -e '/^CXXFLAGS=/s/-O2/-O2 -w/' \
-    -e '/MAKEFLAGS=/s/.*/MAKEFLAGS="-j4"/' \
+    -e '/MAKEFLAGS=/s/.*/MAKEFLAGS="-j"/' \
     -e '/BUILDDIR=/s|.*|BUILDDIR='"$tmpfsbuilddir"'|' \
     -e '/SRCDEST=/s|.*|SRCDEST='"$builddir/sources"'|' \
-    #-e "/^#?LOGDEST=/cLOGDEST=\"$builddir/logs\"" \
     -e "s|([^!])strip|\1!strip|" \
     -e "s|!debug|debug|" \
     -e "/PKGEXT=/cPKGEXT=\".pkg.tar.zst\"" \

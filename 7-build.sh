@@ -18,7 +18,7 @@ case "${1:-all}" in
     ;;
 esac
 
-sudo mkdir -p /opt/builds/tmpfs/build
+sudo mkdir -p $tmpfsbuilddir
 sudo chown $(whoami): $tmpfsbuilddir
 sudo pacman -Syu --needed --noconfirm
 

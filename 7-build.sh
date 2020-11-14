@@ -4,8 +4,8 @@ set -euo pipefail; shopt -s nullglob
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 builddir=${root}/builds
-tmpfsbuilddir=$builddir/tmpfs/build
-repodir=$builddir/repo
+tmpfsbuilddir=/opt/tmpfs/build
+repodir=/opt/repo
 
 case "${1:-all}" in
     after) packages=$(cat $root/packages.txt | sed -r "s/.*$2( |$)//")
@@ -31,11 +31,15 @@ sed -i -r \
     -e '/MAKEFLAGS=/s/.*/MAKEFLAGS="-j4"/' \
     -e '/BUILDDIR=/s|.*|BUILDDIR='"$tmpfsbuilddir"'|' \
     -e '/SRCDEST=/s|.*|SRCDEST='"$builddir/sources"'|' \
-    -e '/PACKAGER=/s/.*/PACKAGER="Siddhartha <dev@sdht.in>"/' $builddir/makepkg.conf
+    #-e "/^#?LOGDEST=/cLOGDEST=\"$builddir/logs\"" \
+    -e "s|([^!])strip|\1!strip|" \
+    -e "s|!debug|debug|" \
+    -e "/PKGEXT=/cPKGEXT=\".pkg.tar.zst\"" \
+    -e '/PACKAGER=/s/.*/PACKAGER="Packager <packager@example.in>"/' $builddir/makepkg.conf
 
 for i in $packages;do
     echo "#### $i"
-    cd $i-git
+    [[ -d "$i-git" ]] && cd $i-git || cd $i
 
     # Add repo if present and not already added
     if [[ -f $repodir/local-repo.db.tar.gz ]] && ! grep local-repo /etc/pacman.conf &>/dev/null;then
@@ -62,7 +66,7 @@ for i in $packages;do
         if [[ -f $repodir/$of && "$(md5sum $of | cut -d" " -f1)" == "$(md5sum $repodir/$of | cut -d" " -f1)" ]];then
             echo "Pacakge already present in repo"
         else
-            sudo cp $of $repodir && sudo repo-add -R -p $repodir/local-repo.db.tar.gz $repodir/$of && sudo pacman -Syu --needed --noconfirm
+            cp $of $repodir && repo-add -R -p $repodir/local-repo.db.tar.gz $repodir/$of && sudo pacman -Syu --needed --noconfirm
         fi
     done
     cd ..

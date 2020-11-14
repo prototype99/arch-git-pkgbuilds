@@ -11,12 +11,18 @@ These scripts and PKGBUILDs help build the git version of KDE (frameworks, plasm
 
 ```bash
 $ cd ~/arch-kde-git/docker
-$ docker build -t kde .
+$ cp Dockerfile.sample Dockerfile
+$ sed -i -e 's/UID/1000/g' -e 's/GID/1000/g' Dockerfile
+$ docker build -t archbuilder .
 $ cd ..
-$ docker exec -ti kde bash /opt/8-build.sh
-// To start from a package:
-$ docker exec -ti kde bash /opt/8-build.sh from kio
-// To start after a package:
-$ docker exec -ti kde bash /opt/8-build.sh after kio
+$ bash ./1-prepare-directories.sh
+$ docker run -ti --user archbuilder:archbuilder -v ~/arch-kde-git:/opt/arch-kde-git -v ~/arch-kde-git/repo:/opt/repo --tmpfs /opt/tmpfs:exec --name archbuilder archbuilder bash
+# Exit docker using Ctrl+P+Q, then build all packages:
+$ docker exec -ti archbuilder bash /opt/7-build.sh
+# To start from a specific package:
+$ docker exec -ti archbuilder bash /opt/7-build.sh from kio
+# To start after a specific package:
+$ docker exec -ti archbuilder bash /opt/7-build.sh after kio
+# To build a single package:
+$ docker exec -ti archbuilder bash /opt/7-build.sh after kio
 ```
-

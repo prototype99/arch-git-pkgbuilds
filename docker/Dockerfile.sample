@@ -1,0 +1,5 @@
+FROM archlinux/base
+RUN pacman -Syu base-devel git cmake vim qt5-tools --needed --noconfirm
+RUN groupadd -g GID archbuilder
+RUN useradd -m -u UID -g GID archbuilder
+RUN bash -c "mkdir -p /etc/sudoers.d && echo 'archbuilder ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/90-archbuilder"

@@ -4,3 +4,4 @@ builds/
 *.tar.gz
 clean-chroot-manager.conf
 kdesrc-buildrc
+docker/Dockerfile

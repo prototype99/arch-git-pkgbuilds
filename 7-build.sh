@@ -19,7 +19,7 @@ case "${1:-all}" in
 esac
 
 sudo mkdir -p /opt/builds/tmpfs/build
-sudo chown kde: $tmpfsbuilddir
+sudo chown $(whoami): $tmpfsbuilddir
 sudo pacman -Syu --needed --noconfirm
 
 cd $root/git-pkgbuilds

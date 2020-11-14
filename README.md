@@ -12,7 +12,7 @@ These scripts and PKGBUILDs help build the git version of KDE (frameworks, plasm
 ```bash
 $ cd ~/arch-kde-git/docker
 $ cp Dockerfile.sample Dockerfile
-$ sed -i -e 's/UID/1000/g' -e 's/GID/1000/g' Dockerfile
+$ sed -i -e "s/UID/$(id -u)/g" -e "s/GID/$(id -g)/g" Dockerfile
 $ docker build -t archbuilder .
 $ cd ..
 $ bash ./1-prepare-directories.sh

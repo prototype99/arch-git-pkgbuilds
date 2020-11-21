@@ -11,10 +11,10 @@ pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt phonon-qt5-git
+depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate appstream-qt phonon-qt5-git kdesu-git
          xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage milou-git prison-git kwin-git
          plasma-integration-git kdelibs4support-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback)
-makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git plasma-wayland-protocols-git)
+makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git plasma-wayland-protocols-git libxtst)
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} kde.pam)
 sha1sums=(SKIP SKIP )

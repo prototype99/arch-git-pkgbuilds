@@ -23,9 +23,8 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S ${_pkgname}
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DBUILD_QCH=OFF
+  cmake -B build -S ${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
   cmake --build build
 }
 

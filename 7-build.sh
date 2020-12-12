@@ -52,7 +52,7 @@ for i in $packages;do
         true
     else
         # Exit unless the error is "package already present"
-        [[ "$?" != "13" ]] && echo "makepkg error" && exit 1
+        [[ "$?" != "13" ]] && echo "makepkg error for $i" && exit 1
     fi
     
     . PKGBUILD

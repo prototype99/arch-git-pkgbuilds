@@ -18,15 +18,19 @@ depends=(
 	'pyalpm'
 	'git'
 )
+makedepends=(
+    'python-commonmark'
+)
 optdepends=(
 	'asp: for ABS support in -G/--getpkgbuild operation'
 	'python-pysocks: for socks5 proxy support'
 )
 conflicts=('pikaur')
+provides=('pikaur')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}" || exit 2
-  printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${pkgname}" || exit 2
+    printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
 }
 
 build() {

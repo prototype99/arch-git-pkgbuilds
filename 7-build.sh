@@ -57,7 +57,7 @@ for i in $packages;do
     
     . PKGBUILD
     # Remove old versions
-    ls *.zst | grep -v $pkgver | xargs -L1 -I{} mv -v {} $builddir/old_packages/ || true
+    ls *.zst | grep -v $pkgver | xargs -I{} mv -v {} $builddir/old_packages/ || true
     # Cleanup tmpfs to avoid OOM
     rm -rf $tmpfsbuilddir/$i-git || true
     # Add new packages to pacman repo if not already present

@@ -7,19 +7,17 @@ pkgdesc='High-level tracing language for Linux eBPF'
 arch=('i686' 'x86_64')
 url="https://github.com/iovisor/bpftrace"
 license=('Apache')
-depends=('libelf' 'zlib' 'llvm-libs' 'clang')
-makedepends=('cmake' 'git' 'llvm' 'bcc-git')
+depends=('libelf' 'zlib' 'llvm-libs' 'clang' 'bcc')
+makedepends=('cmake' 'git' 'llvm')
 conflicts=('bpftrace')
 provides=('bpftrace')
 source=("git+https://github.com/iovisor/bpftrace.git")
 sha512sums=('SKIP')
+options=('!strip')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
   printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
-  )
 }
 
 build() {
@@ -35,7 +33,6 @@ package() {
   cd "$srcdir/$_pkgname/build"
 
   make DESTDIR="$pkgdir/" install
-
 }
 
 # vim:set ts=2 sw=2 et:

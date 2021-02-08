@@ -17,25 +17,25 @@ provides=('rr')
 conflicts=('rr')
 
 pkgver() {
-	cd rr
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    cd rr
+    printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd rr
-	mkdir -p build
+    cd rr
+    mkdir -p build
 }
 
 build() {
-	cd rr/build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DBUILD_TESTS=OFF -DWILL_RUN_TESTS=OFF -Ddisable32bit=ON ..
+    cd rr/build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DBUILD_TESTS=OFF -DWILL_RUN_TESTS=OFF -Ddisable32bit=ON ..
 
-	make
+    make
 }
 
 package() {
-	cd rr/build
-	make DESTDIR="${pkgdir}" install
-	cd ..
-	install -D LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
+    cd rr/build
+    make DESTDIR="${pkgdir}" install
+    cd ..
+    install -D LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
 }

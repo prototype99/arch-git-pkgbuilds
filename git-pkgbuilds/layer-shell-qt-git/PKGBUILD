@@ -1,6 +1,6 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
-_pkgname=kscreenlocker
+_pkgname=layer-shell-qt
 pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
@@ -9,9 +9,9 @@ arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 groups=(plasma-git kde-git)
-depends=(kidletime-git kwayland-git kdeclarative-git perl layer-shell-qt-git)
+depends=(kidletime-git kwayland-git kdeclarative-git perl)
 makedepends=(extra-cmake-modules-git kdoctools-git kcmutils-git libxcursor)
-source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+source=(${_pkgname}::git+https://invent.kde.org/plasma/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
 conflicts=(${_pkgname})

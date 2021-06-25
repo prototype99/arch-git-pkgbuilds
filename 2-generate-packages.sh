@@ -33,6 +33,6 @@ xargs -L1 -I{} bash -c "${kdesrcdir}/kdesrc-build \
     | grep -v "plasma-tests" | grep -v "oxygen" | tr '\n' ' ' >> ${packages_file_kde}
 
 cp ${packages_file_kde} ${packages_file_all}
-echo "pikaur rr bc bpftrace zotero" >> ${packages_file_all}
+echo "pikaur rr bcc bpftrace zotero" >> ${packages_file_all}
 p=$(cat ${packages_file_all})
 echo ${p[@]}

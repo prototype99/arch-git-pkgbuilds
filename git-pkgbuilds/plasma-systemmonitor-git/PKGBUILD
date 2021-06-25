@@ -1,16 +1,16 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
-_pkgname=layer-shell-qt
+_pkgname=plasma-systemmonitor
 pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
-pkgdesc='Qt component to allow applications to make use of the Wayland wl-layer-shell protocol'
+pkgdesc='An interface for monitoring system sensors, process information and other system resources'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop-git/'
 license=(GPL LGPL)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-depends=(qt5-wayland)
-makedepends=(extra-cmake-modules-git wayland-protocols)
+depends=(ksystemstats-git kirigami2-git kitemmodels-git)
+makedepends=(extra-cmake-modules-git)
 groups=(plasma-git kde-git)
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -23,8 +23,8 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S ${_pkgname} \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  cmake -B build -S ${_pkgname}
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   cmake --build build
 }
 

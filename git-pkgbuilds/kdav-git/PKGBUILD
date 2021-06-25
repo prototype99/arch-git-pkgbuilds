@@ -5,12 +5,12 @@ pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
 pkgdesc="A DAV protocol implemention with KJobs"
-url='https://community.kde.org/KDE_PIM'
 arch=(x86_64)
-license=(GPL LGPL FDL)
+url="https://community.kde.org/Frameworks"
+license=(LGPL)
 depends=(kio-git qt5-xmlpatterns)
-makedepends=(extra-cmake-modules-git)
-groups=(kde-git)
+makedepends=(extra-cmake-modules-git doxygen qt5-tools)
+groups=(kf5-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -25,7 +25,8 @@ pkgver() {
 build() {
   cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=OFF
   cmake --build build
 }
 

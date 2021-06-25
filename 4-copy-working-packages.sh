@@ -5,7 +5,7 @@ set -euo pipefail; shopt -s nullglob
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 builddir=${root}/builds
 
-sed_file=${root}/6-sed-pkgnames-generated.sh
+sed_file=${root}/5-sed-pkgnames-generated.sh
 pkg_dir=${builddir}/pkgbuilds/working-packages
 archpkgdir=${builddir}/pkgbuilds/arch-packages
 

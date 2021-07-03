@@ -14,7 +14,6 @@ depends=(libksysguard-git kinit-git)
 makedepends=(extra-cmake-modules-git kdoctools-git networkmanager-qt-git)
 optdepends=('nvidia-utils: NVIDIA GPU usage' 'networkmanager-qt-git: improved network statistics')
 groups=(plasma-git kde-git)
-install=$_pkgname.install
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)

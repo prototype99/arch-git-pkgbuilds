@@ -1,0 +1,37 @@
+# Merged with official ABS yakuake PKGBUILD by João, 2021/07/04 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+
+_pkgname=yakuake
+pkgname=${_pkgname}-git
+pkgver=0
+pkgrel=1
+pkgdesc='A drop-down terminal emulator based on KDE konsole-git technology'
+arch=(x86_64)
+url='https://apps.kde.org/yakuake/'
+license=(GPL)
+depends=(konsole-git kwayland-git hicolor-icon-theme)
+makedepends=(git extra-cmake-modules-git)
+groups=(kde-applications-git kde-utilities-git kde-git)
+source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+sha256sums=('SKIP')
+options=(debug !strip)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --date=format:"%Y%m%d" --format="%ad")" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -B build -S ${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

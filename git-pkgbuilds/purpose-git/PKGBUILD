@@ -4,14 +4,16 @@ _pkgname=purpose
 pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
-pkgdesc="Framework for providing abstractions to get the developer's purposes fulfilled"
+pkgdesc='Framework for providing abstractions to get the developers purposes fulfilled'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kaccounts-integration-git kirigami2-git accounts-qml-module)
 makedepends=(extra-cmake-modules-git intltool)
-optdepends=('kdeconnect: sharing to smartphone via KDE Connect' 'telegram-desktop: sharing via Telegram'
-            'bluedevil-git: sharing via Bluetooth')
+optdepends=('kdeconnect: sharing to smartphone via KDE Connect'
+            'telegram-desktop: sharing via Telegram'
+            'bluedevil-git: sharing via Bluetooth'
+            'prison-git: QR code plugin')
 groups=(kf5-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )

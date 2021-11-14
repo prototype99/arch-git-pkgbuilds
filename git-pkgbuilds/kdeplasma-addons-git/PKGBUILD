@@ -8,17 +8,16 @@ pkgver=0
 pkgrel=1
 pkgdesc='All kind of addons to improve your Plasma experience'
 arch=(x86_64)
-url='https://www.kde.org/workspaces/plasmadesktop/'
+url='https://kde.org/plasma-desktop-git/'
 license=(LGPL)
-depends=(plasma-workspace-git)
-makedepends=(extra-cmake-modules-git kross-git qt5-webengine)
-optdepends=('kross-git: comic applet'
-            'purpose-git: Quickshare applet'
+depends=(plasma-workspace-git kunitconversion-git)
+makedepends=(extra-cmake-modules-git qt5-webengine)
+optdepends=('purpose-git: Quickshare applet'
             'quota-tools: disk quota applet'
             'qt5-webengine: dictionary and webbrowser applets')
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-sha1sums=(SKIP)
+sha1sums=(SKIP )
 options=(debug !strip)
 conflicts=(${_pkgname})
 provides=(${_pkgname})

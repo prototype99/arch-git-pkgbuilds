@@ -10,9 +10,12 @@ pkgdesc='Image format plugins for Qt5'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt5-base openexr)
-makedepends=(extra-cmake-modules-git karchive-git)
-optdepends=('karchive-git: plugin for Krita and OpenRaster images')
+depends=(qt5-base)
+makedepends=(extra-cmake-modules-git karchive-git libavif openexr libheif)
+optdepends=('karchive-git: plugin for Krita and OpenRaster images'
+            'libavif: AVIF format support'
+            'openexr: EXR format support'
+            'libheif: HEIF format support')
 groups=(kf5-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
@@ -28,7 +31,8 @@ pkgver() {
 build() {
   cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DKIMAGEFORMATS_HEIF=ON
   cmake --build build
 }
 

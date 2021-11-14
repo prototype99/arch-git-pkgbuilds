@@ -11,9 +11,10 @@ arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base)
-makedepends=(extra-cmake-modules-git qt5-tools hunspell aspell hspell libvoikko doxygen)
+makedepends=(extra-cmake-modules-git qt5-declarative qt5-tools hunspell aspell hspell libvoikko doxygen)
 optdepends=('hunspell: spell checking via hunspell' 'aspell: spell checking via aspell' 
-            'hspell: spell checking for Hebrew' 'libvoikko: Finnish support via Voikko')
+            'hspell: spell checking for Hebrew' 'libvoikko: Finnish support via Voikko'
+            'qt5-declarative: QML bindings')
 groups=(kf5-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )

@@ -8,12 +8,11 @@ pkgver=0
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=(x86_64)
-url='https://userbase.kde.org/KSysGuard'
+url='https://kde.org/plasma-desktop-git/'
 license=(LGPL)
-depends=(libksysguard-git kinit-git)
-makedepends=(extra-cmake-modules-git kdoctools-git networkmanager-qt-git)
-optdepends=('nvidia-utils: NVIDIA GPU usage' 'networkmanager-qt-git: improved network statistics')
-groups=(plasma-git kde-git)
+depends=(ksystemstats-git)
+makedepends=(extra-cmake-modules-git kdoctools-git)
+groups=(kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -28,7 +27,6 @@ pkgver() {
 build() {
   cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

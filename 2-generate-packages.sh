@@ -10,13 +10,13 @@ packages_file_all=${root}/packages.txt
 kdesrcdir=${builddir}/sources/kdesrc-build
 
 cp -r $root/git-pkgbuilds/* ${builddir}/pkgbuilds/working-packages
-mkdir -p ${kdesrcdir}/{s,b,l}
 if [[ -f ${kdesrcdir}/README.md ]];then
     cd ${kdesrcdir} && git pull
     cd ${kdesrcdir}/s/sysadmin-repo-metadata && git pull
 else
     git clone https://anongit.kde.org/kdesrc-build ${kdesrcdir}
 fi
+mkdir -p ${kdesrcdir}/{s,b,l}
 sudo pacman -S --needed perl-libwww perl-xml-parser perl-json perl-io-socket-ssl perl-net-ssleay perl-yaml-syck asp
 
 truncate -s0 ${packages_file_kde}

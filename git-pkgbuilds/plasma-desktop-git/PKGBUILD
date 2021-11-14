@@ -2,18 +2,25 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_pkgname=plasma-desktop
-pkgname=(plasma-desktop-git knetattach-git)
+_pkgname=plasma-disks
+pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=(x86_64)
-url='https://www.kde.org/workspaces/plasmadesktop/'
+url='https://kde.org/plasma-desktop-git/'
 license=(LGPL)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
-depends=(polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git libibus accountsservice)
+depends=(gawk kdelibs4support-git polkit-kde-agent-git kmenuedit-git systemsettings-git baloo-git accountsservice xdg-user-dirs)
+optdepends=('plasma-nm-git: Network manager applet'
+            'powerdevil-git: power management, suspend and hibernate support'
+            'kscreen-git: screen management'
+            'ibus: kimpanel IBUS support'
+            'scim: kimpanel SCIM support'
+            'kaccounts-integration-git: OpenDesktop integration plugin'
+            'packagekit-qt5: to install new krunner-git plugins')
 makedepends=(extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel
-             scim kdesignerplugin-git kaccounts-integration-git intltool)
+             scim kdesignerplugin-git kaccounts-integration-git intltool packagekit-qt5 kinit-git)
 groups=(plasma-git kde-git)
 sha1sums=(SKIP )
 options=(debug !strip)
@@ -31,28 +38,6 @@ build() {
   cmake --build build
 }
 
-package_plasma-desktop-git() {
-  depends+=(knetattach-git)
-  optdepends=('plasma-nm-git: Network manager applet'
-              'powerdevil-git: power management, suspend and hibernate support'
-              'kscreen-git: screen management'
-              'ibus: kimpanel IBUS support'
-              'scim: kimpanel SCIM support'
-              'kaccounts-integration-git: OpenDesktop integration plugin')
-  conflicts=(plasma-desktop)
-  provides=(plasma-desktop)
-
+package() {
   DESTDIR="$pkgdir" cmake --install build
-
-# Split knetattach-git
-  rm "$pkgdir"/usr/{bin/knetattach,share/applications/org.kde.knetattach.desktop}
-}
-
-package_knetattach-git() {
-  pkgdesc='Wizard which makes it easier to integrate network resources with the Plasma Desktop'
-  depends=(kdelibs4support-git)
-  conflicts=(knetattach)
-  provides=(knetattach)
-
-  DESTDIR="$pkgdir" cmake --install build/knetattach
 }

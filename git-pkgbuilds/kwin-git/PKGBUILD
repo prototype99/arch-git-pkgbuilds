@@ -8,11 +8,12 @@ pkgver=0
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)
-url='https://www.kde.org/workspaces/plasmadesktop/'
+url='https://kde.org/plasma-desktop-git/'
 license=(LGPL)
-depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git kwayland-server-git breeze-git qt5-sensors qt5-script pipewire libqaccessibilityclient)
-makedepends=(extra-cmake-modules-git qt5-tools kdoctools-git)
-optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
+depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git kwayland-server-git breeze-git
+         pipewire-session-manager libqaccessibilityclient lcms2)
+makedepends=(extra-cmake-modules-git qt5-tools kdoctools-git krunner-git)
+optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 install=$_pkgname.install

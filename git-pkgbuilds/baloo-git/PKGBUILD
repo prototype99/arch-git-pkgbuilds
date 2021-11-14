@@ -6,7 +6,7 @@ _pkgname=baloo
 pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
-pkgdesc="A framework for searching and managing metadata"
+pkgdesc='A framework for searching and managing metadata'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
@@ -29,6 +29,7 @@ build() {
   cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DBUILD_TESTING=OFF \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_QCH=OFF
   cmake --build build
 }

@@ -6,16 +6,16 @@ _pkgname=kio-extras
 pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
-pkgdesc="Additional components to increase the functionality of KIO"
+pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
-url='https://www.kde.org/applications/internet/'
+url='https://www.kde.org/'
 license=(LGPL)
 depends=(kio-git kdnssd-git libssh smbclient libmtp phonon-qt5-git syntax-highlighting-git kdsoap-ws-discovery-client libxcursor)
-makedepends=(extra-cmake-modules-git kdoctools-git gperf taglib libappimage openexr kpty-git kactivities-stats-git)
+makedepends=(extra-cmake-modules-git kdoctools-git gperf taglib libappimage openexr kactivities-stats-git)
 optdepends=('qt5-imageformats: thumbnails for additional image formats' 'perl: info kioslave'
             'kimageformats-git: thumbnails for additional image formats' 'taglib: audio file thumbnails'
             'libappimage: AppImage thumbnails' 'icoutils: Windows executable thumbnails'
-            'openexr: EXR format thumbnails' 'kpty-git: comic book thumbnails' 'kactivities-stats-git: recently used kioslave')
+            'openexr: EXR format thumbnails' 'kactivities-stats-git: recently used kioslave')
 groups=(kde-applications-git kde-network-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
 sha1sums=(SKIP )
@@ -32,6 +32,7 @@ build() {
   cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DLIBAPPIMAGE_LIBRARIES=libappimage.so \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

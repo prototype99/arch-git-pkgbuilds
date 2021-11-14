@@ -9,12 +9,12 @@ pkgver=0
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
-url='https://www.kde.org/workspaces/plasmadesktop/'
+url='https://kde.org/plasma-desktop-git/'
 license=(LGPL)
-depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate appstream-qt phonon-qt5-git kdesu-git
+depends=(knotifyconfig-git ksystemstats-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt
          xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage milou-git prison-git kwin-git
-         plasma-integration-git kdelibs4support-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback)
-makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git plasma-wayland-protocols-git libxtst)
+         plasma-integration-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback kio-extras-git kio-fuse-git)
+makedepends=(extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git plasma-wayland-protocols-git kunitconversion-git kinit-git)
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname} kde.pam)
 sha1sums=(SKIP SKIP )
@@ -38,11 +38,10 @@ package_plasma-workspace-git() {
               'gpsd: GPS based geolocation' 'networkmanager-qt-git: IP based geolocation'
               'kdepim-addons: displaying PIM events in the calendar'
               'appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
-              'qt5-virtualkeyboard: virtual keyboard support in lock screen'
               'baloo-git: Baloo search runner' 'discover-git: manage applications installation from the launcher')
   backup=('etc/pam.d/kde')
   conflicts=(plasma-workspace)
-  provides=(plasma-workspace notification-daemon)
+  provides=(plasma-workspace)
 
   DESTDIR="$pkgdir" cmake --install build
 
@@ -54,7 +53,7 @@ package_plasma-workspace-git() {
 
 package_plasma-wayland-session-git() {
   pkgdesc='Plasma Wayland session'
-  depends=(plasma-workspace-git qt5-wayland kwayland-integration-git xorg-server-xwayland)
+  depends=(plasma-workspace-git qt5-wayland kwayland-integration-git xorg-xwayland)
   conflicts=(plasma-wayland-session)
   provides=(plasma-wayland-session)
 

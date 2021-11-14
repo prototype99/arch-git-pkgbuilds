@@ -12,6 +12,9 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(cmake)
 makedepends=(python-sphinx python-requests qt5-tools)
+optdepends=('python-pyxdg: to generate fastlane metadata for Android apps'
+            'python-requests: to generate fastlane metadata for Android apps'
+            'python-yaml: to generate fastlane metadata for Android apps')
 groups=(kf5-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname}
         ECM-no-init.py.patch)
@@ -26,7 +29,7 @@ pkgver() {
 }
 
 prepare() {
-  patch -d ${_pkgname} -p1 -i ../ECM-no-init.py.patch # Don't create __init__.py
+  patch -d ${_pkgname} -p1 < ECM-no-init.py.patch # Don't create __init__.py
 }
 
 build() {

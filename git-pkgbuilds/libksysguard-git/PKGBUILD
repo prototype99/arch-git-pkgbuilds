@@ -8,12 +8,13 @@ pkgver=0
 pkgrel=1
 pkgdesc='Library to retrieve information on the current status of computer hardware'
 arch=(x86_64)
-url='https://www.kde.org/workspaces/plasmadesktop/'
+url='https://kde.org/plasma-desktop-git/'
 license=(LGPL)
 depends=(libxres qt5-webengine kdeclarative-git knewstuff-git)
 makedepends=(extra-cmake-modules-git kdoctools-git qt5-tools)
 groups=(plasma-git kde-git)
 source=(${_pkgname}::git+https://anongit.kde.org/${_pkgname})
+install=libksysguard-git.install
 sha1sums=(SKIP )
 options=(debug !strip)
 conflicts=(${_pkgname})
@@ -27,6 +28,7 @@ pkgver() {
 build() {
   cmake -B build -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

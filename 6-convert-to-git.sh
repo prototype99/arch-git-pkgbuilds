@@ -37,7 +37,7 @@ for i in */PKGBUILD;do
         -e '/^'$selector'/i\\npkgver() {\n  cd $_pkgname\n  printf "r%s.%s.%s" "\$\(git rev-list --count HEAD\)" "\$\(git log -1 --date=format:"%Y%m%d" --format="%ad"\)" "\$\(git rev-parse --short HEAD\)"\n}\n' \
         -e 's|source=\(.*download.kde.org[^ )]*|source=\(\$\{_pkgname\}::git\+https://anongit.kde.org/\$\{_pkgname\}|' \
         -e "/depends=/s/ ?phonon-qt[45]-backend ?//" \
-        -e "/makedepends=/s/ qt5-doc| sip//g" \
+        -e "/makedepends=/s/ qt5-doc| sip4?//g" \
         $i && \
     . $i && \
     grep "groups" "$i" > /dev/null || sed -i -r "/source=/igroups=\(kde-git\)" "$i"

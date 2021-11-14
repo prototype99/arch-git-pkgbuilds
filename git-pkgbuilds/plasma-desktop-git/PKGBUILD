@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_pkgname=plasma-disks
+_pkgname=plasma-desktop
 pkgname=${_pkgname}-git
 pkgver=0
 pkgrel=1
@@ -24,6 +24,8 @@ makedepends=(extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-s
 groups=(plasma-git kde-git)
 sha1sums=(SKIP )
 options=(debug !strip)
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
   cd $_pkgname

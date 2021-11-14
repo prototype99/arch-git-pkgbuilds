@@ -45,9 +45,9 @@ build() {
 }
 
 package_kwrite-git() {
-  pkgdesc="Text Editor"
+  pkgdesc='Text Editor'
   groups=(kde-applications-git kde-utilities-git kde-git)
-  url="https://www.kde.org/applications/utilities/kwrite/"
+  url='https://apps.kde.org/kwrite/'
   depends=(ktexteditor-git hicolor-icon-theme)
   conflicts=(kwrite)
   provides=(kwrite)
@@ -61,15 +61,16 @@ package_kwrite-git() {
 }
 
 package_kate-git() {
-  pkgdesc="Advanced Text Editor"
+  pkgdesc='Advanced Text Editor'
   groups=(kde-applications-git kde-utilities-git kde-git)
-  url="https://www.kde.org/applications/utilities/kate-git/"
-  depends=(knewstuff-git ktexteditor-git threadweaver-git kactivities-git kuserfeedback hicolor-icon-theme)
+  url='https://apps.kde.org/kate-git/'
+  depends=(knewstuff-git ktexteditor-git kactivities-git kuserfeedback hicolor-icon-theme)
   optdepends=('konsole-git: open a terminal in Kate'
               'clang: C and C++ LSP support'
-              'python-language-server: Python LSP support'
+              'python-lsp-server: Python LSP support'
               'texlab: LaTeX LSP support'
-              'rust: Rust LSP support')
+              'rust: Rust LSP support'
+              'git: git-blame plugin')
   conflicts=(kate)
   provides=(kate)
 

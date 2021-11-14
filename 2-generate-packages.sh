@@ -9,7 +9,6 @@ packages_file_kde=${root}/packages-kde.txt
 packages_file_all=${root}/packages.txt
 kdesrcdir=${builddir}/sources/kdesrc-build
 
-cp -r $root/git-pkgbuilds/* ${builddir}/pkgbuilds/working-packages
 if [[ -f ${kdesrcdir}/README.md ]];then
     cd ${kdesrcdir} && git pull
     cd ${kdesrcdir}/s/sysadmin-repo-metadata && git pull
@@ -22,7 +21,7 @@ sudo pacman -S --needed perl-libwww perl-xml-parser perl-json perl-io-socket-ssl
 truncate -s0 ${packages_file_kde}
 
 printf "${root}/kf5-frameworks-build-include\n${root}/kf5-workspace-build-include\n${root}/kf5-applications-build-include" | \
-xargs -L1 -I{} bash -c "${kdesrcdir}/kdesrc-build \
+xargs -I{} bash -c "${kdesrcdir}/kdesrc-build \
     --src-only --pretend --branch-group=kf5-qt5 --ignore-kde-structure --stop-on-failure \
     --source-dir=${kdesrcdir}/s --build-dir=${kdesrcdir}/b --log-dir=${kdesrcdir}/l \
     --rc-file {} | grep '^Cloning' | awk '{print "'$2'"}'" \
@@ -33,6 +32,6 @@ xargs -L1 -I{} bash -c "${kdesrcdir}/kdesrc-build \
     | grep -v "plasma-tests" | grep -v "oxygen" | tr '\n' ' ' >> ${packages_file_kde}
 
 cp ${packages_file_kde} ${packages_file_all}
-echo "pikaur rr bcc bpftrace zotero" >> ${packages_file_all}
+echo "pikaur zotero" >> ${packages_file_all}
 p=$(cat ${packages_file_all})
 echo ${p[@]}

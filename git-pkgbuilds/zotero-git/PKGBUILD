@@ -37,9 +37,11 @@ build() {
     cd ../${_src_dir_1}
     npm i
     cd ./pdf-reader/pdf.js
+    npm i canvas@2.8.0
     npm i
     cd ../..
     cd ./pdf-worker/pdf.js
+    npm i canvas@2.8.0
     npm i
     cd ../..
     npm run build

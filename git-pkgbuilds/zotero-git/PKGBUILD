@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd ${_src_dir_1}
-    git submodule init && git submodule update
+    git submodule init && git submodule update --init --recursive
     cd ../${_src_dir_2}
     git submodule init && git submodule update
     cd ../${_src_dir_3}
@@ -36,6 +36,12 @@ build() {
 
     cd ../${_src_dir_1}
     npm i
+    cd ./pdf-reader/pdf.js
+    npm i
+    cd ../..
+    cd ./pdf-worker/pdf.js
+    npm i
+    cd ../..
     npm run build
     
     cd ../${_src_dir_3}
